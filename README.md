@@ -12,6 +12,7 @@ This folder holds the lab work, the course documents, and three study PDFs that 
 | [`Question_Bank/MACSE502_Question_Bank_with_Answers.pdf`](Question_Bank/MACSE502_Question_Bank_with_Answers.pdf) | 77 | Practice questions with worked answers for all six syllabus modules. The code in the answers was run and its real output is embedded. |
 | [`Question_Bank/MACSE502_Topic_Notes_with_Practice_Questions.pdf`](Question_Bank/MACSE502_Topic_Notes_with_Practice_Questions.pdf) | 72 | Topic notes with 273 practice questions, 84 of them tagged as tricky (PCA, for example). |
 | [`Question_Bank/cheatsheet/MACSE502_Coding_Cheat_Sheet.pdf`](Question_Bank/cheatsheet/MACSE502_Coding_Cheat_Sheet.pdf) | 42 | CAT-2 coding cheat sheet built from the lab records, in the three question formats from the whiteboard photo (below). |
+| [`Question_Bank/cheatsheet/MACSE502_Syllabus_Gap_Code.pdf`](Question_Bank/cheatsheet/MACSE502_Syllabus_Gap_Code.pdf) | 41 | Task tables (`T.No \| Task Desc \| Program code`) for the syllabus topics the cheat sheet does not cover, module by module, with a map from every syllabus topic to its code. |
 
 ### Coding cheat sheet
 
@@ -33,7 +34,7 @@ guessed marking scheme are listed in Part 5 of the PDF.
 | `Question_Bank/` | Content, rendering and build scripts for the three study PDFs. |
 | `Question_Bank/code/` | The runnable Python and Scala programs behind the answers (`m1_*` to `m5_*`, `n1_*` to `n4_*`). The `s2_*`, `s3_*` and `s4_*` files are unfinished scratch work. |
 | `Question_Bank/outputs/` | Captured console output, HTML charts and images that the PDF builders embed. |
-| `Question_Bank/cheatsheet/` | Cheat sheet data, verification scripts and builder. `programs.json` is the parsed content of the lab records. |
+| `Question_Bank/cheatsheet/` | Data, verification scripts and builders for the cheat sheet (`cheat_*`, `debug_*`, `verify_*`, `build_cheatsheet.py`) and for the syllabus gap file (`gap_py.py`, `gap_scala.py`, `gap_syllabus.py`, `gap_stub.py`, `build_gap.py`). `programs.json` is the parsed content of the lab records. |
 | `Scala_Code_Mod_3_and_4/` | Colab notebook for Scala and Spark topics. It runs each Scala program with scala-cli from a Python kernel. |
 | `Sample Questions/` | 15 photos of sample higher-order-thinking questions (modules 2 to 4). |
 | `CAT 2/Pred syl.txt` | Predicted CAT-2 syllabus by module. |
@@ -68,6 +69,7 @@ cd Question_Bank
 python build_pdf.py                         # question bank
 python build_notes.py                       # topic notes
 python cheatsheet\build_cheatsheet.py       # coding cheat sheet
+python cheatsheet\build_gap.py              # syllabus gap code
 ```
 
 Re-running the code behind them needs more packages. Versions used for the cheat sheet: pandas 2.3.3, NumPy 1.26.4,
@@ -87,11 +89,19 @@ Re-running the checks (from `Question_Bank/cheatsheet`):
 | `verify_scala.py` | The five Scala task tables (compile and run) |
 | `verify_py_debug.py`, `verify_debug_scala.py` | Each buggy snippet and its fix; they write `debug_*_results.json` |
 | `verify_fill.py` | The 13 complete missing-code programs; writes `fill_results.json` |
+| `verify_gap_py.py` | Every Python row of the gap file, one empty folder per table; writes `gap_py_results.json` |
+| `verify_gap_scala.py` | The 8 Scala programs of the gap file, plus the REPL transcript; writes `gap_scala_results.json` |
+
+The gap file needs more libraries than the cheat sheet: SciPy, NLTK, Folium, requests, Scrapy, ChatterBot with the spaCy model
+`en_core_web_sm`, XGBoost, TensorFlow with Keras, PyTorch (CPU), and Spark 3.5.1 (scala-cli downloads Spark itself).
+`verify_gap_py.py` runs four virtualenvs (`venv`, `venv_cb`, `venv_sc`, `venv_dl`) that it expects in `%TEMP%\pds`, because
+ChatterBot, Scrapy and the deep-learning libraries do not share one environment here. The REST rows run against the local
+stub server in `gap_stub.py`, and the Scrapy spider against two local HTML files.
 
 Paths you may have to change on another machine:
 
-- `Question_Bank/run_and_capture.py`, `verify_scala.py` and `verify_debug_scala.py` expect scala-cli at
-  `%TEMP%\pds\scala\scala-cli.exe`.
+- `Question_Bank/run_and_capture.py`, `verify_scala.py`, `verify_debug_scala.py` and `verify_gap_scala.py` expect scala-cli at
+  `%TEMP%\pds\scala\scala-cli.exe`. `verify_gap_py.py` also expects NLTK data in `%TEMP%\pds\nltk_data`.
 - `Question_Bank/cheatsheet/parse_submissions.py` reads the lab records from an absolute path stored in its `SUBS` variable.
 
 ## What git ignores

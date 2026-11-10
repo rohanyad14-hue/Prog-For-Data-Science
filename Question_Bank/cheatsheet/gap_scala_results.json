@@ -1,0 +1,67 @@
+[
+ {
+  "group": "3.1",
+  "title": "Functions: the expanded function format",
+  "ok": true,
+  "rows": 17,
+  "output": "5\n49\nHello, VIT\n1.0\n10.0\n6\n15\n42\n6\nList(10, 20, 30, 40)\nList(2, 4)\n10\n16\n20\n42\n3\n15\n2432902008176640000\nrun\nrun\nSome(a)\nNone\nmean=5.0 sd=2.0\nList(2, 3, 4)\n10\n",
+  "errors": ""
+ },
+ {
+  "group": "3.2",
+  "title": "Variables, strings, numbers and types",
+  "ok": true,
+  "rows": 17,
+  "output": "1\ncomputing...\n42\n42\n(int,double,String,3.5,1099511627776)\n12\nD\nDATA SCIENCE\ndata science\nData\nS\necneicS ataD\ntrue\n5\ntrue\nBig Science\nList(Data, Science)\n2\nAsha scored 92.456\nAsha scored 91.5\nno\\tescape\nfirst line\nsecond line\ntrue\ntrue\nabbb\nx-y-z\n1\n(127,32767,2147483647,9223372036854775807)\n-2147483648\ntrue\n3\n1\n3.5\n3.5\n-3\n-1\n2\n43\n3\nA\n65\n10!\n7.0\nNone\n4.0\n1024.0\n5\n9\n3\n3.0\n2.0\n3.1416\n246913578024691357802469135780\n0.3\n0.30000000000000004\ntrue\nQ\n114\nr\nInteger\nString\nDouble\nBoolean\nCharacter\ntrue\n2\n5\n0\nSome(10)\n4.0\n",
+  "errors": ""
+ },
+ {
+  "group": "3.3",
+  "title": "Operators, booleans, control flow and user input",
+  "ok": true,
+  "rows": 18,
+  "output": "22\n12\n85\n3\n2\n(true,false,true,false,false,true)\n(false,true,false,true)\nfalse\ntrue\n(8,14,6,-13,16,-4,15)\n2\n8\n9\nList(1, 2, 3)\nRange 1 to 3\n14\n20\n3\ntrue\ntrue\n(2,true,true)\nmedium\nzero\nnegative int\npositive int\ntext of length 3\npair 1,2\nsomething else\n1 2 3 \n1 4 7 \n(1,1) (1,2) (2,1) (2,2) (3,1) (3,2) \nVector(4, 16, 36, 64, 100)\n3 2 1 \n5\n1 2 3 \nEnter your name: Enter marks: Hello Rohan, your marks are 85\n12\n",
+  "errors": ""
+ },
+ {
+  "group": "3.4",
+  "title": "Arrays, HashSet and the other mutable collections; the REPL",
+  "ok": true,
+  "rows": 15,
+  "output": "true\n4\nList(3, 4, 5, 9)\nList(1, 2, 3, 4)\nList(3)\nList(1, 2)\ntrue\n(2,3)\nArrayBuffer(0, 2, 3, 4, 5, 6)\nList(x, y)\n1\n9\nQueue(2, 3, 4)\nStack(1, 2, 3)\nList((apple,10), (kiwi,7), (pear,5))\nTreeMap(a -> 1, b -> 2)\nTreeSet(1, 3, 5)\n50, 3, 8, 1\n4\n1,3,8,50\n50,8,3,1\nList(1, 8, 3, 50)\n2\nList(3, 8)\n50\ntrue\nList((50,a), (3,b), (8,c), (1,d))\nList(0, 0, 0)\nList(0, 1, 4, 9)\nList(0, 3, 6, 9)\n0 0 0\n0 0 7\nList(3, 7)\nList(1, 2, 3, 4)\nfalse\ntrue\ntrue\n",
+  "errors": "",
+  "repl": "10 inputs, replies match"
+ },
+ {
+  "group": "3.5",
+  "title": "Classes and objects: constructors, overloading, this, singleton, companion, case classes, access modifiers",
+  "ok": true,
+  "rows": 28,
+  "output": "Asha (80, A) of VIT\nS\n70\nAsha\nB\n11\n12\n6.0\n16.0\n1.0\n24.0\ntrue\ndata science\nint 5\nstring hi\ntwo ints 5\nPDS\n2\n(1001,500.0)\n100.0\nrequirement failed: opening balance must be at least 100.0\nuser=asha domain=vit.ac.in\nGood day, Rao\nHEY!\nEmployee(Asha,IT,50000.0)\ntrue\n55000.0\nAsha is a well-paid IT employee\nTemperature(100.0)\n212.0\npublic\n42\nstarts with 4\ntrue\n1\n",
+  "errors": ""
+ },
+ {
+  "group": "3.6",
+  "title": "Inheritance, overriding, final, abstract classes, traits and mixins",
+  "ok": true,
+  "rows": 24,
+  "output": "Generic says ...\nRex says Woof\nBit says Woof (squeaky)\nGeneric is some Animal\nRex is a Dog\nBit is a Dog\ntrue\nList(Animal, Dog, Puppy)\n4 wheels\n2 wheels\n(100,0)\n1\n4 sides, area 9.00\n0 sides, area 3.14\n[LOG] service S-1 started\nwalks and swims\nolleh!\n!olleh\nList(3.14, 6.00, 0.00)\nA constructor\nB constructor\nC constructor\nList(1.9, 2.0, 2.1)\ntrue\n",
+  "errors": ""
+ },
+ {
+  "group": "4.1",
+  "title": "Exception handling in Scala",
+  "ok": true,
+  "rows": 16,
+  "output": "bad number: For input string: \"abc\"\ncleanup always runs\nList(IAE: zero not allowed, index out of range, division by zero, ok)\n42\nshort by 150.0 (needed 150.0)\nrequirement failed: one is not greater than two\nassertion failed: math\nSome(Asha)\nNone\nunknown\nRavi\nSuccess(12)\ntrue\n0\nfailed: NumberFormatException\nSuccess(2147483647)\nSuccess(9)\ntrue\nRight(5)\nLeft(divide by zero)\nRight(6)\nerror: divide by zero\nhandled: boom\nSuccess(d)\nconfig invalid <- NumberFormatException\njava.lang.ArithmeticException: / by zero\ntrue\n",
+  "errors": ""
+ },
+ {
+  "group": "4.2",
+  "title": "Apache Spark: architecture, RDDs, DataFrames, SQL, MLlib, streaming, GraphX",
+  "ok": true,
+  "rows": 25,
+  "output": "3.5.1\nlocal[2]\ntrue\n4\nList(4, 16, 36, 64, 100)\n5\n55\nList((spark,3), (is,2), (fast,1), (lazy,1), (runs,1), (scala,1))\n(2) ShuffledRDD[7] at reduceByKey at Experiment.scala:28 []\n +-(2) MapPartitionsRDD[6] at map at Experiment.scala:28 []\n    |  MapPartitionsRDD[5] at flatMap at Experiment.scala:28 []\n    |  ParallelCollectionRDD[4] at parallelize at Experiment.scala:27 []\nList((1,(Asha,90)), (2,(Ravi,75)))\n110.0\n5\nList(IT, HR, IT)\nroot\n |-- name: string (nullable = true)\n |-- dept: string (nullable = true)\n |-- salary: double (nullable = false)\n |-- age: integer (nullable = false)\n\n+-----+----+--------+---+\n| name|dept|  salary|age|\n+-----+----+--------+---+\n| Asha|  IT| 90000.0| 28|\n| Ravi|  HR| 60000.0| 35|\n|Meena|  IT|110000.0| 41|\n|Kabir|  HR| 65000.0| 30|\n+-----+----+--------+---+\n\n+-----+--------+-------+\n| name|  salary|  bonus|\n+-----+--------+-------+\n|Meena|110000.0|11000.0|\n| Asha| 90000.0| 9000.0|\n|Kabir| 65000.0| 6500.0|\n+-----+--------+-------+\n\n+----+------+----------+------+\n|dept|people|avg_salary|oldest|\n+----+------+----------+------+\n|  HR|     2|   62500.0|    35|\n|  IT|     2|  100000.0|    41|\n+----+------+----------+------+\n\n+----+----------+\n|dept|avg_salary|\n+----+----------+\n|  HR|   62500.0|\n|  IT|  110000.0|\n+----+----------+\n\n+-----+----+---------+\n| name|dept|     city|\n+-----+----+---------+\n| Asha|  IT|Bengaluru|\n|Kabir|  HR|     Pune|\n|Meena|  IT|Bengaluru|\n| Ravi|  HR|     Pune|\n+-----+----+---------+\n\n+-----+----+----+\n| name|dept|rank|\n+-----+----+----+\n|Kabir|  HR|   1|\n| Ravi|  HR|   2|\n|Meena|  IT|   1|\n| Asha|  IT|   2|\n+-----+----+----+\n\nList(Ravi, Meena, Kabir)\n+-----+------+\n| name| level|\n+-----+------+\n| Asha|normal|\n| Ravi|normal|\n|Meena|  high|\n|Kabir|normal|\n+-----+------+\n\n+----+---+\n|name|age|\n+----+---+\n|Asha| 28|\n|Ravi| 35|\n+----+---+\n\nroot\n |-- name: string (nullable = true)\n |-- age: integer (nullable = true)\n\n== Physical Plan ==\nAdaptiveSparkPlan isFinalPlan=false\n+- HashAggregate(keys=[dept#5], functions=[count(1)])\n   +- Exchange hashpartitioning(dept#5, 200), ENSURE_REQUIREMENTS, [plan_id=502]\n      +- HashAggregate(keys=[dept#5], functions=[partial_count(1)])\n         +- LocalTableScan [dept#5]\n\n\nList(List(1, 1), List(8, 8))\n(2,1)\nList((2,2), (3,1))\n2\n",
+  "errors": ""
+ }
+]

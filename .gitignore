@@ -48,6 +48,9 @@ derby.log
 *.sqlite3
 *.log
 /out_*.html
+# per-environment intermediates of Question_Bank/cheatsheet/verify_gap_py.py (the merged gap_py_results.json is kept)
+gap_py_results_*.json
+gap_scala_results_partial.json
 
 # --- Secrets and local settings ------------------------------------------------
 .env

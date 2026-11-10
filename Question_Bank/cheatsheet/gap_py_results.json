@@ -1,0 +1,2170 @@
+[
+ {
+  "group": "1.1",
+  "row": 1,
+  "task": "Inputs used below",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 2,
+  "task": "if / elif / else",
+  "status": "ok",
+  "output": "B\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 3,
+  "task": "Combine conditions with and / or / not",
+  "status": "ok",
+  "output": "Pass\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 4,
+  "task": "Conditional expression (one-line if)",
+  "status": "ok",
+  "output": "Eligible\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 5,
+  "task": "Chained comparison, membership, identity",
+  "status": "ok",
+  "output": "True True False True\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 6,
+  "task": "Truthiness: what counts as False",
+  "status": "ok",
+  "output": "False False False False True True\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 7,
+  "task": "for loop with range and enumerate",
+  "status": "ok",
+  "output": "1 3 5 1 Asha\n2 Ravi\n3 Meena\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 8,
+  "task": "while loop with break and continue",
+  "status": "ok",
+  "output": "25\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 9,
+  "task": "for ... else (else runs when there was no break)",
+  "status": "ok",
+  "output": "no odd number\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 10,
+  "task": "Nested loops: multiplication table",
+  "status": "ok",
+  "output": "[1, 2, 3, 4, 5]\n[2, 4, 6, 8, 10]\n[3, 6, 9, 12, 15]\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 11,
+  "task": "List comprehension with a condition",
+  "status": "ok",
+  "output": "[0, 4, 16, 36, 64]\n",
+  "error": ""
+ },
+ {
+  "group": "1.1",
+  "row": 12,
+  "task": "match / case (Python 3.10+)",
+  "status": "ok",
+  "output": "stopping\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 1,
+  "task": "List: create, index, slice",
+  "status": "ok",
+  "output": "5 1 [3, 8] [1, 8, 3, 5]\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 2,
+  "task": "List methods",
+  "status": "ok",
+  "output": "[9, 8, 7, 5, 3, 1] 6 1 0\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 3,
+  "task": "sorted(), reversed(), min/max/sum, copy",
+  "status": "ok",
+  "output": "[1, 3, 5, 7, 8, 9] 1 9 33 [1, 3, 5, 7, 8, 9]\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 4,
+  "task": "Tuple: packing, unpacking, immutability",
+  "status": "ok",
+  "output": "3 4 1 [2, 3, 4] tuple\nerror: 'tuple' object does not support item assignment\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 5,
+  "task": "Dictionary: create, read, add, update, delete",
+  "status": "ok",
+  "output": "Asha unknown\n{'name': 'Asha', 'city': 'Pune'} ['name', 'city'] ['Asha', 'Pune']\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 6,
+  "task": "Iterate over a dictionary",
+  "status": "ok",
+  "output": "name -> Asha\ncity -> Pune\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 7,
+  "task": "Count words with a dictionary",
+  "status": "ok",
+  "output": "{'a': 3, 'b': 1, 'c': 1}\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 8,
+  "task": "Dictionary comprehension",
+  "status": "ok",
+  "output": "{'data': 4, 'science': 7}\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 9,
+  "task": "Counter and defaultdict",
+  "status": "ok",
+  "output": "[('a', 3)]\n{'a': ['a', 'a', 'a'], 'b': ['b'], 'c': ['c']}\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 10,
+  "task": "Set: create, add, remove, operations",
+  "status": "ok",
+  "output": "{1, 2, 3, 4} {3} {1, 2} {1, 2, 4} True\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 11,
+  "task": "Remove duplicates with a set",
+  "status": "ok",
+  "output": "[1, 2, 3]\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 12,
+  "task": "Nested structures: list of dictionaries",
+  "status": "ok",
+  "output": "{'Asha': 85.0, 'Ravi': 65.0}\n",
+  "error": ""
+ },
+ {
+  "group": "1.2",
+  "row": 13,
+  "task": "Shallow copy versus deep copy",
+  "status": "ok",
+  "output": "[1, [2, 3, 4]] [1, [2, 3]]\n",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 1,
+  "task": "Stack class (last in, first out)",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 2,
+  "task": "Use the stack: balanced brackets",
+  "status": "ok",
+  "output": "True False\n",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 3,
+  "task": "Queue class (first in, first out) on a deque",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 4,
+  "task": "Use the queue",
+  "status": "ok",
+  "output": "Asha 2\n",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 5,
+  "task": "Priority queue with heapq (smallest first)",
+  "status": "ok",
+  "output": "1 fix bug\n2 write report\n3 lunch\n",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 6,
+  "task": "PriorityQueue class (ties keep arrival order)",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 7,
+  "task": "Use it",
+  "status": "ok",
+  "output": "['A', 'B', 'C']\n",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 8,
+  "task": "Max-heap trick: store negative priorities",
+  "status": "ok",
+  "output": "9\n",
+  "error": ""
+ },
+ {
+  "group": "1.3",
+  "row": 9,
+  "task": "Ready-made versions in the standard library",
+  "status": "ok",
+  "output": "1 3 (1, 'a')\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 1,
+  "task": "Length and trimming",
+  "status": "ok",
+  "output": "28 'Data Science with Python' 'Data Science with Python  ' '  Data Science with Python'\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 2,
+  "task": "Change case",
+  "status": "ok",
+  "output": "DATA SCIENCE WITH PYTHON data science with python Data Science With Python dATA sCIENCE WITH pYTHON Data science with python\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 3,
+  "task": "Search",
+  "status": "ok",
+  "output": "5 -1 13 2 True True\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 4,
+  "task": "split, join, replace",
+  "status": "ok",
+  "output": "['Data', 'Science', 'with', 'Python']\nData-Science-with-Python\nData Science with Scala\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 5,
+  "task": "Slicing and reversing",
+  "status": "ok",
+  "output": "Data Python nohtyP htiw ecneicS ataD Dt cec ihPto\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 6,
+  "task": "Character tests",
+  "status": "ok",
+  "output": "True True True True True\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 7,
+  "task": "Formatting: f-string, format(), %",
+  "status": "ok",
+  "output": "Asha scored 92.5\nAsha scored 92.46\nAsha scored 92\n     92.46|Asha    |00042\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 8,
+  "task": "Parse a CSV-like line",
+  "status": "ok",
+  "output": "('Asha', ',', '20,Pune') ['Asha,20', 'Pune']\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 9,
+  "task": "Strings are immutable",
+  "status": "ok",
+  "output": "error: 'str' object does not support item assignment\nTrue aaa True\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 10,
+  "task": "Palindrome check",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 11,
+  "task": "Regular expressions with re",
+  "status": "ok",
+  "output": "['66', '12']\ntoo many spaces\nasha vit\n",
+  "error": ""
+ },
+ {
+  "group": "1.4",
+  "row": 12,
+  "task": "Escapes, raw strings, multi-line text",
+  "status": "ok",
+  "output": "['line1', 'line2\\tTabbed']\nC:\\new\\table\n2\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 1,
+  "task": "try / except",
+  "status": "ok",
+  "output": "0\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 2,
+  "task": "Several except blocks",
+  "status": "ok",
+  "output": "inf bad types: unsupported operand type(s) for /: 'str' and 'int'\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 3,
+  "task": "else and finally",
+  "status": "ok",
+  "output": "parsed 42\ndone\nnot a number\ndone\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 4,
+  "task": "raise an exception yourself",
+  "status": "ok",
+  "output": "caught: age cannot be negative\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 5,
+  "task": "Custom exception class",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 6,
+  "task": "Use the custom exception",
+  "status": "ok",
+  "output": "balance 100 is less than 250 | short by 150\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 7,
+  "task": "Catch several types at once",
+  "status": "ok",
+  "output": "IndexError list index out of range\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 8,
+  "task": "Exception chaining with raise ... from",
+  "status": "ok",
+  "output": "config value missing | caused by KeyError('x')\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 9,
+  "task": "assert",
+  "status": "ok",
+  "output": "assertion failed: arithmetic is broken\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 10,
+  "task": "Exception hierarchy",
+  "status": "ok",
+  "output": "['ZeroDivisionError', 'ArithmeticError', 'Exception', 'BaseException', 'object']\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 11,
+  "task": "File errors and the with statement",
+  "status": "ok",
+  "output": "no such file: missing.txt\n",
+  "error": ""
+ },
+ {
+  "group": "1.5",
+  "row": 12,
+  "task": "Traceback text for logging",
+  "status": "ok",
+  "output": "ZeroDivisionError: division by zero\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 1,
+  "task": "Class with class and instance attributes",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 2,
+  "task": "Create and use objects",
+  "status": "ok",
+  "output": "Asha (85.0) VIT 85.0\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 3,
+  "task": "Inheritance, super() and overriding",
+  "status": "ok",
+  "output": "Ravi (72.5) | thesis: NLP\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 4,
+  "task": "Abstract class and polymorphism",
+  "status": "ok",
+  "output": "Circle 3.14\nRect 6\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 5,
+  "task": "The abstract class cannot be instantiated",
+  "status": "ok",
+  "output": "error: Can't instantiate abstract class Shape with abstract method area\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 6,
+  "task": "Encapsulation: private attribute and property",
+  "status": "ok",
+  "output": "150\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 7,
+  "task": "classmethod and staticmethod",
+  "status": "ok",
+  "output": "100.0 False 1\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 8,
+  "task": "Special (dunder) methods",
+  "status": "ok",
+  "output": "Vector(4, 6) True\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 9,
+  "task": "Multiple inheritance and the method resolution order",
+  "status": "ok",
+  "output": "B ['D', 'B', 'C', 'A', 'object']\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 10,
+  "task": "isinstance, issubclass, hasattr, getattr",
+  "status": "ok",
+  "output": "True True True n/a\n",
+  "error": ""
+ },
+ {
+  "group": "1.6",
+  "row": 11,
+  "task": "dataclass: less boilerplate",
+  "status": "ok",
+  "output": "Point(x=1.5, y=0.0) True\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 1,
+  "task": "Write a text file",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 2,
+  "task": "Read the whole file",
+  "status": "ok",
+  "output": "39 4\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 3,
+  "task": "Read line by line",
+  "status": "ok",
+  "output": "1 line one\n2 line two\n3 line three\n4 line four\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 4,
+  "task": "Append to the file",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 5,
+  "task": "readline, readlines, seek",
+  "status": "ok",
+  "output": "line one 5\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 6,
+  "task": "Paths and existence checks",
+  "status": "ok",
+  "output": "True .txt True\n5\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 7,
+  "task": "CSV: write and read with the csv module",
+  "status": "ok",
+  "output": "Asha 95\nRavi 80\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 8,
+  "task": "JSON: dump and load",
+  "status": "ok",
+  "output": "True {\"name\": \"Asha\", \"courses\": [\"DS\", \"ML\"], \"active\": true}\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 9,
+  "task": "pandas: read_csv / to_csv / to_json",
+  "status": "ok",
+  "output": "(2, 3)\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 10,
+  "task": "Binary files and pickle",
+  "status": "ok",
+  "output": "b'Hi'\n{'a': [1, 2]}\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 11,
+  "task": "List and delete files",
+  "status": "ok",
+  "output": "['marks.csv', 'marks_out.csv']\n",
+  "error": ""
+ },
+ {
+  "group": "1.7",
+  "row": 12,
+  "task": "Word frequency of a text file",
+  "status": "ok",
+  "output": "[('line', 5), ('one', 1)]\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 2,
+  "task": "Base URL of a public test API",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 3,
+  "task": "GET request: status code, headers",
+  "status": "ok",
+  "output": "200 True application/json; charset=utf-8\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 4,
+  "task": "Parse the JSON body",
+  "status": "ok",
+  "output": "1 post title 1\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 5,
+  "task": "Query parameters",
+  "status": "ok",
+  "output": "http://127.0.0.1:8765/posts?userId=1\nlist True\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 6,
+  "task": "Send headers (content type, token)",
+  "status": "ok",
+  "output": "200\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 7,
+  "task": "POST: create a resource with a JSON body",
+  "status": "ok",
+  "output": "201 101\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 8,
+  "task": "PUT and DELETE",
+  "status": "ok",
+  "output": "200\n200\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 9,
+  "task": "Error status codes and raise_for_status()",
+  "status": "ok",
+  "output": "404\nHTTP error: 404 Client Error: Not Found for url: http://127.0.0.1:8765/posts/99999\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 10,
+  "task": "Network errors",
+  "status": "ok",
+  "output": "request failed: ConnectTimeout\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 11,
+  "task": "Reuse a connection with a Session",
+  "status": "ok",
+  "output": "200\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 12,
+  "task": "JSON to DataFrame to CSV",
+  "status": "ok",
+  "output": "['userId', 'id', 'title', 'body']\n",
+  "error": ""
+ },
+ {
+  "group": "1.8",
+  "row": 13,
+  "task": "The same GET with only the standard library",
+  "status": "ok",
+  "output": "200 1\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 1,
+  "task": "Download the resources (once)",
+  "status": "skip",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 2,
+  "task": "Split into sentences and words",
+  "status": "ok",
+  "output": "['Data science is fun.', \"Python makes it easier, doesn't it?\"]\n['Data', 'science', 'is', 'fun', '.', 'Python', 'makes', 'it', 'easier', ',', 'does', \"n't\", 'it', '?']\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 3,
+  "task": "Lower-case, keep words, remove stopwords",
+  "status": "ok",
+  "output": "['data', 'science', 'fun', 'python', 'makes', 'easier']\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 4,
+  "task": "Stemming (cuts suffixes)",
+  "status": "ok",
+  "output": "['run', 'fli', 'studi', 'easier']\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 5,
+  "task": "Lemmatization (dictionary form, needs the part of speech)",
+  "status": "ok",
+  "output": "study run good\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 6,
+  "task": "Part-of-speech tagging",
+  "status": "ok",
+  "output": "[('The', 'DT'), ('quick', 'JJ'), ('fox', 'NN'), ('jumps', 'NNS')]\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 7,
+  "task": "Word frequencies",
+  "status": "ok",
+  "output": "[('data', 3), ('science', 2)] 3\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 8,
+  "task": "n-grams",
+  "status": "ok",
+  "output": "[('a', 'b'), ('b', 'c')] [('a', 'b', 'c'), ('b', 'c', 'd')]\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 9,
+  "task": "Tokenize with a regular expression",
+  "status": "ok",
+  "output": "['hello', 'world', '2026']\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 10,
+  "task": "WordNet: meanings",
+  "status": "ok",
+  "output": "good.n.01 | benefit\n",
+  "error": ""
+ },
+ {
+  "group": "1.9",
+  "row": 11,
+  "task": "Bag of words with scikit-learn",
+  "status": "ok",
+  "output": "['data', 'fun', 'is', 'needs', 'science']\n[[1 1 1 0 1]\n [1 0 0 1 1]]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 2,
+  "task": "Create a Series with an index",
+  "status": "ok",
+  "output": "Asha     82\nRavi     91\nMeena    67\nJohn     74\nName: marks, dtype: int64\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 3,
+  "task": "From a dictionary, a scalar, an array",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 4,
+  "task": "Attributes",
+  "status": "ok",
+  "output": "['Asha', 'Ravi', 'Meena', 'John'] [82 91 67 74] int64 marks (4,) 4\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 5,
+  "task": "Access by label and by position",
+  "status": "ok",
+  "output": "91 82 [82, 74] [91, 67, 74] [82, 91]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 6,
+  "task": "Vectorised arithmetic aligns on the index",
+  "status": "ok",
+  "output": "{'Asha': 87.0, 'John': nan, 'Meena': nan, 'Ravi': 94.0, 'Zed': nan}\n{'Asha': 87.0, 'John': 74.0, 'Meena': 67.0, 'Ravi': 94.0, 'Zed': 9.0}\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 7,
+  "task": "Filter with a Boolean mask",
+  "status": "ok",
+  "output": "['Asha', 'Ravi', 'John'] [82, 74]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 8,
+  "task": "Statistics",
+  "status": "ok",
+  "output": "314 78.5 78.0 10.34 91 Ravi Meena 78.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 9,
+  "task": "Sort and rank",
+  "status": "ok",
+  "output": "['Ravi', 'Asha', 'John', 'Meena']\n['Asha', 'John', 'Meena', 'Ravi'] [2.0, 1.0, 4.0, 3.0]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 10,
+  "task": "apply and map",
+  "status": "ok",
+  "output": "{'Asha': 'A', 'Ravi': 'A', 'Meena': 'B', 'John': 'B'} [32, 41, 17, 24]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 11,
+  "task": "Missing values",
+  "status": "ok",
+  "output": "2 [1.0, 2.0, 3.0, 2.0] [1.0, 3.0] [1.0, 1.0, 3.0, 3.0]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 12,
+  "task": "Cumulative and rolling calculations",
+  "status": "ok",
+  "output": "[1, 3, 6, 10, 15] [nan, 1.0, 1.0, 1.0, 1.0] [nan, 1.0, 0.5, 0.33, 0.25] [nan, 1.5, 2.5, 3.5, 4.5]\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 13,
+  "task": "Counting and membership",
+  "status": "ok",
+  "output": "{'r': 3, 'g': 1, 'b': 1} ['r', 'g', 'b'] 3 4 2\n",
+  "error": ""
+ },
+ {
+  "group": "2.1",
+  "row": 14,
+  "task": "describe() and conversion to a DataFrame",
+  "status": "ok",
+  "output": "{'count': 4.0, 'mean': 78.5, 'std': 10.34, 'min': 67.0, '25%': 72.25, '50%': 78.0, '75%': 84.25, 'max': 91.0}\n(4, 1)\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 2,
+  "task": "Create the DataFrame",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 3,
+  "task": "Inspect: shape, types, summary",
+  "status": "ok",
+  "output": "(8, 5) ['name', 'dept', 'age', 'salary', 'city']\n<class 'pandas.core.frame.DataFrame'>\nRangeIndex: 8 entries, 0 to 7\nData columns (total 5 columns):\n #   Column  Non-Null Count  Dtype \n---  ------  --------------  ----- \n 0   name    8 non-null      object\n 1   dept    8 non-null      object\n 2   age     8 non-null      int64 \n 3   salary  8 non-null      int64 \n 4   city    8 non-null      object\ndtypes: int64(2), object(3)\nmemory usage: 448.0+ bytes\n        age   salary\ncount   8.0      8.0\nmean   34.5  59750.0\nstd     6.6  11535.7\nmin    26.0  43000.0\n25%    29.5  51000.0\n50%    34.0  60000.0\n75%    38.8  69000.0\nmax    45.0  75000.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 4,
+  "task": "Extract columns and rows: [], loc, iloc, at",
+  "status": "ok",
+  "output": "['Asha', 'Ravi']\nMeena Meena 75000\n    name  age\n1   Ravi   35\n2  Meena   41\n3   John   30\n    name  salary\n0   Asha   52000\n1   Ravi   61000\n2  Meena   75000\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 5,
+  "task": "Filter with several conditions",
+  "status": "ok",
+  "output": "['Meena', 'Kabir', 'Zoya']\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 6,
+  "task": "isin, between, negation",
+  "status": "ok",
+  "output": "3 ['Ravi', 'John', 'Kabir', 'Zoya'] 4\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 7,
+  "task": "query() with a variable",
+  "status": "ok",
+  "output": "['Ravi']\n4\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 8,
+  "task": "Top / bottom rows and multi-column sort",
+  "status": "ok",
+  "output": "['Meena', 'Dev', 'Kabir'] ['Sara', 'Asha']\n['Ravi', 'Sara', 'Meena', 'Kabir', 'Zoya', 'Asha', 'Dev', 'John']\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 9,
+  "task": "Add columns: arithmetic, np.where, map, assign",
+  "status": "ok",
+  "output": "    name   bonus    band initial\n0   Asha  5200.0  normal       A\n1   Ravi  6100.0    high       R\n2  Meena  7500.0    high       M\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 10,
+  "task": "Row-wise apply",
+  "status": "ok",
+  "output": "Asha (IT)\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 11,
+  "task": "Drop and rename",
+  "status": "ok",
+  "output": "['name', 'dept', 'age', 'pay', 'city', 'band']\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 12,
+  "task": "groupby with named aggregations",
+  "status": "ok",
+  "output": "       people  avg_salary  oldest\ndept                             \nHR          2     52000.0      35\nIT          4     63500.0      41\nSales       2     60000.0      45\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 13,
+  "task": "groupby transform and filter",
+  "status": "ok",
+  "output": "4 ['IT']\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 14,
+  "task": "Counts, unique values, duplicates",
+  "status": "ok",
+  "output": "{'Pune': 0.38, 'Delhi': 0.38, 'Mumbai': 0.25} 3 0\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 15,
+  "task": "Rank and quantile bins",
+  "status": "ok",
+  "output": "    name  rank tier\n2  Meena     1  top\n6    Dev     2  top\n5  Kabir     3  top\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 16,
+  "task": "Use a column as the index",
+  "status": "ok",
+  "output": "61000\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 17,
+  "task": "Replace values, category type",
+  "status": "ok",
+  "output": "['HR', 'Sales', 'Tech']\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 18,
+  "task": "Iterate over rows",
+  "status": "ok",
+  "output": "Asha 52000\nRavi 61000\n",
+  "error": ""
+ },
+ {
+  "group": "2.2",
+  "row": 19,
+  "task": "Sampling and quick tests",
+  "status": "ok",
+  "output": "(3, 14) ['Zoya']\nTrue True 5\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 1,
+  "task": "Load packages and a text column",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 2,
+  "task": "Case, whitespace, length",
+  "status": "ok",
+  "output": "['Asha Rao', 'Ravi Kumar', 'Meena  Iyer', None, 'John Smith']\n[10.0, 10.0, 11.0, nan, 10.0] ravi kumar  ASHA RAO \n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 3,
+  "task": "Search: contains, startswith, endswith",
+  "status": "ok",
+  "output": "[True, False, False, None, False]\n[False, False, False, False, True] [False, True, True, False, False]\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 4,
+  "task": "Replace (with a regular expression)",
+  "status": "ok",
+  "output": "['Asha Rao', 'ravi KUMAR', 'Meena Iyer', None, 'John Smith']\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 5,
+  "task": "Split into columns",
+  "status": "ok",
+  "output": "   first   last\n0   Asha    Rao\n1   Ravi  Kumar\n2  Meena   Iyer\n3   None   None\n4   John  Smith\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 6,
+  "task": "Extract with capture groups",
+  "status": "ok",
+  "output": "      0          1\n0  asha  vit.ac.in\n1  ravi  gmail.com\n2   NaN        NaN\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 7,
+  "task": "Count, find, slice, get",
+  "status": "ok",
+  "output": "[3, 2, 2] [4, 4, -1] ['asha', 'ravi', 'bad.'] ['asha', 'ravi', 'bad.address']\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 8,
+  "task": "Join Series, pad numbers",
+  "status": "ok",
+  "output": "['A X', 'B Y']\n['0007', '0042', '0105'] ['****7', '***42', '**105']\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 9,
+  "task": "Text columns inside a DataFrame",
+  "status": "ok",
+  "output": "           review  positive  n_words          clean\n0  Great product!      True        2  great product\n1     Bad quality     False        2    bad quality\n2     GREAT value      True        2    great value\n3              ok     False        1             ok\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 10,
+  "task": "Dummy variables from delimited text",
+  "status": "ok",
+  "output": "   a  b  c\n0  1  1  0\n1  0  1  1\n2  1  0  0\n",
+  "error": ""
+ },
+ {
+  "group": "2.3",
+  "row": 11,
+  "task": "Missing text: na handling",
+  "status": "ok",
+  "output": "1 [' Asha Rao ', 'Ravi Kumar', 'Meena  Iyer', 'Unknown', 'John Smith']\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 1,
+  "task": "Two related tables",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 2,
+  "task": "Inner join (matching keys only)",
+  "status": "ok",
+  "output": "   id   name  score\n0   2   Ravi     88\n1   3  Meena     92\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 3,
+  "task": "Left, right and outer joins",
+  "status": "ok",
+  "output": "2 4 3 5\n{'left_only': 2, 'both': 2, 'right_only': 1}\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 4,
+  "task": "Key columns with different names",
+  "status": "ok",
+  "output": "['id', 'name', 'student_id', 'score']\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 5,
+  "task": "Overlapping column names: suffixes",
+  "status": "ok",
+  "output": "['id', 'v_old', 'v_new']\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 6,
+  "task": "Merge on several keys",
+  "status": "ok",
+  "output": "  dept  year  budget  spend\n0   IT  2025       5    NaN\n1   IT  2026       6    4.0\n2   HR  2026       3    2.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 7,
+  "task": "join() works on the index",
+  "status": "ok",
+  "output": "     name  score\nid              \n1    Asha    NaN\n2    Ravi   88.0\n3   Meena   92.0\n4    John    NaN\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 8,
+  "task": "concat: stack rows or put columns side by side",
+  "status": "ok",
+  "output": "(5, 2) (4, 4)\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 9,
+  "task": "concat with keys (hierarchical index)",
+  "status": "ok",
+  "output": "   id name\n0   9  Zed\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 10,
+  "task": "Anti-join: rows with no match",
+  "status": "ok",
+  "output": "['Asha', 'John']\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 11,
+  "task": "Check the relationship with validate=",
+  "status": "ok",
+  "output": "MergeError: Merge keys are not unique in right dataset; not a one-to-one merge\n",
+  "error": ""
+ },
+ {
+  "group": "2.4",
+  "row": 12,
+  "task": "Reshape: pivot_table and melt",
+  "status": "ok",
+  "output": "q       Q1  Q2\nregion        \nN       10  20\nS       30  40\n(4, 3)\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 2,
+  "task": "Descriptive statistics",
+  "status": "ok",
+  "output": "DescribeResult(nobs=8, minmax=(10, 20), mean=14.5, variance=12.0, skewness=0.23145502494313785, kurtosis=-1.1071428571428572)\n[-0.77  0.15 -0.15 -1.39  1.08  1.7  -1.08  0.46] 0.231\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 3,
+  "task": "Normal distribution: cdf, ppf, pdf",
+  "status": "ok",
+  "output": "0.975 1.96 0.3989\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 4,
+  "task": "Two-sample t-test",
+  "status": "ok",
+  "output": "-4.178 0.0019 significant\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 5,
+  "task": "One-sample and paired t-tests",
+  "status": "ok",
+  "output": "0.0362\n0.00156\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 6,
+  "task": "Correlation: Pearson and Spearman",
+  "status": "ok",
+  "output": "0.9994 1.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 7,
+  "task": "Simple linear regression",
+  "status": "ok",
+  "output": "1.998 0.036 0.9988\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 8,
+  "task": "Chi-square test of independence",
+  "status": "ok",
+  "output": "15.04 0.00011 1\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 9,
+  "task": "Minimise a function",
+  "status": "ok",
+  "output": "[ 3. -1.] True\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 10,
+  "task": "Find a root",
+  "status": "ok",
+  "output": "2.0946\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 11,
+  "task": "Fit a curve",
+  "status": "ok",
+  "output": "[2.  0.8]\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 12,
+  "task": "Numerical integration",
+  "status": "ok",
+  "output": "9.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 13,
+  "task": "Interpolation",
+  "status": "ok",
+  "output": "25.0 22.5\n",
+  "error": ""
+ },
+ {
+  "group": "2.5",
+  "row": 14,
+  "task": "Linear algebra: solve, det, inverse, eigenvalues",
+  "status": "ok",
+  "output": "[2. 3.] 5.0 [[0.4, -0.2], [-0.2, 0.6]]\n[1.382 3.618]\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 2,
+  "task": "Features, labels and a train / test split",
+  "status": "ok",
+  "output": "(105, 4) (45, 4)\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 3,
+  "task": "Scale: learn the mean and std on the training set only",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 4,
+  "task": "Logistic regression: fit, predict, accuracy",
+  "status": "ok",
+  "output": "0.911\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 5,
+  "task": "Confusion matrix and classification report",
+  "status": "ok",
+  "output": "[[15  0  0]\n [ 0 14  1]\n [ 0  3 12]]\n              precision    recall  f1-score   support\n\n      setosa       1.00      1.00      1.00        15\n  versicolor       0.82      0.93      0.88        15\n   virginica       0.92      0.80      0.86        15\n\n    accuracy                           0.91        45\n   macro avg       0.92      0.91      0.91        45\nweighted avg       0.92      0.91      0.91        45\n\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 6,
+  "task": "Decision tree and its rules",
+  "status": "ok",
+  "output": "|--- petal width (cm) <= 0.70\n|   |--- class: 0\n|--- petal width (cm) >  0.70\n|   |--- petal width (cm) <= 1.55\n|   |   |--- class: 1\n|   |--- petal width (cm) >  1.55\n|   |   |--- class: 2\n\n0.889\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 7,
+  "task": "Random forest and feature importance",
+  "status": "ok",
+  "output": "0.889 [0.1  0.02 0.45 0.43]\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 8,
+  "task": "k-nearest neighbours: effect of k",
+  "status": "ok",
+  "output": "1 0.933\n5 0.911\n15 0.933\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 9,
+  "task": "Linear regression: R-squared and RMSE",
+  "status": "ok",
+  "output": "0.332 58.5\n(10,) 152.5\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 10,
+  "task": "Cross-validation",
+  "status": "ok",
+  "output": "[0.952 0.952 1.    1.    1.   ] 0.981\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 11,
+  "task": "Pipeline: scaler and model in one object",
+  "status": "ok",
+  "output": "0.911\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 12,
+  "task": "Grid search over a hyper-parameter",
+  "status": "ok",
+  "output": "{'model__n_neighbors': 3} 0.962\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 13,
+  "task": "Class probabilities",
+  "status": "ok",
+  "output": "[[0.007 0.413 0.579]]\n",
+  "error": ""
+ },
+ {
+  "group": "2.7",
+  "row": 14,
+  "task": "Save and load the trained model",
+  "status": "ok",
+  "output": "[0]\n",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 2,
+  "task": "Base map: centre, zoom, tiles",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 3,
+  "task": "Marker with popup, tooltip, icon",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 4,
+  "task": "Markers from a dictionary of cities",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 5,
+  "task": "CircleMarker (pixels) and Circle (metres)",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 6,
+  "task": "A route with PolyLine",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 7,
+  "task": "Layers with FeatureGroup and LayerControl",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 8,
+  "task": "Cluster many markers",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 9,
+  "task": "Heat map from [lat, lon, weight]",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 10,
+  "task": "Draw a region with GeoJson",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 11,
+  "task": "Choropleth: colour regions by a value",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.12",
+  "row": 12,
+  "task": "Save as an HTML file",
+  "status": "ok",
+  "output": "True True\n",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 1,
+  "task": "Load packages and data",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 2,
+  "task": "Line plot with markers, labels, grid",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 3,
+  "task": "Several lines and an annotation",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 4,
+  "task": "Bar and horizontal bar with value labels",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 5,
+  "task": "Pie chart",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 6,
+  "task": "Histogram with a density curve",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 7,
+  "task": "A grid of subplots",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 8,
+  "task": "Box plot and violin plot by group",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 9,
+  "task": "Counts, regression line, pair plot",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 10,
+  "task": "Two y axes",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.13",
+  "row": 11,
+  "task": "Style, size and cleaning up",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 2,
+  "task": "The criteria of the syllabus with importance weights (1 to 5)",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 3,
+  "task": "Score each language per criterion (1 to 5; example opinions)",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 4,
+  "task": "Weighted total of every language",
+  "status": "ok",
+  "output": "Java      223\nPython    208\nScala     204\nR         150\ndtype: int64\n",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 5,
+  "task": "Percentage of the best possible score and the winner",
+  "status": "ok",
+  "output": "{'Java': 85.8, 'Python': 80.0, 'Scala': 78.5, 'R': 57.7}\nBest choice: Java\n",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 6,
+  "task": "Sensitivity: what if performance matters twice as much?",
+  "status": "ok",
+  "output": "['Java', 'Scala', 'Python', 'R']\n",
+  "error": ""
+ },
+ {
+  "group": "5.1",
+  "row": 7,
+  "task": "Show the result as a bar chart",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 2,
+  "task": "Create the bot (SQLite storage, fallback answer)",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 3,
+  "task": "Train it with question / answer pairs",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 4,
+  "task": "Ask a question (a close match is enough)",
+  "status": "ok",
+  "output": "Hello! How can I help?\nBreakfast 7:30-9:00, lunch 12:30-2:00.\n",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 5,
+  "task": "An unknown question gets the default answer",
+  "status": "ok",
+  "output": "Sorry, I do not know that.\n",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 6,
+  "task": "Chat loop (type bye to stop)",
+  "status": "ok",
+  "output": "You: Bot: Hello! How can I help?\nYou: Bot: The warden office is in Block A.\nYou: ",
+  "error": ""
+ },
+ {
+  "group": "1.10",
+  "row": 7,
+  "task": "Clear the stored knowledge",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 2,
+  "task": "Item: the fields to collect",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 3,
+  "task": "Item pipeline: clean every item",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 4,
+  "task": "Spider: start URL, CSS selectors, next page, settings",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 5,
+  "task": "Selectors on their own: CSS and XPath",
+  "status": "ok",
+  "output": "Hi Hi /x\n",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 6,
+  "task": "Run the crawl",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 7,
+  "task": "Read the scraped file",
+  "status": "ok",
+  "output": "3 ['Steve Jobs', 'Francis Bacon', 'Albert Einstein']\n",
+  "error": ""
+ },
+ {
+  "group": "2.6",
+  "row": 8,
+  "task": "Terminal commands for a full project",
+  "status": "skip",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 1,
+  "task": "Load packages and split the data",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 2,
+  "task": "Classifier: fit and score",
+  "status": "ok",
+  "output": "0.953\n",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 3,
+  "task": "Probabilities and the most important features",
+  "status": "ok",
+  "output": "[[0.999 0.001]\n [0.002 0.998]]\n['worst perimeter', 'mean concave points', 'worst radius']\n",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 4,
+  "task": "Early stopping on a validation set",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 5,
+  "task": "Regressor on a regression data set",
+  "status": "ok",
+  "output": "63.3\n",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 6,
+  "task": "The native API: DMatrix and train()",
+  "status": "ok",
+  "output": "[0.007 0.994 0.007]\n",
+  "error": ""
+ },
+ {
+  "group": "2.8",
+  "row": 7,
+  "task": "Save and load a model",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 1,
+  "task": "Load packages, fix the random seed",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 2,
+  "task": "Prepare the data",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 3,
+  "task": "Define the layers",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 4,
+  "task": "Show the architecture and parameter count",
+  "status": "ok",
+  "output": "Model: \"sequential\"\n┌─────────────────────────────────┬────────────────────────┬───────────────┐\n│ Layer (type)                    │ Output Shape           │       Param # │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense (Dense)                   │ (None, 16)             │            80 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_1 (Dense)                 │ (None, 8)              │           136 │\n├─────────────────────────────────┼────────────────────────┼───────────────┤\n│ dense_2 (Dense)                 │ (None, 3)              │            27 │\n└─────────────────────────────────┴────────────────────────┴───────────────┘\n Total params: 243 (972.00 B)\n Trainable params: 243 (972.00 B)\n Non-trainable params: 0 (0.00 B)\n243\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 5,
+  "task": "Compile: optimiser, loss, metric",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 6,
+  "task": "Train",
+  "status": "ok",
+  "output": "0.716 -> 0.043\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 7,
+  "task": "Evaluate on the test set",
+  "status": "ok",
+  "output": "1.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 8,
+  "task": "Predict",
+  "status": "ok",
+  "output": "(3, 3) [0 1 0] [0 1 0]\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 9,
+  "task": "Stop early when validation loss stops improving",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 10,
+  "task": "The functional API",
+  "status": "ok",
+  "output": "67\n",
+  "error": ""
+ },
+ {
+  "group": "2.9",
+  "row": 11,
+  "task": "Save and reload the model",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 2,
+  "task": "Tensors and operations",
+  "status": "ok",
+  "output": "(2, 2) float32 [[2.0, 3.0], [4.0, 5.0]] [[7.0, 10.0], [15.0, 22.0]]\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 3,
+  "task": "Variables and reductions",
+  "status": "ok",
+  "output": "[1.5 2.5] 4.0 [2. 3.]\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 4,
+  "task": "Automatic differentiation with GradientTape",
+  "status": "ok",
+  "output": "6.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 5,
+  "task": "Gradient descent by hand: fit y = 2x + 1",
+  "status": "ok",
+  "output": "2.0 1.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 6,
+  "task": "tf.function: compile a Python function into a graph",
+  "status": "ok",
+  "output": "14.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 7,
+  "task": "tf.data: build an input pipeline",
+  "status": "ok",
+  "output": "(3,) (3,)\n(3,) (3,)\n",
+  "error": ""
+ },
+ {
+  "group": "2.10",
+  "row": 8,
+  "task": "A tf.keras model trained from the pipeline",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 1,
+  "task": "Load packages",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 2,
+  "task": "Tensors",
+  "status": "ok",
+  "output": "torch.Size([2, 2]) torch.float32 [[7.0, 10.0], [15.0, 22.0]] 2.5 [1.0, 2.0, 3.0, 4.0] torch.Size([2, 3])\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 3,
+  "task": "NumPy interoperability",
+  "status": "ok",
+  "output": "ndarray torch.float32\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 4,
+  "task": "Autograd: gradient of y = x^2 + 2x at x = 3",
+  "status": "ok",
+  "output": "8.0\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 5,
+  "task": "Data as tensors and a DataLoader",
+  "status": "ok",
+  "output": "10\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 6,
+  "task": "The model as an nn.Module",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 7,
+  "task": "Loss function and optimiser",
+  "status": "ok",
+  "output": "",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 8,
+  "task": "Training loop: zero_grad, forward, loss, backward, step",
+  "status": "ok",
+  "output": "0.156\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 9,
+  "task": "Evaluate without tracking gradients",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 10,
+  "task": "Save and load the weights",
+  "status": "ok",
+  "output": "True\n",
+  "error": ""
+ },
+ {
+  "group": "2.11",
+  "row": 11,
+  "task": "Count the parameters",
+  "status": "ok",
+  "output": "131\n",
+  "error": ""
+ }
+]
