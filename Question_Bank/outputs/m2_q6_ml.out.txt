@@ -1,0 +1,21 @@
+bins: {'medium': 140, 'high': 33, 'low': 27}
+correlation matrix (rounded):
+          Feature1  Feature2  Target  log_F1
+Feature1      1.00     -0.04   -0.09    0.90
+Feature2     -0.04      1.00    0.04   -0.06
+Target       -0.09      0.04    1.00   -0.05
+log_F1        0.90     -0.06   -0.05    1.00
+
+KMeans cluster sizes : [62, 50, 38]
+inertia (WCSS)       : 78.85
+cluster vs true species (rows = cluster):
+target  setosa  versicolor  virginica
+row_0                                
+0            0          48         14
+1           50           0          0
+2            0           2         36
+
+PCA explained variance ratio: [0.73, 0.229] | total 0.958
+PC1 loadings: {'sepal length (cm)': 0.52, 'sepal width (cm)': -0.27, 'petal length (cm)': 0.58, 'petal width (cm)': 0.56}
+
+saved kmeans_pca.png

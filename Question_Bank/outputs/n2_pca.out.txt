@@ -1,0 +1,65 @@
+STEP 1  mean and centering
+mean = [4. 4.] 
+centered data:
+ [[-2. -3.]
+ [-1.  1.]
+ [ 0. -1.]
+ [ 1.  2.]
+ [ 2.  1.]] 
+column sums of centered data: [0. 0.]
+
+STEP 2  covariance matrix  C = Xc^T Xc / (n-1)
+[[2.5  2.25]
+ [2.25 4.  ]] | same as np.cov: True
+variances on the diagonal: [2.5 4. ] | covariance off-diagonal: 2.25 | total variance (trace): 6.5
+
+STEP 3  eigenvalues and eigenvectors  (C v = lambda v)
+characteristic equation: lambda^2 - 6.50 lambda + 4.9375 = 0  ->  lambda = 5.6217, 0.8783
+eigenvalues (sorted): [5.6217 0.8783] | eigenvectors as columns:
+ [[ 0.5847 -0.8112]
+ [ 0.8112  0.5847]]
+hand-built PC1 from (C - lambda I)v = 0: [0.5847 0.8112] | orthogonal PCs: v1.v2 = -0.0
+
+STEP 4  explained variance
+explained variance ratio: [0.8649 0.1351] | cumulative: [0.8649 1.    ]
+
+STEP 5  project  Z = Xc W  (keep k = 1)
+scores on PC1: [-3.6031  0.2265 -0.8112  2.2072  1.9807] | variance of scores: 5.6217 = lambda1
+
+STEP 6  reconstruct and measure the loss
+reconstruction from 1 component:
+ [[1.8932 1.077 ]
+ [4.1325 4.1838]
+ [3.5257 3.3419]
+ [5.2906 5.7906]
+ [5.1581 5.6068]]
+squared error = 3.5132 | (n-1) * discarded eigenvalue = 3.5132
+
+CHECK  SVD route and scikit-learn
+singular values^2/(n-1): [5.6217 0.8783] | components (rows of Vt):
+ [[ 0.5847  0.8112]
+ [ 0.8112 -0.5847]]
+sklearn explained_variance_: [5.6217 0.8783] | ratio: [0.8649 0.1351]
+sklearn components_:
+ [[ 0.5847  0.8112]
+ [ 0.8112 -0.5847]] 
+(signs of a component may be flipped: -v and v are the same direction)
+sklearn transform equals centered data @ components^T: True
+
+--- does scaling matter? Iris, raw vs standardised ---
+raw (cm)       ratio: [0.9246 0.0531 0.0171 0.0052] | PC1 loadings: [ 0.3614 -0.0845  0.8567  0.3583]
+standardised   ratio: [0.7296 0.2285 0.0367 0.0052] | PC1 loadings: [ 0.5211 -0.2693  0.5804  0.5649]
+components needed for >= 95% (standardised): 2 | PCA(0.95) picks: 2
+
+--- a unit change alone rewrites PC1 ---
+cm: PC1 = [0.1441 0.9896] | mm: PC1 = [1.     0.0085] (height dominates just because its numbers got bigger)
+
+--- high variance is not the same as predictive ---
+PC1 loadings: [1.     0.0041] -> PC1 is almost entirely the noisy feature
+correlation of PC1 score with y: 0.004 | of PC2 score: 0.792
+
+--- limits: max components, outliers, inverse_transform ---
+components limit = min(n_samples, n_features): 4
+PC1 direction without outlier: [ 1.     -0.0075] | with one outlier: [0.7956 0.6058]
+
+saved notes_pca.png

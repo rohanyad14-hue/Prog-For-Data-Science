@@ -1,0 +1,262 @@
+[
+ {
+  "n": 1,
+  "topic": "val / var",
+  "kind": "compile",
+  "buggy_msg": "reassignment to val",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "10",
+  "fixed_ok": true
+ },
+ {
+  "n": 2,
+  "topic": "arrays",
+  "kind": "compile",
+  "buggy_msg": "value arr of type Array[Int] does not take type parameters.",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "1",
+  "fixed_ok": true
+ },
+ {
+  "n": 3,
+  "topic": "List",
+  "kind": "compile",
+  "buggy_msg": "value update is not a member of List[Int]\ndid you mean updated?",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "List(10, 2, 3)",
+  "fixed_ok": true
+ },
+ {
+  "n": 4,
+  "topic": "Set",
+  "kind": "compile",
+  "buggy_msg": "value += is not a member of scala.collection.immutable.Set[Int]\ndid you mean ++?\nExpression does not convert to assignment because receiver is not assignable.",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "Set(1, 2, 3)",
+  "fixed_ok": true
+ },
+ {
+  "n": 5,
+  "topic": "Map",
+  "kind": "runtime",
+  "buggy_msg": "Exception in thread \"main\" java.util.NoSuchElementException: key not found: b",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "0\nNone",
+  "fixed_ok": true
+ },
+ {
+  "n": 6,
+  "topic": "case class",
+  "kind": "compile",
+  "buggy_msg": "reassignment to val",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "P(Ann,21)",
+  "fixed_ok": true
+ },
+ {
+  "n": 7,
+  "topic": "tuples",
+  "kind": "compile",
+  "buggy_msg": "(Int, String) does not take parameters",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "1",
+  "fixed_ok": true
+ },
+ {
+  "n": 8,
+  "topic": "types",
+  "kind": "compile",
+  "buggy_msg": "type mismatch;\nfound   : String(\"5\")\nrequired: Int",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "6",
+  "fixed_ok": true
+ },
+ {
+  "n": 9,
+  "topic": "integer division",
+  "kind": "silent",
+  "buggy_msg": "2",
+  "buggy_out": "2",
+  "buggy_ok": true,
+  "fixed_out": "2.5",
+  "fixed_ok": true
+ },
+ {
+  "n": 10,
+  "topic": "arrays",
+  "kind": "compile",
+  "buggy_msg": "Int does not take parameters",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "3",
+  "fixed_ok": true
+ },
+ {
+  "n": 11,
+  "topic": "string interpolation",
+  "kind": "silent",
+  "buggy_msg": "Length: List(1, 2, 3).length",
+  "buggy_out": "Length: List(1, 2, 3).length",
+  "buggy_ok": true,
+  "fixed_out": "Length: 3",
+  "fixed_ok": true
+ },
+ {
+  "n": 12,
+  "topic": "string interpolation",
+  "kind": "silent",
+  "buggy_msg": "Hello $name",
+  "buggy_out": "Hello $name",
+  "buggy_ok": true,
+  "fixed_out": "Hello Rohan",
+  "fixed_ok": true
+ },
+ {
+  "n": 13,
+  "topic": "Option",
+  "kind": "compile",
+  "buggy_msg": "type mismatch;\nfound   : Int(1)\nrequired: String",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "2",
+  "fixed_ok": true
+ },
+ {
+  "n": 14,
+  "topic": "imports",
+  "kind": "compile",
+  "buggy_msg": "not found: value mutable",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "2",
+  "fixed_ok": true
+ },
+ {
+  "n": 15,
+  "topic": "Breeze",
+  "kind": "compile",
+  "buggy_msg": "value :* is not a member of breeze.linalg.DenseVector[Double]\ndid you mean *:*, :*=, or :=?",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "DenseVector(3.0, 8.0)\n11.0",
+  "fixed_ok": true
+ },
+ {
+  "n": 16,
+  "topic": "Spire",
+  "kind": "silent",
+  "buggy_msg": "0",
+  "buggy_out": "0",
+  "buggy_ok": true,
+  "fixed_out": "1/3\n1/2",
+  "fixed_ok": true
+ },
+ {
+  "n": 17,
+  "topic": "Saddle",
+  "kind": "compile",
+  "buggy_msg": "value mean is not a member of org.saddle.Series[String,Double]\ndid you mean head or median?",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "2.0",
+  "fixed_ok": true
+ },
+ {
+  "n": 18,
+  "topic": "OOP",
+  "kind": "compile",
+  "buggy_msg": "`override` modifier required to override concrete member:\ndef g: Int (defined in class A)",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "2",
+  "fixed_ok": true
+ },
+ {
+  "n": 19,
+  "topic": "OOP",
+  "kind": "compile",
+  "buggy_msg": "value salary in class Emp cannot be accessed as a member of Emp from object Experiment",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "500",
+  "fixed_ok": true
+ },
+ {
+  "n": 20,
+  "topic": "OOP",
+  "kind": "compile",
+  "buggy_msg": "not found: value Foo",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "3",
+  "fixed_ok": true
+ },
+ {
+  "n": 21,
+  "topic": "conversion",
+  "kind": "runtime",
+  "buggy_msg": "Exception in thread \"main\" java.lang.NumberFormatException: For input string: \"abc\"",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "None\n42",
+  "fixed_ok": true
+ },
+ {
+  "n": 22,
+  "topic": "arrays",
+  "kind": "silent",
+  "buggy_msg": "[I@4e7dc304",
+  "buggy_out": "[I@4e7dc304",
+  "buggy_ok": true,
+  "fixed_out": "1, 2, 3\nList(1, 2, 3)",
+  "fixed_ok": true
+ },
+ {
+  "n": 23,
+  "topic": "List",
+  "kind": "silent",
+  "buggy_msg": "List(1, 2, 3)",
+  "buggy_out": "List(1, 2, 3)",
+  "buggy_ok": true,
+  "fixed_out": "List(1, 2, 3, 4)",
+  "fixed_ok": true
+ },
+ {
+  "n": 24,
+  "topic": "ranges",
+  "kind": "runtime",
+  "buggy_msg": "Exception in thread \"main\" java.lang.ArrayIndexOutOfBoundsException: Index 3 out of bounds for length 3",
+  "buggy_out": "10\n20\n30",
+  "buggy_ok": true,
+  "fixed_out": "10\n20\n30",
+  "fixed_ok": true
+ },
+ {
+  "n": 25,
+  "topic": "methods",
+  "kind": "silent",
+  "buggy_msg": "()",
+  "buggy_out": "()",
+  "buggy_ok": true,
+  "fixed_out": "9",
+  "fixed_ok": true
+ },
+ {
+  "n": 26,
+  "topic": "List",
+  "kind": "compile",
+  "buggy_msg": "value get is not a member of List[Int]",
+  "buggy_out": "",
+  "buggy_ok": true,
+  "fixed_out": "1\nSome(1)",
+  "fixed_ok": true
+ }
+]

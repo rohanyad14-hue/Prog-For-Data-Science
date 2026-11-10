@@ -1,0 +1,15 @@
+Messages printed by scala-cli (Scala 2.13.12) for deliberately wrong code (code/s3_compile_errors.scala):
+
+class B extends A { override def f = 2 }          where  final def f  is defined in A
+  error: cannot override final member:
+         final def f: Int (defined in class A)
+
+class B extends A { def g = 2 }                    where  def g  is defined in A
+  error: `override` modifier required to override concrete member:
+         def g: Int (defined in class A)
+
+final class Leaf;  class Child extends Leaf
+  error: illegal inheritance from final class Leaf
+
+case class Emp(id: Int, private val salary: Int);  Emp(1, 5).salary  used in another object
+  error: value salary in class Emp cannot be accessed as a member of Emp from object Outside

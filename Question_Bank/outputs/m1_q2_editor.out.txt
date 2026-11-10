@@ -1,0 +1,13 @@
+step            text            undo stack / redo stack
+type("Hello")   'Hello'         [('T', 'Hello')]  /  []
+type(" World")  'Hello World'   [('T', 'Hello'), ('T', ' World')]  /  []
+delete(5)       'Hello '        [('T', 'Hello'), ('T', ' World'), ('D', 'World')]  /  []
+undo()          'Hello World'   [('T', 'Hello'), ('T', ' World')]  /  [('D', 'World')]
+undo()          'Hello'         [('T', 'Hello')]  /  [('D', 'World'), ('T', ' World')]
+redo()          'Hello World'   [('T', 'Hello'), ('T', ' World')]  /  [('D', 'World')]
+
+Exception handling
+  delete(50): EditorError - cannot delete 50 characters from a text of length 11
+  load('missing.txt'): EditorError - file 'missing.txt' not found
+
+saved and reloaded: 'Hello World'

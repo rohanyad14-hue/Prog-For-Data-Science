@@ -1,0 +1,11 @@
+--- retrieval, not generation: the reply is a stored answer to the closest stored question ---
+'Hi'                         -> 'Hello! How can I help?'                                       confidence=1.00
+'what are the mess timing'   -> 'Breakfast 7:30-9:00, lunch 12:30-2:00, dinner 7:30-9:00.'     confidence=0.96
+'who is the warden'          -> 'The warden office is in Block A.'                             confidence=0.97
+'tell me a joke'             -> 'Sorry, I do not know that.'                                   confidence=0.00
+'asdf qwerty'                -> 'Sorry, I do not know that.'                                   confidence=0.00
+
+--- the similarity measure used to find the closest known statement ---
+'what are the mess timings' vs 'what are the mess timing': 0.98
+'what are the mess timings' vs 'who is the warden': 0.48
+storage: SQLite file holds statements; trainers: ListTrainer here, ChatterBotCorpusTrainer for ready-made corpora

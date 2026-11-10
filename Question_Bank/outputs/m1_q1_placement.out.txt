@@ -1,0 +1,46 @@
+Eligible sets
+  TechNova  : ['26AIM1001', '26CSE1003', '26ECE1005']
+  DataWorks : ['26AIM1001', '26CSE1003', '26ECE1005']
+  CloudSys  : ['26AIM1001', '26CSE1003', '26DSC1004', '26ECE1005']
+
+Eligible for all three : ['26AIM1001', '26CSE1003', '26ECE1005']
+Eligible for none      : ['26AIM1002']
+CloudSys only          : ['26DSC1004']
+
+Shortlists (top CGPA, limited to openings)
+  TechNova (2 openings):
+     26CSE1003  Sneha Iyer   9.1
+     26AIM1001  Ananya Rao   8.6
+  DataWorks (1 openings):
+     26CSE1003  Sneha Iyer   9.1
+  CloudSys (3 openings):
+     26CSE1003  Sneha Iyer   9.1
+     26AIM1001  Ananya Rao   8.6
+     26ECE1005  Meera Nair   8.2
+
+Roll number validation
+  26AIM1001  -> valid, branch AIM
+  26AIM1002  -> valid, branch AIM
+  26CSE1003  -> valid, branch CSE
+  26DSC1004  -> valid, branch DSC
+  26ECE1005  -> valid, branch ECE
+  2AIM1001   -> INVALID
+  26AI1001X  -> INVALID
+  26aim1006  -> valid, branch AIM
+
+Query handling
+  TechNova: eligible = ['Ananya Rao', 'Sneha Iyer', 'Meera Nair']
+  (query finished)
+  Error: 'Zoho' is not in the dataset
+  (query finished)
+
+Contents of shortlists.txt
+TechNova
+  26CSE1003,Sneha Iyer,9.1
+  26AIM1001,Ananya Rao,8.6
+DataWorks
+  26CSE1003,Sneha Iyer,9.1
+CloudSys
+  26CSE1003,Sneha Iyer,9.1
+  26AIM1001,Ananya Rao,8.6
+  26ECE1005,Meera Nair,8.2

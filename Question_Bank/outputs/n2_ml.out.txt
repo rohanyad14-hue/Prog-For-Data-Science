@@ -1,0 +1,49 @@
+=== K-MEANS by hand: 6 points, k = 2, one full iteration ===
+start centroids: [[1.0, 1.0], [5.0, 7.0]]
+distances to c1, c2:
+ [[0.    7.211]
+ [1.118 6.103]
+ [3.606 3.606]
+ [7.211 0.   ]
+ [4.717 2.5  ]
+ [5.315 2.062]]
+assignment: [0, 0, 0, 1, 1, 1]
+new centroids (means of members): [[1.8333333333333333, 2.3333333333333335], [4.333333333333333, 5.666666666666667]]
+point 3 = (3, 4) is equally far from both centroids (3.606 each); argmin keeps the first, so it joins cluster 0
+inertia (sum of squared distances to the NEW centroids): 10.667
+second assignment: [0, 0, 0, 1, 1, 1] -> unchanged, so converged: True
+sklearn with the same start: labels [0, 0, 0, 1, 1, 1] centroids [[1.8333333333333335, 2.3333333333333335], [4.333333333333333, 5.666666666666666]] inertia 10.667
+
+=== K-means choices: k-means++, n_init, elbow, silhouette, scaling ===
+k=2: inertia=  8867.6  silhouette=0.605
+k=3: inertia=  2313.8  silhouette=0.786
+k=4: inertia=   365.6  silhouette=0.846
+k=5: inertia=   327.1  silhouette=0.735
+k=6: inertia=   293.0  silhouette=0.595
+one random start per seed gives different inertias (local minima): [2278.5, 365.6, 2280.5, 365.6, 2279.7, 2283.7]
+n_init=10 keeps the best one: 365.6
+agreement (ARI) with the unit-scaled clustering - raw x1000 feature: 0.774 | after standardising: 1.0
+
+=== CLASSIFICATION METRICS by hand ===
+TP=2 FN=2 FP=1 TN=5
+accuracy = (TP+TN)/all = 0.70 | precision = TP/(TP+FP) = 0.667 | recall = TP/(TP+FN) = 0.500 | F1 = 2PR/(P+R) = 0.571
+sklearn agrees: 0.7 0.667 0.5 0.571
+confusion_matrix rows=true, cols=predicted:
+ [[5 1]
+ [2 2]]
+accuracy paradox: predicting 'negative' for everyone on a 95/5 dataset gives accuracy 0.95 and recall 0.0
+
+=== DATA LEAKAGE: choosing features on ALL the data, then cross-validating ===
+noise data, selector fitted outside CV : accuracy 0.78   (looks like skill, but there is none)
+same data, selector inside a Pipeline  : accuracy 0.59   (honest: about a coin flip)
+Pipeline test accuracy: 0.959 | 5-fold CV (scaler refitted inside each fold): [0.982 0.982 0.974 0.974 0.991] mean 0.981
+stratify keeps class ratio: train positives 0.628 | test positives 0.626 | overall 0.627
+
+=== OVERFITTING: training vs test accuracy ===
+max_depth=1     train acc=0.75  test acc=0.67  leaves=2
+max_depth=3     train acc=0.83  test acc=0.70  leaves=8
+max_depth=None  train acc=1.00  test acc=0.66  leaves=53
+a gap between train and test accuracy is the symptom; limit depth, add data, or regularise
+
+=== PCA inside a pipeline (fit on training data only) ===
+5-fold CV accuracy with 2 PCs: [0.867 0.967 0.833 0.933 0.967] | with all 4 features: [0.967 1.    0.933 0.9   1.   ]

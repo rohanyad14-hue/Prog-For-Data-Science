@@ -1,0 +1,9 @@
+TechNova
+  26CSE1003,Sneha Iyer,9.1
+  26AIM1001,Ananya Rao,8.6
+DataWorks
+  26CSE1003,Sneha Iyer,9.1
+CloudSys
+  26CSE1003,Sneha Iyer,9.1
+  26AIM1001,Ananya Rao,8.6
+  26ECE1005,Meera Nair,8.2

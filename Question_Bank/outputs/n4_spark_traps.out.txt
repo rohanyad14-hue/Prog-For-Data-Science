@@ -1,0 +1,43 @@
+--- partitions: the unit of parallelism ---
+glom shows the contents of each partition: List(List(1, 2, 3), List(4, 5, 6), List(7, 8, 9), List(10, 11, 12))
+defaultParallelism (cores in local[4]) = 4 | spark.sql.shuffle.partitions = 200
+repartition(2) -> 2 (full shuffle, can increase) | coalesce(2) -> 2 (no shuffle, only decreases)
+coalesce(8) cannot increase: 4
+
+--- narrow vs wide: look for the shuffle in the lineage ---
+map/filter chain (narrow):
+(2) MapPartitionsRDD[10] at filter at n4_spark_traps.scala:27 []
+ |  MapPartitionsRDD[9] at map at n4_spark_traps.scala:27 []
+ |  ParallelCollectionRDD[8] at parallelize at n4_spark_traps.scala:26 []
+reduceByKey (wide):
+(2) ShuffledRDD[11] at reduceByKey at n4_spark_traps.scala:28 []
+ +-(2) ParallelCollectionRDD[8] at parallelize at n4_spark_traps.scala:26 []
+reduceByKey = List((a,9), (b,6)) | groupByKey.mapValues(sum) = List((a,9), (b,6))  (same answer; reduceByKey combines inside each partition first, so it shuffles less)
+
+--- laziness: nothing runs until an action ---
+after map: accumulator = 0
+count() action: 100 | accumulator now = 100
+second action recomputes the lineage: accumulator = 200 (200 = 2 x 100)
+with cache(): two actions but only 100 map calls: accumulator = 100 | storage level: Memory Deserialized 1x Replicated
+
+--- closures and shared variables ---
+driver variable updated inside foreach: counter = 0 (executors modified private copies; use an accumulator)
+accumulator gives the right total: 55
+broadcast variable (read-only copy per executor): List((Alpha,9), (Beta,6))
+
+--- actions that bring data to the driver ---
+count = 1000000 | take(3) = List(1, 2, 3) | takeOrdered(3, desc) = List(1000000, 999999, 999998) | first = 1
+collect() would copy all 1,000,000 elements into the driver's memory - avoid on large data
+sum of 1..1,000,000 with Int reduce = 1784293664 (overflowed!) | with Long = 500000500000 | max = 1000000 | distinct count of x % 7 = 7
+
+--- DataFrame API vs SQL: same plan ---
+API   : List(N/15.0/1, S/50.0/2, W/25.0/1)
+SQL   : List(N/15.0/1, S/50.0/2, W/25.0/1)
+same optimised plan: true
+schema: region:string, product:string, amount:double
+Dataset[Sale] is typed: List(book, book) | a typo like _.amout fails at compile time, while $"amout" fails only at run time
+join: List(N/North, S/South, W/null) | W has no match -> null label
+broadcast join hint is applied by Catalyst for small tables: true
+
+--- RDD word count with sorting, and what a shuffle does to partition counts ---
+word count: List((is,3), (spark,3), (fast,2), (good,1), (lazy,1), (runs,1), (scala,1)) | partitions before/after reduceByKey: 3/3

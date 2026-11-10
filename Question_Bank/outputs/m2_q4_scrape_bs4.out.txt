@@ -1,0 +1,7 @@
+Parsed 3 books
+title,price,link
+Python Basics,450,/b/1
+Data Science 101,700,/b/2
+Scala in Depth,820,/b/3
+
+Average price: 656.6666666666666

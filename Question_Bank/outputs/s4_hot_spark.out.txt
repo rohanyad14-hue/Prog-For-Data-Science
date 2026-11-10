@@ -1,0 +1,115 @@
+--- Q1 step 1: the four sample rows with Spark SQL ---
++------+---+--------+--------------+
+|Placed|  n|avg_cgpa|avg_attendance|
++------+---+--------+--------------+
+|    No|  2|    6.35|          70.0|
+|   Yes|  2|     8.8|          90.0|
++------+---+--------+--------------+
+
+Spark correlation(Attendance, CGPA) = 0.9522
+--- Q1 step 2: Breeze statistics on the same columns ---
+mean CGPA 7.575, std CGPA 1.482, mean attendance 80.00
+Pearson(att, cgpa) = 0.9522 | point-biserial(cgpa, placed) = 0.9546 | (att, placed) = 0.9345
+z-scores of CGPA: 0.62, -0.52, 1.03, -1.13
+--- Q1 step 3: MLlib logistic regression (code path only: 4 rows cannot support conclusions) ---
+coefficients (Attendance, CGPA): 0.087, 0.764 | predictions: List(1.0, 0.0, 1.0, 0.0)
+--- Q1 step 4: the same code on 5,000,000 synthetic students ---
+partitions: 4 | rows: 5000000
++------+--------+-------+-------+
+|Placed|avg_cgpa|avg_att|      n|
++------+--------+-------+-------+
+|   0.0|   6.667|  75.02|2500470|
+|   1.0|   8.334|   75.0|2499530|
++------+--------+-------+-------+
+
+correlation(CGPA, Placed) over 5M rows = 0.578 | correlation(Attendance, Placed) = -0.001   (synthetic data: placement was generated from CGPA only)
+--- Q2 Spark part: abnormal patient records ---
++---------+---+---+
+|PatientID|Age| BP|
++---------+---+---+
+|     P103| 58|145|
++---------+---+---+
+
++--------+---+------+-------+
+|Diabetes|  n|avg_bp|avg_age|
++--------+---+------+-------+
+|      No|  2| 119.0|   30.5|
+|     Yes|  2| 137.5|   51.5|
++--------+---+------+-------+
+
+partitions used: 4 (each partition would sit on a different hospital server in a cluster)
+--- Q3 step 1: parsing raw lines with Either, counting good and bad records ---
+good records: 4 | rejected: 4
+  rejected -> non-numeric amount in 'C105,Mobile,abc'
+  rejected -> missing product in 'C106,,5000'
+  rejected -> wrong number of fields in 'broken line'
+  rejected -> non-positive amount in 'C107,Laptop,-100'
+revenue by product (good records only): List((Laptop,135000), (Mobile,25000), (Tablet,18000))
+--- Q3 step 2: item co-purchase counts for a simple recommender (illustrative baskets) ---
+also bought with Laptop: List((Mouse,2), (Bag,1)) | with Mobile: List((Earbuds,2), (Cover,1)) | with Cover: List((Earbuds,1), (Mobile,1))
+--- Q3 step 3: fault tolerance, a task that fails on its first attempt is re-run ---
+result despite the failure: List(10, 20, 30, 40, 50, 60, 70, 80) | failed attempts: 0 | local[4,4] allows 4 attempts per task (spark.task.maxFailures = 4)
+--- Q4 step 1: engagement by post type ---
++----------+-----+-----------+---------+
+|  PostType|posts|total_likes|avg_likes|
++----------+-----+-----------+---------+
+|Technology|    2|       1160|    580.0|
+| Education|    1|        750|    750.0|
+|    Sports|    1|        310|    310.0|
++----------+-----+-----------+---------+
+
+--- Q4 step 2: lexicon-based sentiment of post text (illustrative texts) ---
++------+----------+---------+
+|UserID|  PostType|sentiment|
++------+----------+---------+
+|  U101|Technology|        2|
+|  U102|    Sports|       -3|
+|  U103| Education|        2|
+|  U104|Technology|       -2|
++------+----------+---------+
+
++----------+-------------+
+|  PostType|avg_sentiment|
++----------+-------------+
+| Education|          2.0|
+|Technology|          0.0|
+|    Sports|         -3.0|
++----------+-------------+
+
+--- Q4 step 3: trending = growth between time windows, not the biggest total (illustrative hourly counts) ---
++----------+----+--------+--------+
+|     topic|prev|mentions|growth_%|
++----------+----+--------+--------+
+|    Sports|  40|     160|   300.0|
+|Technology| 100|     130|    30.0|
+| Education|  90|      95|     5.6|
++----------+----+--------+--------+
+
+--- Q5 step 1: loan-to-income ratio in Spark and Breeze ---
++----------+-----+--------+
+|CustomerID|  LTI|  Status|
++----------+-----+--------+
+|      L101|0.462|Approved|
+|      L102|1.143|Rejected|
+|      L103|0.625|Approved|
+|      L104|  1.4|Rejected|
++----------+-----+--------+
+
++--------+-------+----------+---+
+|  Status|avg_LTI|avg_income|  n|
++--------+-------+----------+---+
+|Approved|  0.544|  725000.0|  2|
+|Rejected|  1.272|  300000.0|  2|
++--------+-------+----------+---+
+
+Breeze element-wise ratio: 0.462, 1.143, 0.625, 1.400 | mean 0.907 | std 0.438 | corr(income, loan) = 0.429
+Spark SQL with a risk rule: 1 (session check)
++----------+------+
+|CustomerID|  risk|
++----------+------+
+|      L101|   LOW|
+|      L102|  HIGH|
+|      L103|MEDIUM|
+|      L104|  HIGH|
++----------+------+
+

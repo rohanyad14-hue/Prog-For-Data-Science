@@ -1,0 +1,26 @@
+--- class attribute vs instance attribute ---
+Bad  : ['x'] <- b2 sees b1's item
+Good : []
+
+--- encapsulation, name mangling, property ---
+vars: ['_Account__balance', '_audit', 'owner']
+acc._Account__balance = 100 | acc.balance = 100
+acc.__balance -> 'Account' object has no attribute '__balance'
+setter validation: negative balance
+
+--- inheritance, super(), polymorphism, abstract class ---
+abstract: Can't instantiate abstract class Shape with abstract method area
+Circle area=3.14
+Rect area=6.00
+isinstance Student/Person: True True | issubclass: True
+
+--- multiple inheritance and MRO (C3 linearization) ---
+D().who() = D>B>C>A
+MRO: ['D', 'B', 'C', 'A', 'object']
+
+--- classmethod, staticmethod, dunder methods ---
+Temp(100.0) | 100.0 C | False | 3.0 C | True | sorted: [Temp(1.0), Temp(5.0)] | in set: 1
+dataclass: Point(x=1, y=2) True
+
+--- duck typing ---
+['quack', 'beep'] (no common base class needed)

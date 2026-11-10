@@ -1,0 +1,35 @@
+--- truthiness and short-circuit (and / or return an OPERAND, not True/False) ---
+falsy values: [False, False, False, False, False, False, False] | truthy: [True, True, True, True, True]
+0 or 'x' -> 'x' | '' and 5 -> '' | 3 and 4 -> 4 | None or [] -> []
+short-circuit: right-hand side skipped, calls made = [False, True]
+chained comparison 1 < x < 10: True | not x == 7: False | x != 7: False
+ternary: odd | 'in': True 'z' not in 'abc': True
+None test: a is None -> True | [] == None -> False | 0.1 + 0.2 == 0.3 -> False
+math.isclose(0.1 + 0.2, 0.3) -> True
+
+--- if / elif order matters ---
+wrong order for 90, 75, 55, 30: ['C', 'C', 'C', 'Fail']
+right order for 90, 75, 55, 30: ['A', 'B', 'C', 'Fail']
+match statement (Python 3.10+): ['origin', 'on x-axis at 3', 'on y-axis at 4', 'dict with name A', 'elsewhere']
+
+--- list methods ---
+append adds ONE element: [1, 2, 3, [4, 5]]
+extend adds each element: [1, 2, 3, 4, 5] | L + [6] makes a new list: [1, 2, 3, 4, 5, 6] | L: [1, 2, 3, 4, 5]
+insert(1, 99): [1, 99, 2, 3, 4, 5]
+remove(99) deletes the first match: [1, 2, 3, 4, 5]
+pop() -> 5 | pop(0) -> 1 | list now: [2, 3, 4]
+remove of a missing item -> list.remove(x): x not in list
+index(5): 0 (first match) | count(5): 2 | reverse in place: [1, 5, 3, 5] | len: 4 | min/max/sum: 1 5 14
+del M[0]: [5, 3, 5]
+sorted(key=len): ['a', 'bb', 'ccc'] | reverse=True: [3, 2, 1] | sort is stable: [(0, 'z'), (1, 'b'), (1, 'a')]
+enumerate: [(1, 'a'), (2, 'b')] | zip: [(1, 'a'), (2, 'b')] | unzip: [(1, 2), ('a', 'b')]
+
+--- comprehensions ---
+squares of evens: [0, 4, 16, 36, 64] | nested: [(0, 0), (0, 1), (1, 0), (1, 1)]
+if-else goes BEFORE for: ['even', 'odd', 'even', 'odd'] | filter goes AFTER: [4, 5]
+dict comp: {'ab': 2, 'cde': 3} | set comp: {0, 1, 2} | generator sum: 10
+
+--- how arguments are passed: by object reference ---
+after grow, rebind, bump: [1] 5
+== compares values, is compares identity: True False True | id equal for aliases: True
+rule: use == for values; use `is` only for None, True and False

@@ -1,0 +1,31 @@
+=== one gradient-descent step by hand: y = w*x + b, MSE loss ===
+pred=[0.0, 0.0, 0.0] loss=mean((pred-y)^2)=18.6667
+dL/dw = mean(2(pred-y)x) = -18.6667 | dL/db = mean(2(pred-y)) = -8.0000
+update: w = w - lr*dL/dw = 1.8667 | b = b - lr*dL/db = 0.8000
+PyTorch autograd : dL/dw = -18.6667, dL/db = -8.0000
+TensorFlow tape  : dL/dw = -18.6667, dL/db = -8.0000
+trap: PyTorch accumulates gradients - calling backward() twice without zero_grad():
+   grad after two backward calls = 6.0 (should be 3 each time -> 6 means accumulation)
+
+=== activations ===
+sigmoid(0) = 0.5 | relu([-2, 3]) = [0, 3] | tanh(0) = 0.0
+softmax([1,2,3]) = [0.09, 0.2447, 0.6652] sums to 1.0 -> class probabilities
+
+=== Keras (Sequential API): 4 inputs -> Dense(8, relu) -> Dense(3, softmax) ===
+params layer 1 = 4*8 + 8 = 40 | layer 2 = 8*3 + 3 = 27 | model.count_params() = 67
+loss 0.897 -> 0.039 | accuracy 0.60 -> 0.98
+predict output shape: (2, 3) (one probability per class)
+one epoch = a pass over all 150 rows; with batch_size=16 that is 10 weight updates per epoch
+
+=== PyTorch: the explicit training loop ===
+loss 1.112 -> 0.090 | accuracy 0.97 | parameters 67
+
+=== TensorFlow tensors and shapes ===
+tf.matmul: [[7.0, 10.0], [15.0, 22.0]] | shape (2, 2) | dtype float32 | numpy interop: ndarray
+
+=== XGBoost: boosting adds trees that fix the previous errors ===
+n_estimators=1    test accuracy=0.924
+n_estimators=10   test accuracy=0.959
+n_estimators=100  test accuracy=0.953
+top features: ['worst perimeter', 'worst radius', 'worst concave points']
+early stopping: best tree = 51 of 500 allowed | untouched test accuracy: 0.936 (never use the test set for early stopping)

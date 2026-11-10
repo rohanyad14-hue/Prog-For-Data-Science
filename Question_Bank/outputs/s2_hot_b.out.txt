@@ -1,0 +1,87 @@
+--- Q3 step 1: collect with Beautiful Soup (the same selectors go into a Scrapy spider's parse method) ---
+Dataset A (website 1):
+BookID           Title  Price
+  B101   Python Basics    450
+  B102    Data Science    700
+  B103 AI Fundamentals    850
+Dataset B (website 2):
+BookID  Rating
+  B101     4.5
+  B102     4.8
+  B103     4.2
+  B104     3.9
+
+--- Q3 step 2: merge with pandas and inspect mismatches ---
+BookID           Title  Price  Rating     _merge
+  B101   Python Basics  450.0     4.5       both
+  B102    Data Science  700.0     4.8       both
+  B103 AI Fundamentals  850.0     4.2       both
+  B104             NaN    NaN     3.9 right_only
+inner merge rows: 3 | rows present on only one site: ['B104'] (example of an inconsistency: B104 has a rating but no price)
+
+--- Q3 step 3: cleaning problems and fixes ---
+naive clean (delete everything except digits and dots): [0.45, 1200.0, 450.0, nan, nan] <- 'Rs. 450' became 0.45 because the dot of 'Rs.' survived: a silent error
+safer clean (extract the number, then drop commas)     : [450.0, 1200.0, 450.0, nan, nan] (failures become NaN: then decide to drop or impute)
+duplicate keys check: True True | key as text vs number mismatch raises ValueError (see section 2.6)
+
+--- Q3 step 4: which books are most valuable (rating and price together) ---
+BookID           Title  Price  Rating  rating_per_100_rs  score
+  B101   Python Basics    450     4.5              1.000  0.750
+  B102    Data Science    700     4.8              0.686  0.688
+  B103 AI Fundamentals    850     4.2              0.494  0.000
+highest rating: Data Science | best rating per rupee: Python Basics | best 50/50 score: Python Basics
+weights are a business choice: change 0.5/0.5 to 0.8/0.2 and re-rank: ['Data Science', 'Python Basics', 'AI Fundamentals']
+
+
+--- Q4 step 1: variables and relationships (NumPy, SciPy, pandas) ---
+independent (features): ['HouseSize', 'Bedrooms', 'Age'] | dependent (target): Price
+correlation matrix:
+           HouseSize  Bedrooms    Age  Price
+HouseSize      1.000     0.949 -0.985  1.000
+Bedrooms       0.949     1.000 -0.942  0.949
+Age           -0.985    -0.942  1.000 -0.985
+Price          1.000     0.949 -0.985  1.000
+SciPy pearsonr(size, price): r=1.0000, p=0.0000 | linregress: price = -15.00 + 0.0500 x size, R^2=1.0000
+NumPy: np.corrcoef(size, age)[0,1] = -0.985 -> features are almost collinear (multicollinearity)
+missing values: 0 | duplicate rows: 0 | only 5 rows for 3 features -> high overfitting risk
+
+--- Q4 step 2: compare candidate algorithms with leave-one-out validation ---
+model                              MAE   RMSE      R2
+Linear regression (size only)     0.00   0.00   1.000
+Linear regression (all 3)         0.00   0.00   1.000
+Ridge, scaled (all 3)             4.44   5.41   0.946
+Decision tree (all 3)            15.00  15.00   0.588
+Random forest (all 3)            10.43  13.87   0.648
+
+--- Q4 step 3: extrapolation, the weakness of tree models ---
+3000 sq ft: linear (size only) predicts 135.0 lakhs | decision tree 110.0 | random forest 105.0 | largest training price 110
+linear model: price = -15.00 + 0.0500 x size  -> every extra 100 sq ft adds about 5.0 lakhs
+all-3 linear coefficients: {'HouseSize': 0.05, 'Bedrooms': 0.0, 'Age': 0.0} (size alone explains price exactly here, so the others get 0)
+variance inflation factors (VIF > 10 signals multicollinearity): {'HouseSize': 38.8, 'Bedrooms': 10.3, 'Age': 34.1}
+
+
+--- Q5 step 1: what needs immediate attention ---
+         AQI         AQI_category
+Zone                             
+North    180  Moderately polluted
+South    120  Moderately polluted
+East     150  Moderately polluted
+West     100         Satisfactory
+Central  220                 Poor
+(CPCB India bands: Good 0-50, Satisfactory 51-100, Moderately polluted 101-200, Poor 201-300, Very Poor 301-400, Severe 401-500)
+composite risk (mean of min-max scaled stress factors; 1 = worst):
+Zone
+Central    1.000
+North      0.739
+East       0.520
+South      0.177
+West       0.000
+correlations with AQI: {'Temp': 0.992, 'Rain': -0.98, 'Green': -0.988}
+
+--- Q5 step 2: a first model and zone grouping (ML applications) ---
+AQI = 273.9 + (-5.12) x green cover%, R^2 = 0.976 -> each extra 1% of green cover goes with about 5.1 lower AQI points (association in 5 zones, not proof of cause)
+K-means (k=2) on standardised factors groups the zones as: {0: ['North', 'East', 'Central'], 1: ['South', 'West']}
+
+--- Q5 step 3: interactive and geographic outputs (files written) ---
+written: hot_m2_q5_plotly.html, hot_m2_q5_bokeh.html, hot_m2_q5_map.html (the zone coordinates are made up for the demo; real ones come from the municipality)
+saved hot_m2_q5.png

@@ -1,0 +1,63 @@
+# ---------------------------------------------------------------------------
+# MACSE502 Programming for Data Science: .gitignore
+# Patterns starting with "/" are relative to this folder (the repository root).
+# ---------------------------------------------------------------------------
+
+# --- Reference books (copyrighted, ~100 MB) -------------------------------
+# Keep the PDFs on disk, but do not commit them.
+/books/
+/books.zip
+*.zip
+
+# --- Personal lab records --------------------------------------------------
+# The ten submission PDFs carry your name and registration number, and the
+# whiteboard photo sits next to them. Ignored so they are not pushed by accident.
+# The parsed content is already stored in Question_Bank/cheatsheet/programs.json.
+# To track them, delete the next line.
+/Prac/Submitions/
+
+# --- Python ------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Scala / scala-cli / sbt / Metals / Bloop --------------------------------
+.scala-build/
+.bsp/
+.bloop/
+.metals/
+.idea/
+target/
+project/target/
+project/project/
+*.class
+
+# --- Spark runtime leftovers ---------------------------------------------------
+spark-warehouse/
+metastore_db/
+derby.log
+
+# --- Files that the demo programs write when they are run ---------------------
+*.sqlite3
+*.log
+/out_*.html
+
+# --- Secrets and local settings ------------------------------------------------
+.env
+.env.*
+.vscode/
+
+# --- Operating system and Office noise ----------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+~$*
+*.tmp
+*.bak

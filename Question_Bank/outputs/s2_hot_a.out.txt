@@ -1,0 +1,82 @@
+--- Q1 step 1: inspect the data and the missing values ---
+{'StudentID': 'object', 'Name': 'object', 'Department': 'object', 'Attendance': 'float64', 'Internal': 'float64', 'Final': 'int64'}
+missing per column: {'StudentID': 0, 'Name': 0, 'Department': 0, 'Attendance': 1, 'Internal': 1, 'Final': 0} | rows with any missing: ['Kiran', 'Meena']
+NaN trap: (Attendance < 80) for Kiran is False -> a missing value is silently NOT flagged
+
+--- Q1 step 2: missing-value strategies compared ---
+Kiran attendance: overall mean 87.50 | CSE mean 93.50 (Arun 92, Ravi 95)
+Meena internal  : overall median 43.50 | IT has no other student, so a department statistic is impossible -> fall back to the overall median
+ Name Department  Attendance  Internal  Final  Attendance_missing  Internal_missing
+ Arun        CSE        92.0      45.0     78                   0                 0
+Priya        ECE        85.0      38.0     72                   0                 0
+Kiran        CSE        93.5      42.0     80                   1                 0
+Meena         IT        78.0      43.5     68                   0                 1
+ Ravi        CSE        95.0      48.0     88                   0                 0
+
+--- Q1 step 3: built-in functions for statistical analysis ---
+       Attendance  Internal  Final
+count         5.0       5.0   5.00
+mean         88.7      43.3  77.20
+std           7.1       3.7   7.69
+min          78.0      38.0  68.00
+50%          92.0      43.5  78.00
+max          95.0      48.0  88.00
+mean by department:
+            Attendance  Internal  Final
+Department                             
+CSE               93.5      45.0   82.0
+ECE               85.0      38.0   72.0
+IT                78.0      43.5   68.0
+correlation with Final marks: {'Attendance': 0.923, 'Internal': 0.651}
+
+--- Q1 step 4: academic-risk rule (any trigger) ---
+ Name  low_attendance (<80)  low_internal (<40)  low_final (<70)  risk_flags
+ Arun                 False               False            False           0
+Priya                 False                True            False           1
+Kiran                 False               False            False           0
+Meena                  True               False             True           2
+ Ravi                 False               False            False           0
+students at academic risk: ['Priya', 'Meena']
+
+--- Q1 step 5: prepare for predictive modelling ---
+features after one-hot encoding Department and min-max scaling the numbers:
+ Attendance  Internal  Department_CSE  Department_ECE  Department_IT
+       0.82      0.70               1               0              0
+       0.41      0.00               0               1              0
+       0.91      0.40               1               0              0
+       0.00      0.55               0               0              1
+       1.00      1.00               1               0              0
+drop identifiers (StudentID, Name) before modelling; target = Final
+saved hot_m2_q1.png
+
+
+--- Q2 step 1: premium-product segment by filtering ---
+Amount >= 50000: ['C101', 'C103'] | threshold from data, 75th percentile = 65000.0 -> ['C101', 'C103']
+combined filter Product == Laptop and Age 20..35: [{'CustomerID': 'C101', 'Age': 22, 'City': 'Chennai', 'Amount': 65000}, {'CustomerID': 'C103', 'Age': 28, 'City': 'Chennai', 'Amount': 70000}]
+loc extraction of just the contact fields: [['C101', 'Chennai'], ['C103', 'Chennai']]
+query form: ['C101', 'C103']
+
+--- Q2 step 2: text-data operations for city-wise preferences ---
+standardise with .str.strip().str.title(): ['Chennai', 'Chennai', 'Bangalore', 'Bengaluru', 'Hyderabad'] | 'bengaluru' still differs from 'Bangalore': map synonyms with .replace
+contains 'chen': ['C101', 'C103', 'C105'] | city name lengths: [7, 9, 7, 9, 7]
+city x product counts:
+Product    Laptop  Mobile  Tablet
+City                             
+Bangalore       0       1       0
+Chennai         2       1       0
+Hyderabad       0       0       1
+
+--- Q2 step 3: business insights ---
+           customers  revenue  avg_spend  share_%
+City                                             
+Chennai            3   157000    52333.0     78.5
+Bangalore          1    25000    25000.0     12.5
+Hyderabad          1    18000    18000.0      9.0
+         count     sum     mean  share_%
+Product                                 
+Laptop       2  135000  67500.0     67.5
+Mobile       2   47000  23500.0     23.5
+Tablet       1   18000  18000.0      9.0
+average spend by age group: {'18-25': 65000.0, '26-35': 39000.0, '36+': 18000.0}
+total revenue: 200000 | premium customers' share of revenue: 67.5%
+saved hot_m2_q2.png

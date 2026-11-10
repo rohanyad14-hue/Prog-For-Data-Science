@@ -1,0 +1,40 @@
+partitions       : 2
+lineage (DAG)    :
+(2) ShuffledRDD[3] at reduceByKey at m4_q4_spark.scala:20 []
+ +-(2) MapPartitionsRDD[2] at map at m4_q4_spark.scala:20 []
+    |  MapPartitionsRDD[1] at flatMap at m4_q4_spark.scala:20 []
+    |  ParallelCollectionRDD[0] at parallelize at m4_q4_spark.scala:19 []
+word counts      : List((spark,3), (is,2), (fast,1), (lazy,1), (runs,1), (scala,1))
+after map()      : map ran 0 times   (nothing computed yet)
+after reduce()   : map ran 10 times, result = 110
+
+result:
++----+-----------+
+|dept|avg(salary)|
++----+-----------+
+|  AI|   100000.0|
+|  DB|    70000.0|
++----+-----------+
+
+optimised logical plan and physical plan (excerpt):
+  Sort [dept#4 ASC NULLS FIRST], true
+  +- Aggregate [dept#4], [dept#4, avg(salary#5) AS avg(salary)#17]
+     +- LocalRelation [dept#4, salary#5]
+  AdaptiveSparkPlan isFinalPlan=false
+  +- Sort [dept#4 ASC NULLS FIRST], true, 0
+     +- Exchange rangepartitioning(dept#4 ASC NULLS FIRST, 200), ENSURE_REQUIREMENTS, [plan_id=107]
+        +- HashAggregate(keys=[dept#4], functions=[avg(salary#5)], output=[dept#4, avg(salary)#17])
+           +- Exchange hashpartitioning(dept#4, 200), ENSURE_REQUIREMENTS, [plan_id=104]
+              +- HashAggregate(keys=[dept#4], functions=[partial_avg(salary#5)], output=[dept#4, sum#28, count#29L])
+                 +- LocalTableScan [dept#4, salary#5]
+
+analysed plan (as written):
+  Project [(id#39L * cast(5 as bigint)) AS x#45L]
+  +- Filter (id#39L < cast(50 as bigint))
+     +- Filter (id#39L > cast(10 as bigint))
+        +- Range (0, 100, step=1, splits=Some(2))
+optimised plan (after Catalyst):
+  Project [(id#39L * 5) AS x#45L]
+  +- Filter ((id#39L > 10) AND (id#39L < 50))
+     +- Range (0, 100, step=1, splits=Some(2))
+rows kept: 39

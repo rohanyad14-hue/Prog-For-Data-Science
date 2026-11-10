@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Python Basics",
+    "price": 450,
+    "link": "/b/1"
+  },
+  {
+    "title": "Data Science 101",
+    "price": 700,
+    "link": "/b/2"
+  },
+  {
+    "title": "Scala in Depth",
+    "price": 820,
+    "link": "/b/3"
+  }
+]

@@ -1,0 +1,13 @@
+Apple   2.50 x 150 = 375.00
+Banana  1.20 x 300 = 360.00
+Cherry  4.00 x 80 = 320.00
+Mango   3.50 x 110 = 385.00
+Orange  2.00 x 200 = 400.00
+total revenue = 1840.00, mean price = 2.640, variance = 1.2730
+A*x = b  ->  x = DenseVector(0.8, 1.4)
+trying to return java 16 instance
+return java 11 instance
+A * A^T  = 5.0  5.0   
+5.0  10.0  
+dot      = 1840.0
+Double 0.1 + 0.2 = 0.30000000000000004   | Rational 1/10 + 2/10 = 3/10  (exactly 3/10: true)

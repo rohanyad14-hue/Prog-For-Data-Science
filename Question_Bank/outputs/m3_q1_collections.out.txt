@@ -1,0 +1,14 @@
+sum = 147, joined = apple,banana,cherry,mango,orange
+squares : List(4, 9, 25, 49, 121)
+cons    : List(0, 2, 3, 5, 7, 11)
+set and : List(d, l, o, r, w)
+tuple   : 42, scala, true
+grades  : List((Alice,95), (Bob,78))
+merge   : List((Alice,92), (Bob,90), (Emma,88))
+chained : List((Alice,List(85, 95)), (Bob,List(78)))
+filter  : List(2, 4, 6, 8, 10)
+map     : List(3, 6, 9, 12, 15, 18, 21, 24, 27, 30)
+flatMap : List((1,1), (2,4), (3,9), (4,16))
+foldLeft: 3628800
+reduce  : 55
+flatMap on strings: List(h, i, y, o)

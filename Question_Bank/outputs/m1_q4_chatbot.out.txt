@@ -1,0 +1,25 @@
+Incoming messages
+  'The mess food was stale at dinner'                     LOGGED -> #1 [routine] mess        The mess food was stale at dinner
+  'There is no water in the bathroom of block B'          LOGGED -> #2 [URGENT ] water       There is no water in the bathroom of block B
+  'Wi-Fi is very slow in my room'                         LOGGED -> #3 [routine] wifi        Wi-Fi is very slow in my room
+  'What are the mess timings?'                            FAQ  -> Mess: breakfast 7:30-9:00, lunch 12:30-2:00, dinner 7:30-9:00.
+  'Hi'                                                    BOT  -> Hello! How can I help you today?
+  'Power failure in block C since evening'                LOGGED -> #4 [URGENT ] electricity Power failure in block C since evening
+  'asdf qwerty'                                           BOT  -> Sorry, I did not understand. Is it about water, Wi-Fi, electricity or the mess?
+  ''                                                      INVALID -> empty or non-text message
+  'Who is the warden and what is the contact number?'     FAQ  -> Warden office: ext. 2145 (9am-6pm). Emergencies: security desk, ext. 2100.
+  'The fan in room 204 is not working'                    LOGGED -> #5 [routine] electricity The fan in room 204 is not working
+
+Processing order from the priority queue
+  #2 [URGENT ] water       There is no water in the bathroom of block B
+  #4 [URGENT ] electricity Power failure in block C since evening
+  #1 [routine] mess        The mess food was stale at dinner
+  #3 [routine] wifi        Wi-Fi is very slow in my room
+  #5 [routine] electricity The fan in room 204 is not working
+
+complaints.log
+2026-07-06 21:00:00 | #1 | mess | routine | The mess food was stale at dinner
+2026-07-06 21:00:00 | #2 | water | URGENT | There is no water in the bathroom of block B
+2026-07-06 21:00:00 | #3 | wifi | routine | Wi-Fi is very slow in my room
+2026-07-06 21:00:00 | #4 | electricity | URGENT | Power failure in block C since evening
+2026-07-06 21:00:00 | #5 | electricity | routine | The fan in room 204 is not working

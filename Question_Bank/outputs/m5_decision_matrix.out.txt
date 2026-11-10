@@ -1,0 +1,16 @@
+Case A: real-time fraud detection, 5 TB/day, Spark cluster, 8 experienced JVM engineers
+  weights: {'Deployment size / load': 0.25, 'Performance': 0.2, 'Time to production': 0.05, 'Skill set available': 0.1, 'Ecosystem / community': 0.05, 'Maintainability': 0.15, 'Platform fit (Spark/JVM)': 0.2}
+    Scala   weighted score = 4.55
+    Java    weighted score = 4.45
+    Python  weighted score = 3.20
+    R       weighted score = 1.95
+  -> choose Scala 
+
+Case B: 6-week ML prototype for a startup, 3 data scientists, small CSV/Parquet data
+  weights: {'Deployment size / load': 0.05, 'Performance': 0.05, 'Time to production': 0.3, 'Skill set available': 0.25, 'Ecosystem / community': 0.2, 'Maintainability': 0.05, 'Platform fit (Spark/JVM)': 0.1}
+    Python  weighted score = 4.45
+    Java    weighted score = 4.00
+    Scala   weighted score = 3.45
+    R       weighted score = 2.70
+  -> choose Python 
+

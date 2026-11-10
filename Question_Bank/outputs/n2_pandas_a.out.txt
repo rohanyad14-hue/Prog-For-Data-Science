@@ -1,0 +1,61 @@
+--- Series: labelled array, alignment on the index ---
+s1 + s2 aligns by label (not position):
+a     NaN
+b    21.0
+c    32.0
+d     NaN
+dtype: float64
+s1.add(s2, fill_value=0): [10.0, 21.0, 32.0, 3.0]
+dtype: int64 | s1['b']: 20 | s1.iloc[1]: 20 | s1[s1 > 15].index.tolist(): ['b', 'c']
+
+--- DataFrame basics ---
+    name  age     city  score
+0   Asha   22  Chennai   88.5
+1   Ravi   31    Delhi   72.0
+2  Meena   27     Pune    NaN
+3  Kabir   35    Delhi   65.5
+4  Sneha   24  Chennai   91.0
+shape (5, 4) | dtypes: {'name': 'object', 'age': 'int64', 'city': 'object', 'score': 'float64'}
+describe (numeric):
+         age  score
+count   5.00   4.00
+mean   27.80  79.25
+std     5.26  12.45
+min    22.00  65.50
+25%    24.00  70.38
+50%    27.00  80.25
+75%    31.00  89.12
+max    35.00  91.00
+value_counts: {'Chennai': 2, 'Delhi': 2, 'Pune': 1} | nunique: 3
+
+--- selecting: [], loc, iloc, boolean masks ---
+df['age'] is a Series | df[['age']] is a DataFrame
+loc[1:2] rows: ['Ravi', 'Meena'] | iloc[1:2] rows: ['Ravi']
+age>25 and Delhi: ['Ravi', 'Kabir']
+using 'and' instead of '&' -> The truth value of a Series is ambiguous. Use a.empty, a.boo ...
+isin: ['Ravi', 'Meena', 'Kabir'] | between: ['Ravi', 'Meena', 'Sneha'] | query: ['Ravi', 'Kabir']
+
+--- chained assignment trap ---
+chained d2[mask]['score'] = 0 changed the data? False | warning: SettingWithCopyWarning
+d2.loc[mask, 'score'] = 0 changed the data? True
+
+--- missing values ---
+NaN == NaN: False | isna count: 1 | mean skips NaN: 79.25 | sum of [1, NaN]: 1.0
+fillna(mean): [88.5, 72.0, 79.25, 65.5, 91.0]
+ffill: [88.5, 72.0, 72.0, 65.5, 91.0] | interpolate: [88.5, 72.0, 68.75, 65.5, 91.0]
+dropna(subset=['score']) keeps 4 of 5 rows | dropna(thresh=4) keeps 4
+int column with NaN becomes float: float64 | nullable Int64: [1, 2, <NA>]
+df.replace / where: [0, 31, 27, 35, 0]
+
+--- add / drop / rename / sort / apply ---
+ name  score grade
+Sneha   91.0     A
+ Asha   88.5     A
+ Ravi   72.0     B
+Kabir   65.5     C
+Meena    NaN   NaN
+rename: ['student', 'age', 'city', 'score'] | drop: ['name', 'age', 'score']
+map: ['TN', 'DL', nan, 'DL', 'TN'] (unmapped -> NaN)
+apply row-wise: ['Asha:22', 'Ravi:31'] | axis=0 means down the columns
+astype: float64 | to_numeric(errors='coerce'): [1.0, nan, 3.0]
+datetime: Monday | [1, 2]

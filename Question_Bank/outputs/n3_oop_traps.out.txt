@@ -1,0 +1,29 @@
+--- initialisation order ---
+  Base constructor sees name = null | name.length -> NullPointerException
+  after construction: d.name = derived
+  SafeBase constructor sees name = derived
+
+--- constructors ---
+  Point(1,5,t) | aux constructor: Point(7,0,aux) | chaining: Point(1,1,t)
+  p.x = 1 (val is a read-only field); p.tag does not compile: tag is just a constructor parameter
+
+--- sealed + case classes ---
+  areas: List(3.14, 6.00, 0.00)
+  case object equality: true | toString: Dot
+
+--- case class: equality, copy, arrays inside ---
+  c1 == c2: true | c1 eq c2: false | hashCode equal: true
+  Team(A, Array(..)) == same data: false (the Array field is compared by reference)
+  copy is shallow, shares the array: true
+
+--- extractors and companions ---
+  List(even, half is 5, odd 7)
+  Secret(21) code = 42 (companion may call the private constructor; `new Secret(1)` outside does not compile)
+
+--- overriding and super ---
+  Rex says woof | Bit says woof (squeaky)
+  static type Animal, dynamic dispatch picks Puppy.sound: woof (squeaky) | isInstanceOf[Dog]: true
+
+--- trait mixin order changes behaviour ---
+  Loud with Polite : HELLO ASHA, please   (Polite runs first, Loud wraps its result)
+  Polite with Loud : HELLO ASHA, PLEASE   (Loud runs first, ', please' is added after upper-casing)

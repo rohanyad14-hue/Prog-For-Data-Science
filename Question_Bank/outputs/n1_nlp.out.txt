@@ -1,0 +1,39 @@
+--- tokenization ---
+sentences: ['Students are studying data science.', "Dr. Rao's class isn't easy, but the geese in the garden were running faster!"]
+words    : ['Students', 'are', 'studying', 'data', 'science', '.', 'Dr.', 'Rao', "'s", 'class', 'is', "n't", 'easy', ',', 'but', 'the', 'geese', 'in', 'the', 'garden', 'were', 'running', 'faster', '!']
+note: "isn't" -> 'is', "n't" and "Rao's" -> 'Rao', "'s"; punctuation becomes tokens
+
+--- cleaning: lower-case, keep alphabetic, remove stopwords ---
+English stopword list size: 198 | 'not' in list: True (removing it can flip sentiment)
+['students', 'studying', 'data', 'science', 'rao', 'class', 'easy', 'geese', 'garden', 'running', 'faster']
+
+--- stemming vs lemmatization ---
+word      Porter    Lancaster  Lemma (default n)  Lemma (with POS)
+studies   studi     study      study              -
+studying  studi     study      studying           study
+geese     gees      gees       goose              -
+running   run       run        running            run
+better    better    bet        better             good
+faster    faster    fast       faster             fast
+was       wa        was        wa                 be
+
+--- POS tagging ---
+[('The', 'DT'), ('students', 'NNS'), ('are', 'VBP'), ('studying', 'VBG'), ('data', 'NNS'), ('science', 'NN'), ('quickly', 'RB')]
+POS-aware lemmas: ['the', 'student', 'be', 'study', 'data', 'science', 'quickly']
+
+--- frequency, bigrams ---
+FreqDist: [('data', 4), ('needs', 3), ('science', 2)]
+bigrams : [('data', 'science'), ('science', 'needs'), ('needs', 'data'), ('data', 'and')] ...
+
+--- bag of words and TF-IDF ---
+vocabulary: ['data', 'fun', 'games', 'is', 'needs', 'science']
+BoW counts:
+ [[1 1 0 1 0 1]
+ [1 0 0 0 1 1]
+ [0 3 1 0 0 0]]
+TF-IDF (rounded):
+ [[0.46 0.46 0.   0.6  0.   0.46]
+ [0.52 0.   0.   0.   0.68 0.52]
+ [0.   0.92 0.4  0.   0.   0.  ]]
+idf per word: {'data': 1.29, 'fun': 1.29, 'games': 1.69, 'is': 1.69, 'needs': 1.69, 'science': 1.29}
+words found in only one document (games, is, needs) get the highest idf; words found in two documents get less.

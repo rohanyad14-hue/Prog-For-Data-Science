@@ -1,0 +1,68 @@
+--- val, var, def, lazy val, call-by-name ---
+after definitions: calls=1
+v twice: 1 1 | d twice: 2 3 | l twice: 4 4 | calls=4
+  byValue body
+byValue(next()) = 2 (argument evaluated once, before the body); calls=1
+  byName body
+byName(next())  = 3 (argument evaluated at each use); calls=2
+
+--- folds: direction matters for non-commutative operations ---
+foldLeft(0)(_ - _)  = -10   ((((0-1)-2)-3)-4)
+foldRight(0)(_ - _) = -2    (1-(2-(3-(4-0))))
+reverse via foldLeft  : List(4, 3, 2, 1)
+copy via foldRight    : List(1, 2, 3, 4)
+reduce(_ - _) = -8 | scanLeft(0)(_ + _) = List(0, 1, 3, 6, 10)
+reduce on empty list: UnsupportedOperationException | fold(0) on empty: 0
+
+--- lists: :: is right-associative, immutability ---
+1 :: 2 :: Nil = List(1, 2) | List(1,2) ::: List(3) = List(1, 2, 3) | List(1,2) :+ 3 = List(1, 2, 3) | 0 +: List(1) = List(0, 1)
+sorted returns a new list: List(1, 2, 3), original still List(3, 1, 2) | head/tail: 3/List(1, 2) | last: 2
+ListBuffer is mutable: ListBuffer(0, 1, 2, 3) | toList: List(0, 1, 2, 3)
+
+--- equality: == vs eq, arrays ---
+List(1,2) == List(1,2): true | Array(1,2) == Array(1,2): false (arrays compare by reference!)
+Array(1,2).sameElements(Array(1,2)): true | Array(1,2).toList == Array(1,2).toList: true
+strings: s1 == s2 is true, s1 eq s2 is false
+Set(1,2) == Set(2,1): true | Map(1->2) == Map(1->2): true | (1,2) == (1,2): true
+
+--- Char vs String conversion trap ---
+"5".toInt = 5 | '5'.toInt = 53 (the character code!) | '5'.asDigit = 5 | '5' - '0' = 5
+scala.util.Try("abc".toInt).isFailure = true | "abc".toIntOption = None
+7 / 2 = 3 | 7 / 2.0 = 3.5 | 7 % 3 = 1 | -7 % 3 = -1 | Int.MaxValue + 1 = -2147483648 | 0.1 + 0.2 = 0.30000000000000004
+
+--- Option instead of null ---
+m.get("a") = Some(1) | m.get("z") = None | m("a") = 1 | m("z") throws NoSuchElementException
+chain: Some(4).map(_ * 2).filter(_ > 5) = Some(8) | Some(1).flatMap(x => None: Option[Int]) = None | None.getOrElse(0) = 0
+for-comprehension over Options: Some(6) | with a None inside: None
+for over lists: List((1,2), (2,1), (3,1), (3,2))
+
+--- pattern matching ---
+  zero
+  negative int -5
+  int 7
+  string of length 5
+  pair 1,2
+  empty list
+  list head=1 tail=List(2, 3)
+  some(x)
+  something else
+binder @ and varargs pattern: whole=List(9, 8, 7) first=9
+tuple destructuring: q=3 r=2
+
+--- more collection operations ---
+partition: (List(3, 6, 9),List(1, 2, 4, 5, 7, 8, 10)) | groupBy(_ % 3): List((0,List(3, 6, 9)), (1,List(1, 4, 7, 10)), (2,List(2, 5, 8)))
+zip: List((1,a), (2,b)) | zipWithIndex: List((a,0), (b,1)) | sliding: List(List(1, 2), List(2, 3), List(3, 4))
+take/drop/takeWhile: List(1, 2)List(9, 10)List(1, 2, 3) | distinct: List(1, 2) | sortWith: List(3, 2, 1)
+1 to 5 = Range 1 to 5 | 1 until 5 = Range 1 until 5 | by 2: List(1, 5, 9)
+mapValues-free word count: List((be,2), (not,1), (or,1), (to,2))
+Set(1,2,2,3) = Set(1, 2, 3) | & : Set(2, 3) | | : Set(1, 2, 5) | -- : Set(2, 3)
+Map + new pair, then + same key again (overwrites): Map(a -> 9, b -> 2)
+Array elements are mutable, indexed with (): List(10, 2, 3) | ArrayBuffer can grow: ArrayBuffer(1, 2, 3)
+
+--- functions: default/named args, varargs, currying, closures ---
+Hello, Asha! | Hello, Ravi? | Hi, Meena!
+varargs: 0 6 9
+curried: add(2)(3) = 5 | add5(10) = 15
+closure sees the variable, not a copy: times(3) = 30
+andThen composes functions left to right: (5 + 1) * 2 = 12
+Unit value: () | Any holds anything: List(1, a, 2.0, true) | Nothing: throw has type Nothing: true

@@ -1,0 +1,4 @@
+tech: record(2), startup(2), chip(1), drive(1), profit(1)
+sports: final(2), record(2), local(1), team(1), win(1)
+business: record(2), profit(2), market(1), rally(1), lift(1)
+politics: new(2), law(2), parliament(1), debate(1), data(1)

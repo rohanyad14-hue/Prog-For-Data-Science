@@ -1,0 +1,31 @@
+Valid students
+  VL2026001  Asha Nair     86.0  grade A
+  VL2026004  Kabir Shah    58.0  grade C
+
+Dictionary keys: ['VL2026001', 'VL2026004']
+
+errors.log
+line 3 (VL2026002): skipped - invalid email 'rohan.vit.ac.in'
+line 4 (VL2026003): skipped - non-numeric marks 'abc'
+
+report.json
+{
+  "valid_count": 2,
+  "skipped_count": 2,
+  "students": [
+    {
+      "reg_no": "VL2026001",
+      "name": "Asha Nair",
+      "email": "asha@vit.ac.in",
+      "marks": 86.0,
+      "grade": "A"
+    },
+    {
+      "reg_no": "VL2026004",
+      "name": "Kabir Shah",
+      "email": "kabir@vit.ac.in",
+      "marks": 58.0,
+      "grade": "C"
+    }
+  ]
+}

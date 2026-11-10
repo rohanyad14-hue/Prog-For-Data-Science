@@ -1,0 +1,10 @@
+apple prices     : 2.4, 2.65, 2.5, 3.1
+average apple    : 2.6625
+Series at 2023-10-02:
+[2 x 1]
+2023-10-02 -> 2.6500
+2023-10-02 -> 1.8000
+
+frame shape      : 6 rows x 2 cols
+revenue column   : 288.0, 291.5, 350.0, 300.0, 324.0, 403.0
+mean with NA     : 3.0  (NA skipped), count = 2

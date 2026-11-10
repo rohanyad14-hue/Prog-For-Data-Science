@@ -1,0 +1,30 @@
+[ok]   tech     : 5 headlines, 24 distinct keywords
+[ok]   sports   : 4 headlines, 20 distinct keywords
+[ok]   business : 3 headlines, 17 distinct keywords
+[ok]   politics : 3 headlines, 14 distinct keywords
+[skip] health   : empty headline list
+[skip] science  : invalid JSON
+[skip] travel   : HTTP 404
+[skip] weather  : network problem (ConnectionError) after 2 attempts
+
+Example:  ['startup', 'adopt', 'assistant', 'customer', 'support']
+
+Top 5 keywords per category
+  tech      [('record', 2), ('startup', 2), ('chip', 1), ('drive', 1), ('profit', 1)]
+  sports    [('final', 2), ('record', 2), ('local', 1), ('team', 1), ('win', 1)]
+  business  [('record', 2), ('profit', 2), ('market', 1), ('rally', 1), ('lift', 1)]
+  politics  [('new', 2), ('law', 2), ('parliament', 1), ('debate', 1), ('data', 1)]
+
+Keywords unique to one category
+  tech      18 unique, e.g. ['adopt', 'assistant', 'attack', 'beat', 'chip', 'chipmakers']
+  sports    18 unique, e.g. ['celebrate', 'champion', 'championship', 'coach', 'crowd', 'dramatic']
+  business  12 unique, e.g. ['airline', 'bank', 'climb', 'demand', 'despite', 'interest']
+  politics  12 unique, e.g. ['data', 'debate', 'discus', 'law', 'leader', 'meet']
+
+top_keywords.txt
+tech: record(2), startup(2), chip(1), drive(1), profit(1)
+sports: final(2), record(2), local(1), team(1), win(1)
+business: record(2), profit(2), market(1), rally(1), lift(1)
+politics: new(2), law(2), parliament(1), debate(1), data(1)
+
+Failed categories: {'health': 'empty headline list', 'science': 'invalid JSON', 'travel': 'HTTP 404', 'weather': 'network problem (ConnectionError) after 2 attempts'}

@@ -1,0 +1,37 @@
+--- strings ---
+immutable: 'str' object does not support item assignment
+'Data Science' 'Data Science  ' 'hi' <- strip('x') removes a SET of characters, not a prefix
+cabc <- strips any a/b from both ends
+ecneicS | Science | gramming | 16 -1
+index raises: substring not found
+['Programming', 'for', 'Data', 'Science'] | ['Programming', 'for Data Science'] | ['Programming for Data', 'Science'] | ('Programming', ' for ', 'Data Science')
+a-b-c | ['a', 'b', '', 'c'] | ['a', 'b'] | ['', 'a', '', 'b', '']
+ProgrAmming for DAta Science | 3 | True | 005 | **ab**
+   Rohan|8.46|     8.5|00042|1,234,567|25.6%
+Rohan scored 8.5 | Rohan scored 8.5
+True | 'a' < 'B': False | ord/chr: 65 b
+isdigit/isalpha/isalnum: True False True True
+== vs is: True False (use == for values)
+sorted words by length: ['a', 'fox', 'quick', 'brown']
+
+--- exceptions: order, else, finally ---
+   finally for '12'
+   finally for 'a'
+   finally for None
+ok 12 | ValueError | TypeError/KeyError
+   finally runs before the value is returned
+from try
+finally can override return: from finally
+
+--- hierarchy: specific before general ---
+ZeroDivisionError is an ArithmeticError: True
+IndexError is a LookupError (IndexError and KeyError share this parent)
+KeyError is a LookupError (IndexError and KeyError share this parent)
+other: ValueError
+
+--- custom exception, chaining, assert, with ---
+custom: balance 100 < 250 | attrs: 100 250
+chained: config invalid | cause: ValueError("invalid literal for int() with base 10: 'x'")
+AssertionError: math broke
+file closed after with: True
+KeyboardInterrupt is NOT an Exception: True

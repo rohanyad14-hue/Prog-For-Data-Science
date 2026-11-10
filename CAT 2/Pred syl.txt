@@ -1,0 +1,17 @@
+MOD :2
+Data Visualization: Matplotlib – Seaborn – Bokeh – Plotly - Folium
+MOD :3
+Expanded Function Format, Variables and Strings, Getting user input, Numbers,
+Variable types, Operators, Booleans Data Structures-Arrays, Lists, Tuple, Sets, Hash
+set, Maps - Functional Combinators Map, Scala Object and Class, Anonymous
+object-Singleton, Companion Object-Case Classes, Objects-Constructors-Method
+Overloading - This Keyword – Inheritance - Field Overriding - Final, Abstract ClassTrait, Trait Mixins, Access Modifiers, Scala Array-REPL
+MOD :4
+Scala Libraries- Breeze, saddle, Exception Handling, Apache Spark Architecture -
+Spark Big Data - Apache Spark Components
+MOD :5
+Size of the Deployment: Data, Resource and Load - Security - Skill Set - The
+targeted platform - The elasticity of a language - The time to production - The
+performance - The support and community – Purpose – Programmer experience -
+Ease of Development and Maintenance - Efficiency - Availability of an IDE -Error
+Checking and Diagnosis

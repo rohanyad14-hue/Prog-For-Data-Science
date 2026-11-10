@@ -1,0 +1,48 @@
+--- file modes ---
+'w' truncates: size after reopening with 'w' = 0
+'x' on an existing file -> FileExistsError
+'r' on a missing file -> FileNotFoundError
+
+--- reading styles ---
+read(): 'line1\nline2\nline3\n'
+readline(): 'line1\n' | readlines(): ['line2\n', 'line3\n']
+iterate: ['line1', 'line2', 'line3'] (memory friendly for big files)
+seek(6) then read(5): 
+line | tell(): 11
+'r+' overwrote in place: LINE1
+
+--- csv and json ---
+reg,name,marks
+VL1,Asha,86
+VL2,"Kabir, S",58
+csv returns strings: {'reg': 'VL2', 'name': 'Kabir, S', 'marks': '58'} | comma inside a field is quoted automatically
+dumps: {"id": 1, "tags": ["a", "b"], "2": "int key", "ok": true, "none": null}
+loads: {'id': 1, 'tags': ['a', 'b'], '2': 'int key', 'ok': True, 'none': None} <- tuple became list, int key became str, True->true->True
+dump/load (file) vs dumps/loads (string): {'a': [1, 2]}
+single quotes are not JSON: Expecting property name enclosed in double quotes
+
+--- GET with query parameters ---
+url sent  : http://127.0.0.1:PORT/items?category=tech&q=a+b%26c (params are URL-encoded)
+status    : 200 OK | Content-Type: application/json
+r.json()  : {'count': 1, 'items': [{'id': 1, 'name': 'Laptop', 'category': 'tech'}]}
+r.text type: str | r.json() type: dict
+
+--- status codes ---
+GET    /items/1   -> 200 OK
+GET    /items/99  -> 404 Not Found
+GET    /nowhere   -> 404 Not Found
+POST   /items     -> 201 Created Location=/items/3
+PUT    /items/2   -> 200 OK
+DELETE /items/1   -> 204 No Content
+POST with a bad body        -> 400 {'error': 'invalid JSON'}
+
+--- errors: raise_for_status, auth, rate limit, timeout, bad JSON ---
+raise_for_status -> HTTPError | code: 404
+no token -> 401 | with Bearer token -> 200
+/limited try 1: 429 Retry-After=1
+/limited try 2: 429 Retry-After=1
+/limited try 3: 200 
+timeout=0.5 on a 1.5 s endpoint -> ReadTimeout
+invalid JSON body -> ValueError subclass: JSONDecodeError
+nothing listening ->  ConnectTimeout
+Session reuses the connection and default headers: {'data': 'private'}

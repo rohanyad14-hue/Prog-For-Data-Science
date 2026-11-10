@@ -1,0 +1,184 @@
+[
+ {
+  "id": "F1",
+  "ok": true,
+  "output": "(6, 4)\ncount        6.0\nmean     57833.3\nstd      12319.4\nmin      43000.0\n25%      49000.0\n50%      56500.0\n75%      66250.0\nmax      75000.0\nName: Salary, dtype: float64\n3 IT employees\nDept\nHR       50000.0\nIT       68000.0\nSales    43000.0\nName: Salary, dtype: float64\n    Name  Salary\n2  Meena   75000\n5  Kabir   68000\n1   Ravi   61000",
+  "n_lines": 17,
+  "blank_lines": [
+   7,
+   11,
+   12,
+   14,
+   16
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F2",
+  "ok": true,
+  "output": "{'id': 0, 'age': 1, 'city': 1, 'joined': 0}\n   id   age     city\n0   1  25.0     Pune\n1   2  27.0    Delhi\n3   3  27.0  Unknown\n5   5  29.0     Pune\n6   6  26.0    Delhi\n[1, 2, 3, 5, 6]",
+  "n_lines": 18,
+  "blank_lines": [
+   10,
+   11,
+   12,
+   13,
+   16
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F3",
+  "ok": true,
+  "output": "(3, 4) 2\n7 [ 2  6 10] [[2, 3], [6, 7]]\n[5. 6. 7. 8.] [10 26 42]\n[-4. -4. -4. -4.]\n[ 2  4  6  8 10 12]\n[[ 4 13]\n [12 29]\n [20 45]]",
+  "n_lines": 15,
+  "blank_lines": [
+   3,
+   4,
+   7,
+   8,
+   10,
+   14
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F4",
+  "ok": true,
+  "output": "0.97\nsaved eda.png",
+  "n_lines": 19,
+  "blank_lines": [
+   11,
+   12,
+   14,
+   16,
+   18
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F5",
+  "ok": true,
+  "output": "          title location  link\n0  Data Analyst     Pune  /j/1\n1   ML Engineer    Delhi  /j/2\n2  BI Developer     Pune  /j/3\n{'Pune': 2, 'Delhi': 1}",
+  "n_lines": 16,
+  "blank_lines": [
+   7,
+   9,
+   10,
+   12,
+   14
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F6",
+  "ok": true,
+  "output": "0.75\n5 2",
+  "n_lines": 14,
+  "blank_lines": [
+   8,
+   9,
+   10,
+   11,
+   13
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F7",
+  "ok": true,
+  "output": "1 Iris: sepal vs petal length",
+  "n_lines": 17,
+  "blank_lines": [
+   10,
+   11,
+   13,
+   14,
+   15
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F8",
+  "ok": true,
+  "output": "[0.7296 0.2285] 0.9581\n                    PC1   PC2\nsepal length (cm)  0.52  0.38\nsepal width (cm)  -0.27  0.92\npetal length (cm)  0.58  0.02\npetal width (cm)   0.56  0.07\nIris PCA",
+  "n_lines": 19,
+  "blank_lines": [
+   9,
+   10,
+   11,
+   16
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F9",
+  "ok": true,
+  "output": "[600.0, 222.4, 139.8, 114.1, 90.9, 81.5]\n[47, 50, 53]\n(3, 4)\n0.46",
+  "n_lines": 18,
+  "blank_lines": [
+   11,
+   13,
+   14,
+   16,
+   17
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F10",
+  "ok": true,
+  "output": "50\nList(4, 9, 25, 49, 121)\n delorw\nList((Kalyan,90), (Rohan,92), (Vedant,88))\nHashMap(Alice -> 95)",
+  "n_lines": 21,
+  "blank_lines": [
+   6,
+   8,
+   12,
+   15,
+   18
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F11",
+  "ok": true,
+  "output": "List(2, 4, 6, 8, 10) List(3, 6, 9, 12, 15, 18, 21, 24, 27, 30) 3628800\nDelhi: Ayush\nHyderabad: Sneha\nMumbai: Vedant, Priya\n1. Priya (35)\n2. Ayush (32)\n3. Vedant (24)\n4. Sneha (22)\nList(Ayush, Priya)",
+  "n_lines": 19,
+  "blank_lines": [
+   6,
+   7,
+   8,
+   12,
+   13
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F12",
+  "ok": true,
+  "output": "Apple    30,000.00\nBanana   27,000.00\nOrange   25,600.00\nTotal: 82,600.00  Mean: 27533.33\n82600.0",
+  "n_lines": 16,
+  "blank_lines": [
+   9,
+   10,
+   11,
+   12,
+   14
+  ],
+  "stderr_tail": ""
+ },
+ {
+  "id": "F13",
+  "ok": true,
+  "output": "Average: 124.50\n[2 x 1]\n2026-05-22\n2026-05-29\n\n5 x 2\n29967.75",
+  "n_lines": 18,
+  "blank_lines": [
+   8,
+   9,
+   10,
+   13,
+   15
+  ],
+  "stderr_tail": ""
+ }
+]

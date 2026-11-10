@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bokeh Plot</title>
+    <style>
+      html, body {
+        box-sizing: border-box;
+        display: flow-root;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+<script src="https://cdn.bokeh.org/bokeh/release/bokeh-3.9.2.min.js"></script>
+<script>
+Bokeh.set_log_level("info");
+</script>
+  </head>
+  <body>
+    <div id="a31153a6-3f15-4e12-bcd2-b08b0b584fce" data-root-id="p1009" style="display: contents;"></div>
+  
+    <script type="application/json" id="de0c169a-c7c2-4765-8bd5-3fa4c732c160">
+      {"8822c675-743b-49f8-b309-0e50e6c534a2":{"version":"3.9.2","title":"Bokeh Application","config":{"type":"object","name":"DocumentConfig","id":"p1054","attributes":{"notifications":{"type":"object","name":"Notifications","id":"p1055"}}},"roots":[{"type":"object","name":"Figure","id":"p1009","attributes":{"width":450,"height":300,"x_range":{"type":"object","name":"FactorRange","id":"p1019","attributes":{"factors":["North","South","East","West","Central"]}},"y_range":{"type":"object","name":"DataRange1d","id":"p1011"},"x_scale":{"type":"object","name":"CategoricalScale","id":"p1020"},"y_scale":{"type":"object","name":"LinearScale","id":"p1021"},"title":{"type":"object","name":"Title","id":"p1012","attributes":{"text":"AQI by zone"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1048","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1006","attributes":{"selected":{"type":"object","name":"Selection","id":"p1007","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1008"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/2NgYGBgBGImIGYGYhYgBgA3BGtMFAAAAA=="},"shape":[5],"dtype":"int32","order":"little"}],["Zone",{"type":"ndarray","array":["North","South","East","West","Central"],"shape":[5],"dtype":"object","order":"little"}],["Temp",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/1NmYGCQA2JFIJYFYlUgBgAYouOPFAAAAA=="},"shape":[5],"dtype":"int32","order":"little"}],["AQI",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/9vCwMBQAcTTgDgFiO8AMQAcaEfHFAAAAA=="},"shape":[5],"dtype":"int32","order":"little"}],["Rain",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/xNhYGBQBmJJINYAYn4gBgCmqkh8FAAAAA=="},"shape":[5],"dtype":"int32","order":"little"}],["Green",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/xNiYGCQA2IxIFYGYh4gBgAAHHI9FAAAAA=="},"shape":[5],"dtype":"int32","order":"little"}],["AQI_category",{"type":"ndarray","array":["Moderately polluted","Moderately polluted","Moderately polluted","Satisfactory","Poor"],"shape":[5],"dtype":"object","order":"little"}],["risk_score",{"type":"ndarray","array":{"type":"bytes","data":"H4sIAAEAAAAA/7t57nvw46XP7fl0N819v/yY/ZICW67rix/YM6CAD/YAPZDJCSgAAAA="},"shape":[5],"dtype":"float64","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1049","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1050"}}},"glyph":{"type":"object","name":"VBar","id":"p1045","attributes":{"x":{"type":"field","field":"Zone"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"AQI"},"line_color":{"type":"value","value":"#1f77b4"},"fill_color":{"type":"value","value":"#1f77b4"}}},"nonselection_glyph":{"type":"object","name":"VBar","id":"p1046","attributes":{"x":{"type":"field","field":"Zone"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"AQI"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"VBar","id":"p1047","attributes":{"x":{"type":"field","field":"Zone"},"width":{"type":"value","value":0.6},"top":{"type":"field","field":"AQI"},"line_color":{"type":"value","value":"#1f77b4"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"value","value":"#1f77b4"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1018","attributes":{"tools":[{"type":"object","name":"PanTool","id":"p1032"},{"type":"object","name":"WheelZoomTool","id":"p1033","attributes":{"renderers":"auto"}},{"type":"object","name":"BoxZoomTool","id":"p1034","attributes":{"overlay":{"type":"object","name":"BoxAnnotation","id":"p1035","attributes":{"syncable":false,"line_color":"black","line_alpha":1.0,"line_width":2,"line_dash":[4,4],"fill_color":"lightgrey","fill_alpha":0.5,"level":"overlay","visible":false,"left":{"type":"number","value":"nan"},"right":{"type":"number","value":"nan"},"top":{"type":"number","value":"nan"},"bottom":{"type":"number","value":"nan"},"left_units":"canvas","right_units":"canvas","top_units":"canvas","bottom_units":"canvas","handles":{"type":"object","name":"BoxInteractionHandles","id":"p1041","attributes":{"all":{"type":"object","name":"AreaVisuals","id":"p1040","attributes":{"fill_color":"white","hover_fill_color":"lightgray"}}}}}}}},{"type":"object","name":"SaveTool","id":"p1042"},{"type":"object","name":"ResetTool","id":"p1043"},{"type":"object","name":"HelpTool","id":"p1044"},{"type":"object","name":"HoverTool","id":"p1051","attributes":{"renderers":"auto","tooltips":[["zone","@Zone"],["AQI","@AQI"],["green %","@Green"]],"sort_by":null}}]}},"left":[{"type":"object","name":"LinearAxis","id":"p1027","attributes":{"ticker":{"type":"object","name":"BasicTicker","id":"p1028","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1029"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1030"}}}],"below":[{"type":"object","name":"CategoricalAxis","id":"p1022","attributes":{"ticker":{"type":"object","name":"CategoricalTicker","id":"p1023"},"formatter":{"type":"object","name":"CategoricalTickFormatter","id":"p1024"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1025"}}}],"center":[{"type":"object","name":"Grid","id":"p1026","attributes":{"axis":{"id":"p1022"}}},{"type":"object","name":"Grid","id":"p1031","attributes":{"dimension":1,"axis":{"id":"p1027"}}}]}}]}}
+    </script>
+    <script>
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('de0c169a-c7c2-4765-8bd5-3fa4c732c160').textContent;
+              const render_items = [{"docid":"8822c675-743b-49f8-b309-0e50e6c534a2","roots":{"p1009":"a31153a6-3f15-4e12-bcd2-b08b0b584fce"},"root_ids":["p1009"]}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>

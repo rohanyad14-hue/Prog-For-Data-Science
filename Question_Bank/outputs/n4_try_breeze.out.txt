@@ -1,0 +1,47 @@
+--- try/catch/finally as an expression ---
+  finally ran
+  finally ran
+f(2) = 5 | f(0) = -1
+  finally before the value is returned
+from try
+
+--- catch order and NonFatal ---
+  IllegalArgument: bad arg | IllegalArgument: For input string: "x" | NonFatal: IOException    (case 1: NumberFormatException is a subclass of IllegalArgumentException, so the FIRST handler wins)
+  NonFatal(IOException) = true | NonFatal(StackOverflowError) = false | NonFatal(OutOfMemoryError) = false  (never swallow fatal errors; Try does not catch them)
+
+--- Try: map/flatMap/recover/recoverWith/toOption/fold ---
+  '4' -> Success(0.25) | getOrElse(-1.0) = 0.25 | recover = Success(0.25)
+  '0' -> Failure(java.lang.ArithmeticException: zero) | getOrElse(-1.0) = -1.0 | recover = Success(Infinity)
+  'x' -> Failure(java.lang.NumberFormatException: For input string: "x") | getOrElse(-1.0) = -1.0 | recover = Success(NaN)
+  for-comprehension stops at the first failure: Failure(java.lang.NumberFormatException: For input string: "oops")
+  fold: got 5
+  a Failure is only a value; calling .get on it re-throws the stored exception: NumberFormatException
+
+--- Either: errors with information ---
+  List(Right(21), Left(negative age), Left('abc' is not a number))
+  fold: error: negative age | partitionMap: (List(negative age, 'abc' is not a number),List(21, 40))
+  sequence-like: all valid? true | first error: Some('x' is not a number)
+
+--- Using: automatic resource closing ---
+  closing file1
+  Success(data from file1)
+  closing file2
+  with a failure inside, the resource still closes and the result is: Failure(java.lang.RuntimeException: boom)
+  closing B
+  closing A
+  two resources close in reverse order: Success(data from A+data from B)
+
+--- Breeze: vectors, matrices, slicing, broadcasting ---
+  v + w = DenseVector(5.0, 7.0, 9.0) | v *:* w = DenseVector(4.0, 10.0, 18.0) | v dot w = 32.0 | v * 2.0 = DenseVector(2.0, 4.0, 6.0) | sum(v) = 6.0
+trying to return java 16 instance
+return java 11 instance
+  m * m (matrix product) = 7.0   10.0   ; 15.0  22.0   | m *:* m (element-wise) = 1.0  4.0    ; 9.0  16.0  
+  m.t = 1.0  3.0   ; 2.0  4.0   | det = -2.0 | inv = -1.9999999999999996  0.9999999999999998    ; 1.4999999999999998   -0.4999999999999999  
+  slicing: v(0 to 1) = DenseVector(1.0, 2.0) | m(::, 0) = DenseVector(1.0, 3.0) | m(1, ::) = DenseVector(3.0, 4.0) | m(0, 1) = 2.0
+  broadcasting: subtract column means = -1.0  -10.0   ; 0.0   0.0     ; 1.0   10.0   
+  indexing is 0-based and uses (), like Scala arrays; v(5) throws IndexOutOfBoundsException
+
+--- PCA in Breeze: eigen-decomposition of the covariance matrix (same 5 points as the Python notes) ---
+  covariance = 2.5   2.25   ; 2.25  4.0   
+  eigenvalues (ascending) = DenseVector(0.8782917548737156, 5.6217082451262845) | explained ratio of the largest = 0.8649
+  eigenvectors (columns) = -0.8112421851755608  0.584710284663765    ; 0.584710284663765    0.8112421851755608  

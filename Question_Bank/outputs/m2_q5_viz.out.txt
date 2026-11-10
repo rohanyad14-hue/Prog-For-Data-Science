@@ -1,0 +1,10 @@
+plotly_bar.html      written,     8,190 characters
+plotly_scatter.html  written,     9,758 characters
+bokeh_line.html      written,     6,570 characters
+bokeh_bar.html       written,     6,396 characters
+bokeh_scatter.html   written,     7,401 characters
+folium_map.html      written,     4,073 characters
+
+Plotly bar trace type  : bar with 5 bars
+Plotly scatter traces  : ['markers', 'lines']
+Iris points plotted    : 150

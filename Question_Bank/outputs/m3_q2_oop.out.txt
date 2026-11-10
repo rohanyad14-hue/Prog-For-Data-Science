@@ -1,0 +1,9 @@
+  note: salary
+Account(Asha, 750.00)
+A dog makes the sound 'woof' | kind = animal
+Circle area = 7.07
+Rect area = 6.00
+protected, public, private
+Welcome to PDS Demo
+Rohan, Meena, created = 2
+anonymous: makes the sound 'meow'

@@ -1,0 +1,55 @@
+--- Q1 course registration: classes, constructors, lists, overloading, inheritance ---
+all students: UG(101, Arun, CSE, [Scala, DBMS])
+              UG(102, Priya, ECE, [Python, ML])
+              PG(103, Rahul, CSE, [Scala, AI]) thesis=Graph analytics
+              UG(104, Kavya, IT, [])
+add AI to Arun        : ok: UG(101, Arun, CSE, [Scala, DBMS, AI])
+add Scala to Arun again: rejected: Arun is already registered for Scala
+remove DBMS from Arun : ok: UG(101, Arun, CSE, [Scala, AI])
+search("Scala")        : List(Arun, Rahul)
+search("CSE", "Scala") : List(Arun, Rahul)   (overloaded method, two parameter lists of different length)
+PG limit is 4         : rejected: Rahul has reached the PG limit of 4 courses
+unknown id            : no student with id 999
+
+--- Q2 library: abstract class, field overriding, polymorphism, final ---
+  Book #101 'Scala Programming' [Available], loan period 14 days
+  Journal #201 'Data Science Journal' [Issued], loan period 7 days (reference copy, in-library reading preferred)
+  Magazine #301 'Tech Today' [Available], loan period 3 days
+issue every resource through the same call:
+  Book 'Scala Programming' issued for 14 days
+  Journal 'Data Science Journal' cannot be issued (status: Issued)
+  Magazine 'Tech Today' issued for 3 days
+return them all:
+  Book 'Scala Programming' returned
+  Journal 'Data Science Journal' returned
+  Magazine 'Tech Today' returned
+status after the round trip: Book=Available, Journal=Available, Magazine=Available
+
+--- Q3 shopping cart: Map and combinators versus an imperative loop ---
+10% discount : List((Laptop,58500), (Mobile,22500), (Tablet,16200), (Headphone,2700))
+above 20,000 : List(Laptop, Mobile) | total inventory value (one unit each): 111000 | after discount: 99900
+imperative gives the same: true (but with 3 mutable variables and one loop doing three jobs)
+chained pipeline : 81000 = discounted total of the premium items
+
+--- Q4 employees: case class, companion object, access modifiers, singleton ---
+case class toString / equality / copy: Employee(101,Ravi,Developer,75000) | true | Lead
+auto id from companion: 104 Dev (Analyst) band B
+band only, never the salary: List(B, C, A)
+companion utilities: total 225000, highest Kiran, Ravi after a 10% raise has band B
+parsing: List(104 Dev (Analyst) band B, bad number in '105,Zed,Tester,abc', expected 4 fields in '106,Only,Three')
+Employee report
+  101 Ravi (Developer) band B
+  102 Anu (Tester) band C
+  103 Kiran (Manager) band A
+  104 Dev (Analyst) band B
+  total payroll 290000, average 72500.0, highest paid Kiran
+
+--- Q5 transport: traits, mixins, arrays, real-time rules ---
+fleet: Bus at 45 km/h; Car at 70 km/h; Ambulance at 90 km/h; FireEngine at 85 km/h; Bike at 60 km/h
+emergency vehicles : List(Ambulance: siren on, priority 1, FireEngine: siren on, priority 1)
+high-speed capable : List(Ambulance, FireEngine)
+ordinary vehicles over the 60 km/h city limit: List(Car) (emergency vehicles are exempt)
+passenger loading  : List(Bus boards 3 of 40 passengers, Car boards 3 of 4 passengers)
+ad-hoc mixin on one object: Bike overLimit(50) = true
+sorted by speed    : List(Ambulance:90, FireEngine:85, Car:70, Bike:60, Bus:45)
+average speed      : 70.0

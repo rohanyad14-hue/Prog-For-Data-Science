@@ -1,0 +1,31 @@
+--- stack (LIFO) ---
+peek: 3 | pop: 3 | now: [1, 2]
+balanced: [True, False, False, True]
+
+--- queue (FIFO) with deque ---
+popleft: 1 | now: [2, 3, 4]
+rotate(1): [4, 2, 3]
+deque(maxlen=3) keeps the newest: [3, 4, 5]
+20000 removals from the front: list.pop(0) 3332.1 ms, deque.popleft() 1.32 ms
+
+--- library queues ---
+Queue: [3, 1, 2] | LifoQueue: [2, 1, 3] | PriorityQueue: [1, 2, 3] (thread-safe versions)
+
+--- priority queue with heapq ---
+heap list is NOT sorted: [1, 3, 2, 5, 9, 8] | data[0] is the minimum: 1
+pop order: [0, 1, 2, 3, 5, 8, 9]
+nlargest(2): [9, 8] | nsmallest(2): [1, 2]
+max-heap by negating: 8
+
+--- tie-breaking and non-comparable items ---
+equal priority falls back to the next field: (1, 'task A')
+same priority + objects without ordering -> '<' not supported between instances of 'Job' and 'Job'
+with a counter, order is priority then arrival: ['urgent 1', 'urgent 2', 'routine 1', 'routine 2']
+
+cost: heappush/heappop O(log n), peek O(1), heapify O(n)
+
+--- user-defined classes (the usual exam question) ---
+Stack: pop -> 3 | peek -> 2 | len -> 2
+Queue: dequeue -> a | len -> 2
+PriorityQueue pops: ['fix outage', 'fix leak', 'reset password', 'print report']
+empty stack -> pop from empty stack

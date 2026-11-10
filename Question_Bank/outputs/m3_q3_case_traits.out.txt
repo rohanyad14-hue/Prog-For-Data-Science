@@ -1,0 +1,19 @@
+toString : Person(Asha,22,Chennai)
+equals   : true  (structural)   eq: false  (reference)
+hashCode : true
+copy     : Person(Asha,22,Pune)
+unapply  : name=Asha age=22
+older than 30  : List(Ravi, Meena, Sneha)
+grouped by city: List((Chennai,List(Asha, Meena)), (Delhi,List(Ravi, Sneha)), (Pune,List(Kabir)))
+as strings     : List(Asha is 22 years old and lives in Chennai, Ravi is 34 years old and lives in Delhi)
+sorted by age  : List(Asha, Kabir, Sneha, Ravi, Meena)
+  Large transaction T1 logged
+  Standard transaction T2 approved
+  Alert: Transaction T3 failed
+  Unknown transaction state
+  [LOG] Asha started
+  [AUDIT] Asha finished
+linearization of D extends B with C: D > C > B > A
+  [LOG] Kabir started
+  [AUDIT] Kabir finished
+  [NOTIFY] shift over

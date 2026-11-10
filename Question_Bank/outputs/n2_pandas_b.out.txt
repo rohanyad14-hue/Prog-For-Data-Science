@@ -1,0 +1,48 @@
+--- groupby: agg vs transform vs apply ---
+agg   (one row per group): {'N': 160, 'S': 140, 'W': 20}
+transform (same length as input): [140, 140, 160, 160, 160, 20]
+share of region total: [0.71, 0.29, 0.44, 0.19, 0.38, 1.0]
+region   cat  total  n   avg
+     N Books     60  1  60.0
+     N  Tech    100  2  50.0
+     S Books     40  1  40.0
+     S  Tech    100  1 100.0
+     W Books     20  1  20.0
+size() counts rows incl. NaN; count() counts non-NaN: {'N': 3, 'S': 2, 'W': 1}
+pivot_table:
+cat     Books  Tech
+region             
+N          60   100
+S          40   100
+W          20     0
+groupby result index is the group key unless reset_index(): region
+
+--- merge: how, keys, traps ---
+inner  -> 3 rows
+left   -> 4 rows
+right  -> 4 rows
+outer  -> 5 rows
+ cid  name  oid     _merge
+   1  Asha 10.0       both
+   1  Asha 11.0       both
+   2  Ravi 12.0       both
+   3 Meena  NaN  left_only
+   9   NaN 13.0 right_only
+many-to-many join: 2 x 2 matching keys -> 4 rows (row explosion)
+validate='one_to_one' catches it: Merge keys are not unique in either left or right datas ...
+same column name in both -> suffixes: ['id', 'v_x', 'v_y'] | custom: ['id', 'v_l', 'v_r']
+different key names: left_on/right_on -> ['cid', 'name', 'oid', 'customer', 'amt']
+key dtype mismatch (text '1' vs number 1):
+   -> You are trying to merge on object and int64 columns for key 'cid'. If  ...
+
+--- concat and join ---
+concat axis=0 keeps duplicate index labels: [0, 1, 0, 1] | ignore_index: [0, 1, 2, 3]
+concat axis=1 shape: (2, 2) | join on index: ['name', 'oid', 'amt']
+
+--- text data (.str) ---
+strip/title: ['Asha Nair', 'Ravi.Kumar@Vit.Ac.In', None, 'Meena Rao']
+contains (NaN stays NaN): [False, True, None, False]
+na=False: [False, True, False, False]
+extract domain: [nan, 'vit.ac.in', None, nan]
+split + expand: (3, 2) | len: [12.0, 20.0, nan, 9.0]
+replace regex: [' asha NAIR '] | lower+startswith: [False, True, None, False]

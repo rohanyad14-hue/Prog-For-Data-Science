@@ -1,0 +1,5 @@
+pyplot state-machine call plt.plot(...) draws on the 'current axes'; the object-oriented form ax.plot(...) names the axes explicitly.
+plt.subplots returns: Figure and ndarray of shape (3,)
+Seaborn axes-level functions (boxplot, heatmap, scatterplot) accept ax=...; figure-level ones (pairplot, relplot, catplot) create their own figure.
+pairplot returns: PairGrid (a figure-level object)
+saved notes_viz.png

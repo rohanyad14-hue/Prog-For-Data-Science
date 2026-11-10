@@ -1,0 +1,54 @@
+1. select Name and Age
+    Name  Age
+0   Asha   22
+1   Ravi   31
+2  Meena   27
+3  Kabir   35
+4  Sneha   24
+
+2. filter Age > 25
+    Name  Age    City
+1   Ravi   31   Delhi
+2  Meena   27    Pune
+3  Kabir   35  Mumbai
+
+3. add Country, sort by Age (descending)
+    Name  Age     City Country
+3  Kabir   35   Mumbai   India
+1   Ravi   31    Delhi   India
+2  Meena   27     Pune   India
+4  Sneha   24  Chennai   India
+0   Asha   22  Chennai   India
+
+4. average age: 27.8
+
+.loc (label) vs .iloc (position)
+   df.loc[1:2, 'Name'] -> ['Ravi', 'Meena']    (end label INCLUDED)
+   df.iloc[1:2, 0]     -> ['Ravi']            (end position EXCLUDED)
+
+
+Raw data with missing values
+    Name   Age     City
+0   Asha  22.0  Chennai
+1   None  31.0    Delhi
+2  Meena   NaN     Pune
+3  Kabir  35.0     None
+4  Sneha  40.0  Chennai
+
+missing per column
+Name    1
+Age     1
+City    1
+dtype: int64
+
+After fillna / dropna / astype(int)
+    Name  Age     City
+0   Asha   22  Chennai
+2  Meena   32     Pune
+4  Sneha   40  Chennai
+
+Min-max scaled Age
+    Name  Age     City  Age_scaled
+0   Asha   22  Chennai    0.000000
+2  Meena   32     Pune    0.555556
+4  Sneha   40  Chennai    1.000000

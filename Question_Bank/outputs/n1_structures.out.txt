@@ -1,0 +1,40 @@
+--- list: aliasing, copies, sort ---
+a = [3, 1, 2, 9] | c = [3, 1, 2] | a is b: True
+sorted(a) -> [1, 2, 3, 9] | a unchanged: [3, 1, 2, 9]
+a.sort() returns None | a is now [1, 2, 3, 9]
+s[2:8:2] = [2, 4, 6] | s[::-1] = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0] | s[-3:] = [7, 8, 9]
+
+--- mutable default argument ---
+bad(1), bad(2)   -> [1, 2] [1, 2]
+good(1), good(2) -> [1] [2]
+
+--- shallow vs deep copy, list multiplication ---
+shallow: [[1, 2, 99], [3]] | deep: [[1, 2], [3]]
+[[0]*2]*2 then grid[0][0]=1 -> [[1, 0], [1, 0]] (rows are the same object)
+comprehension version        -> [[1, 0], [0, 0]]
+
+--- tuple ---
+append inside a tuple's list works: ([1, 3], 2)
+t[0] += [4] raises TypeError: 'tuple' object does not support item assignment | but t is now ([1, 3, 4], 2)
+one-item tuple: (5,) tuple int
+swap: 2 1 | unpack: 10 [20, 30]
+namedtuple: P(name='Asha', cgpa=8.6) Asha 8.6
+
+--- dict ---
+get missing: None 0
+setdefault: {'a': 1, 'b': [1]}
+defaultdict: {'t': ['to', 'to'], 'b': ['be', 'be'], 'o': ['or'], 'n': ['not']}
+Counter: [('to', 2), ('be', 2)]
+modify while iterating -> dictionary changed size during iteration
+list as key -> unhashable type: 'list'
+tuple key OK: {(1, 2): 'x'} | merge: {'a': 2, 'b': 3}
+
+--- set ---
+type({}) = dict | type(set()) = set
+A|B {1, 2, 3, 4, 5} A&B {3, 4} A-B {1, 2} A^B {1, 2, 5} A<=B False
+set of lists -> unhashable type: 'list'
+frozenset usable as key: {frozenset({1, 2}): 'ok'}
+duplicates removed: {1, 2, 3}
+
+--- membership speed (100000 items, 200 lookups of the worst case) ---
+list 134.02 ms, set 0.0135 ms -> set is about 9,927x faster here
