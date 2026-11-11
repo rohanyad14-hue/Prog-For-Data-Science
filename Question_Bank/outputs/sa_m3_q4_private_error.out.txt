@@ -1,0 +1,3 @@
+compilation FAILED (as intended)
+sa_m3_q4_private_error.scala:12:13
+  value taxRate in object PayrollReport cannot be accessed as a member of object PayrollReport from object Wrong

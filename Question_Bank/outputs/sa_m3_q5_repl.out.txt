@@ -1,0 +1,19 @@
+scala> trait EmergencyService { def siren: String = "siren ON" }
+trait EmergencyService
+scala> class Car(val speed: Int) { override def toString = "Car(" + speed + ")" }
+class Car
+scala> val police = new Car(80) with EmergencyService
+val police: Car with EmergencyService = Car(80)
+scala> police.siren
+val res0: String = siren ON
+scala> police.isInstanceOf[EmergencyService]
+val res1: Boolean = true
+scala> val fleet = Array(("Bus", 45), ("Car", 70), ("Ambulance", 90))
+val fleet: Array[(String, Int)] = Array((Bus,45), (Car,70), (Ambulance,90))
+scala> fleet.map(_._2).max
+val res2: Int = 90
+scala> fleet.filter(_._2 > 50).toList
+val res3: List[(String, Int)] = List((Car,70), (Ambulance,90))
+scala> fleet(0) = ("Bus", 55)
+scala> fleet.map(_._2).sum
+val res5: Int = 215

@@ -1,0 +1,4 @@
+compilation FAILED (as intended)
+oops_err_override.scala:8:7
+  `override` modifier required to override concrete member:
+  def describe: String (defined in class Person)

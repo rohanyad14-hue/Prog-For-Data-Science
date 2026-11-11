@@ -1,0 +1,15 @@
+'When are the exams?'                      -> Exams start on 4 December. Hall tickets are on the student portal.
+'Tell me about placement companies'        -> Register for placements on the career portal.
+'Which courses and exams are there?'       -> Do you mean courses or exams?
+'   '                                      -> Please type your question.
+'What are the library timings?'            -> The library is open from 9 am to 8 pm.
+'How is the weather on campus?'            -> I do not know yet. A staff member will answer this question.
+
+--- continuous learning with a human in the loop ---
+waiting for review: ['How is the weather on campus?']
+'How is the weather on campus?' -> Please check the campus notice board for weather alerts.
+
+--- statistics from the history ---
+answers by source: {'keywords': 2, 'clarify': 1, 'empty': 1, 'chatterbot': 2, 'fallback': 1}
+keywords of 'Which courses and exams are there?': ['cours', 'exam']
+questions still unanswered: {'How is the weather on campus?': 1} | queue length: 0

@@ -1,0 +1,41 @@
+## 1 Class, object, constructor, this
+Asha (72) pass | Ravi (0) fail
+Ravi (55)
+## 2 Encapsulation and access modifiers
+1500 audit of Asha
+VITB
+IllegalArgumentException: requirement failed: amount must be positive
+## 3 Inheritance and super
+Meena is a person earning 90000
+true
+Manager -> Employee -> Person -> Object
+## 4 Method overloading and field overriding
+3 6 4.0
+makes woof
+NullPointerException while Derived is being built
+7
+## 5 Polymorphism and operator overloading
+Circle 12.57
+Rect 12.0
+Shape 0.0
+Vec(4, 6)
+## 6 Abstract class
+Swift has 4 wheels
+Hero has 2 wheels
+## 7 Traits and mixins
+Donald flies | Donald swims
+log: service running
+C>B>A
+## 8 final
+base pay | leaf bonus
+## 9 Singleton and companion object
+1 2
+21.5 C 100.0 C -273.15
+## 10 Case classes
+Point(1,2) true Point(1,9)
+true
+x is 1, y is 2
+## 11 Anonymous class
+Hello, Asha
+running an anonymous Runnable
+the class has no name: true

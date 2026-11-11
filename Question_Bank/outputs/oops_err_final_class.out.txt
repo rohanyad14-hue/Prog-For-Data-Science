@@ -1,0 +1,3 @@
+compilation FAILED (as intended)
+oops_err_final_class.scala:7:20
+  illegal inheritance from final class Leaf

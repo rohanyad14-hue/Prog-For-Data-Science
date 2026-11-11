@@ -1,0 +1,17 @@
+--- the catalogue ---
+Book(101, Scala Programming, Available)
+Journal(201, Data Science Journal, Issued)
+Magazine(301, Tech Today, Available)
+--- issue every resource: one call, three behaviours (polymorphism) ---
+Book 'Scala Programming' issued for 14 days
+Journal 'Data Science Journal' is not available
+Magazine 'Tech Today' issued for 3 days
+--- return every resource, 2 days late ---
+Book 'Scala Programming' returned, late fee Rs. 2.00
+Journal 'Data Science Journal' returned, late fee Rs. 10.00
+Magazine 'Tech Today' returned, late fee Rs. 1.00
+--- state after the round ---
+Book(101, Scala Programming, Available)
+Journal(201, Data Science Journal, Available)
+Magazine(301, Tech Today, Available)
+List((Book,14), (Journal,7), (Magazine,3))

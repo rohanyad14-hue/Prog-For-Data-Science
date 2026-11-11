@@ -1,0 +1,33 @@
+--- 1. a derived risk column, computed in parallel on every partition ---
++----------+--------+--------+--------+------------+------+
+|CustomerID|  Income|    Loan|  Status|LoanToIncome|  risk|
++----------+--------+--------+--------+------------+------+
+|      L101|650000.0|300000.0|Approved|       0.462|   low|
+|      L102|350000.0|400000.0|Rejected|       1.143|  high|
+|      L103|800000.0|500000.0|Approved|       0.625|medium|
+|      L104|250000.0|350000.0|Rejected|         1.4|  high|
++----------+--------+--------+--------+------------+------+
+
++--------+-----+---------+-----+-----+
+|  Status|loans|avg_ratio|  min|  max|
++--------+-----+---------+-----+-----+
+|Approved|    2|    0.543|0.462|0.625|
+|Rejected|    2|    1.271|1.143|  1.4|
++--------+-----+---------+-----+-----+
+
+--- 2. how the work is spread: each partition becomes one task on some executor ---
+partition 0: List(L101, L104)
+partition 1: List(L102, L103)
+--- 3. a shared threshold sent once to every executor (broadcast variable) ---
+List((L101,false), (L102,true), (L103,false), (L104,true))
+--- 4. a model trained with Spark MLlib: what drives approval? ---
+coefficients (Income, LoanToIncome): 0.000, -2.536 | a negative sign on the ratio: a heavier loan lowers the chance of approval
++----------+--------+----------+
+|CustomerID|  Status|prediction|
++----------+--------+----------+
+|      L101|Approved|       1.0|
+|      L102|Rejected|       0.0|
+|      L103|Approved|       1.0|
+|      L104|Rejected|       0.0|
++----------+--------+----------+
+

@@ -1,0 +1,191 @@
+"""Answers to the five Module 2 sample questions (Python libraries). Every number quoted here comes from the captured outputs."""
+from dsl import B, CODE, H3, H4, IMG, KEY, NOTE, OUT, P, T, TIP, WARN
+
+QUESTIONS = []
+
+
+def question(qid, title, image, blocks):
+    QUESTIONS.append(dict(id=qid, module=2, title=title, image=image, blocks=blocks))
+
+
+# ------------------------------------------------------------------------------------------------ Q1
+question("M2-Q1", "Student Performance Analysis using Pandas", "6267292660481594230.jpg", [
+    H3("Answer, point by point"),
+    H4("1. How should missing values be handled?"),
+    B(["<b>Look first, fix second.</b> `df.isna().sum()` shows one missing Attendance (S103) and one missing Internal Marks (S104). Two of five rows (40%) have a gap, so dropping rows would throw away almost half of the data. Do not use `dropna()` here.",
+       "<b>Impute numeric columns with the median</b>, not the mean: the median is not pulled by one extreme student. Use the median of the <b>same department</b> when it exists, otherwise the overall median. S103 (CSE) gets 93.5, the median of the other CSE students (92 and 95). S104 is the only IT student, so there is no department median and the overall median 43.5 is used.",
+       "<b>Keep a flag</b> (`Attendance_filled`, `InternalMarks_filled`) so that the faculty and the model can see which values were estimated.",
+       "<b>Never impute the target</b> (Final Marks). For modelling, put `SimpleImputer(strategy='median')` inside a scikit-learn `Pipeline` and fit it on the training rows only, otherwise test-set information leaks into the model (the code shows the training-only version).",
+       "Best of all, go back to the source: a missing attendance figure is usually a data-entry gap that the registrar can fill."]),
+    H4("2. Which Pandas built-in functions can be used for statistical analysis?"),
+    T(["Need", "Function", "Result on this data"], [
+        ["Summary of every numeric column", "`df.describe()`", "mean attendance 88.7, mean internal 43.3, mean final 77.2"],
+        ["Relationship between marks", "`df[cols].corr()`", "attendance~final 0.92, internal~final 0.65"],
+        ["Group comparison", "`df.groupby('Department')['FinalMarks'].agg(['count','mean','max'])`", "CSE 82.0 (3 students), ECE 72.0, IT 68.0"],
+        ["Gaps and quality", "`isna().sum()`, `duplicated()`, `dtypes`", "2 gaps, 0 duplicates"],
+        ["Ranking and bands", "`sort_values`, `nlargest`, `rank`, `pd.cut`, `quantile`", "used for the risk band below"]], [0.28, 0.42, 0.30]),
+    H4("3. How would you identify students at academic risk?"),
+    P("Write the rule down so that it can be explained and changed. Example rule (thresholds are for the faculty to set): one point for attendance below 80%, one for internal marks below 40, one for final marks below 70. 0 points = ok, 1 = watch, 2 or more = at risk."),
+    B(["<b>Meena</b> (78% attendance, final 68, filled internal mark) gets 2 points: <b>at risk</b>.",
+       "<b>Priya</b> (internal 38) gets 1 point: <b>watch</b>. The other three have 0 points.",
+       "With more data replace the hand-made rule by a model (logistic regression or a decision tree on the history of earlier batches) and check it with cross-validation. With five students any model would be guesswork."]),
+    H4("4. Which visualizations communicate the findings best to faculty?"),
+    B(["<b>Scatter plot</b> of attendance against final marks (r = 0.92), one colour per department, at-risk students labelled: shows the relationship and who is off the pattern.",
+       "<b>Bar chart</b> of mean final marks per department: one number per group, easy to read.",
+       "<b>Box plots</b> of marks per department once there are enough students; a <b>correlation heat map</b> for the analyst; a plain <b>table with the risk status highlighted</b> for a meeting.",
+       "Avoid pie charts and 3-D charts; give every chart a title, axis labels and one message."]),
+    H3("Code, run on the dataset of the question"),
+    CODE("sa_m2_q1.py", "Code: code/sa_m2_q1.py"),
+    OUT("sa_m2_q1.out.txt", "Real output", maxlines=60),
+    IMG("sa_m2_q1.png", 15.5, "Figure produced by the code: attendance against final marks (left), mean final marks per department (right)."),
+])
+
+# ------------------------------------------------------------------------------------------------ Q2
+question("M2-Q2", "Customer Purchase Pattern Analysis using DataFrame Operations", "6267292660481594244.jpg", [
+    H3("Answer, point by point"),
+    H4("1. Which customer segment is likely to respond to premium-product advertisements?"),
+    P("Define \"premium\" with the data instead of guessing: the top quarter of the order values, `threshold = df['Amount'].quantile(0.75)` = Rs. 65,000. Boolean filtering (`df[df['Amount'] >= threshold]`, or `query`, or `loc`) returns two customers:"),
+    T(["CustomerID", "Age", "City", "Product", "Amount"], [["C101", "22", "Chennai", "Laptop", "65,000"], ["C103", "28", "Chennai", "Laptop", "70,000"]], [0.2, 0.1, 0.25, 0.2, 0.25]),
+    P("Segment: <b>young (mean age 25) Chennai customers who buy laptops</b>. Extension for the campaign: all Chennai customers, plus anyone who bought a laptop or tablet. Two customers are an anecdote, not a proof: on real data build the segment from recency, frequency and spend and test the advertisement on a small group first."),
+    H4("2. How can text-data operations analyse city-wise preferences?"),
+    B(["<b>Normalise</b> the text before grouping: `str.strip()`, `str.title()`, `replace({'Bengaluru': 'Bangalore'})`. Otherwise \" chennai\" and \"CHENNAI \" become two cities.",
+       "<b>Search</b> with `str.contains('^Chen', case=False, regex=True)`, <b>pull out</b> parts with `str.extract(r'(Chennai|Bangalore)')`, split with `str.split`, measure with `str.len`.",
+       "<b>Count</b>: `pd.crosstab(df['City'], df['Product'])` gives Chennai 2 laptops and 1 mobile, Bangalore 1 mobile, Hyderabad 1 tablet. The most bought product per city is then `groupby('City')['Product'].agg(lambda s: s.mode().iat[0])`.",
+       "The same functions work on free-text reviews: find the product or city mentioned in each review and count by city."]),
+    H4("3. What business insights can be proposed?"),
+    B(["<b>Chennai matters most</b>: 3 of 5 customers (60%) and Rs. 157,000 of the Rs. 200,000 revenue (78.5%).",
+       "<b>Laptops carry the revenue</b>: 67.5% of revenue from 2 of 5 orders; mobiles 23.5%, tablets 9.0%. The average order is Rs. 40,000.",
+       "<b>Younger customers spend more</b>: correlation of age and amount is -0.79, but with five rows this is only a hint.",
+       "<b>Actions</b>: premium laptop campaign for young Chennai buyers, accessories bundled with laptops, mobile offers to move Bangalore and Chennai buyers up the range, a test campaign in Hyderabad where only one tablet was sold."]),
+    H4("4. Which visualizations support the conclusions?"),
+    B(["<b>Bar chart</b> of revenue by product (comparison of categories).",
+       "<b>Stacked bar chart</b> of orders by city and product (composition).",
+       "<b>Scatter plot</b> of age against amount coloured by product (relationship).",
+       "A <b>map</b> (Folium) for city-level revenue once coordinates are available."]),
+    H3("Code, run on the dataset of the question"),
+    CODE("sa_m2_q2.py", "Code: code/sa_m2_q2.py"),
+    OUT("sa_m2_q2.out.txt", "Real output", maxlines=70),
+    IMG("sa_m2_q2.png", 16.5, "Figure produced by the code: revenue by product, orders by city and product, age against amount."),
+])
+
+# ------------------------------------------------------------------------------------------------ Q3
+question("M2-Q3", "Web Data Mining and Integration (Scrapy, Beautiful Soup, merging)", "6267292660481594245.jpg", [
+    H3("Answer, point by point"),
+    H4("1. How can information be collected from the websites?"),
+    B(["<b>Check first</b>: the site's terms of use and `robots.txt`; look for an official API or a downloadable file, which is more reliable than scraping.",
+       "<b>Inspect the page</b> (browser developer tools) to find the repeating element, e.g. one `div.book` per book with the id, the title and the price inside it.",
+       "<b>Fetch</b> the HTML with `requests.get(url, timeout=10)` and <b>parse</b> it with Beautiful Soup (`find_all`, `select`) or let a <b>Scrapy</b> spider do both with CSS or XPath selectors.",
+       "<b>Be polite</b>: a delay between requests, a clear user-agent, obey robots.txt (Scrapy: `DOWNLOAD_DELAY`, `AUTOTHROTTLE_ENABLED`, `ROBOTSTXT_OBEY`).",
+       "<b>Store</b> the result as CSV/JSON/DataFrame (Scrapy: the `FEEDS` setting)."]),
+    T(["", "Beautiful Soup (with requests)", "Scrapy"], [
+        ["What it is", "HTML parsing library; you write the loop", "crawling framework: scheduler, downloader, pipelines, feeds"],
+        ["Best for", "one page or a few pages, quick experiments", "many pages, pagination, several sites, regular runs"],
+        ["Politeness, retries, export", "write it yourself", "built in (settings)"],
+        ["Here", "one function per website (code below)", "one spider per website (second code block)"]], [0.2, 0.4, 0.4]),
+    H4("2. How can the two datasets be merged using Pandas?"),
+    P("Both tables share the key `BookID`, so `prices.merge(ratings, on='BookID', how='left', validate='one_to_one', indicator=True)`. Choose the join on purpose: <b>inner</b> keeps books found on both sites, <b>left</b> keeps every priced book and shows missing ratings as NaN, <b>outer</b> keeps everything. `validate='one_to_one'` stops silently duplicated rows, `indicator=True` adds a `_merge` column that audits which side each row came from."),
+    WARN("The keys must be <b>identical</b> before the merge. In the code the second site writes the first id as ' b101 ' (lower case, spaces), so the raw key sets are not equal. `str.strip().str.upper()` fixes it. A merge on the uncleaned keys would quietly lose that book."),
+    H4("3. What challenges (missing or inconsistent data) occur and what are the solutions?"),
+    T(["Challenge", "Example", "Solution"], [
+        ["Text instead of numbers", "'Rs. 450', 'N/A'", "extract the number with a regex, `pd.to_numeric(errors='coerce')`"],
+        ["Mismatching keys", "' b101 ' against 'B101'", "`str.strip().str.upper()` on both sides, then merge"],
+        ["Duplicates", "B102 listed twice", "`drop_duplicates(subset='BookID')`"],
+        ["Missing values", "no rating for B102, price 'N/A' for B104", "inspect with `isna()`, then drop, impute or flag; do not rank books without a rating"],
+        ["Unmatched ids", "B104 only on site 1, B105 only on site 2", "outer merge with `indicator=True`, review the `left_only` / `right_only` rows"],
+        ["Different scales or currencies", "ratings out of 5 and out of 10", "rescale to one scale before comparing"],
+        ["Site changes or blocking", "HTML layout changes, HTTP 429", "tests on the selectors, retries with back-off, logging of failed URLs"]], [0.22, 0.34, 0.44]),
+    TIP("A trap found while testing this answer: the cleaning pattern `[^0-9.]` keeps the full stop of \"Rs.\", so \"Rs. 450\" became \".450\" and then 0.45. Extract the first number instead: `str.extract(r'(\\d+(?:\\.\\d+)?)')`."),
+    H4("4. Which strategy discovers the most valuable books using ratings and prices?"),
+    P("\"Valuable\" must be defined before it is computed. Three definitions give different winners on this data:"),
+    T(["Definition", "Formula", "Winner"], [
+        ["Best value for money", "rating / price x 100: B101 1.000, B102 0.686, B103 0.494", "<b>Python Basics</b>"],
+        ["Best trade-off (weights 60% rating, 40% price, both min-max scaled)", "B101 0.70, B102 0.75, B103 0.00", "<b>Data Science</b>"],
+        ["Highest quality", "highest rating 4.8", "<b>Data Science</b>"]], [0.36, 0.40, 0.24]),
+    B(["<b>Pareto view</b>: B101 is cheaper, B102 is better rated, and neither beats the other. B103 costs more and is rated lower than both, so it is dominated and can be dropped.",
+       "Ratings from few reviews are unreliable: add the number of reviews and use a Bayesian (shrunk) average before ranking.",
+       "Recommendation: show the Pareto set (B101 and B102) and let the buyer's budget decide."]),
+    H3("Code 1: Beautiful Soup, cleaning, merge and ranking"),
+    CODE("sa_m2_q3.py", "Code: code/sa_m2_q3.py"),
+    OUT("sa_m2_q3.out.txt", "Real output", maxlines=60),
+    H3("Code 2: the same collection with Scrapy (two spiders)"),
+    CODE("sa_m2_q3_scrapy.py", "Code: code/sa_m2_q3_scrapy.py (runs on local copies of the two pages)"),
+    OUT("sa_m2_q3_scrapy.out.txt", "Real output"),
+])
+
+# ------------------------------------------------------------------------------------------------ Q4
+question("M2-Q4", "Predicting House Prices using Machine Learning", "6267292660481594246.jpg", [
+    H3("Answer, point by point"),
+    H4("1. What preprocessing steps are required before model training?"),
+    B(["<b>Quality checks</b>: missing values (0), duplicate rows (0), data types (all integers). Fix or remove what is found.",
+       "<b>Outliers</b>: no value has |z| > 2 here. Decide case by case whether to keep, cap or remove.",
+       "<b>Features</b>: the three features are strongly correlated with each other (variance inflation factors 38.8, 10.3 and 34.1; above 10 signals trouble). Keep fewer features, or use a regularised model (Ridge) or PCA.",
+       "<b>Scaling</b> (`StandardScaler`) for scale-sensitive models such as linear models with regularisation, k-NN and SVM; trees do not need it. Fit the scaler on training data only, inside a `Pipeline`.",
+       "<b>Split</b> into training and test data (for example 80/20), or use cross-validation. With only five rows a test set would hold one house, so the code uses leave-one-out cross-validation.",
+       "No categorical columns here; if there were, encode them (one-hot)."]),
+    H4("2. Which are the dependent and independent variables?"),
+    P("<b>Dependent (target):</b> `Price (Lakhs)`. <b>Independent (features):</b> `HouseSize (sq.ft.)`, `Bedrooms`, `Age (Years)`. The model learns Price = f(HouseSize, Bedrooms, Age)."),
+    H4("3. Compare two suitable machine learning algorithms"),
+    T(["", "Linear regression", "Random forest regressor"], [
+        ["Idea", "a straight-line (plane) relationship", "many decision trees, predictions averaged"],
+        ["Interpretability", "coefficients read directly (lakh per sq.ft)", "feature importances only"],
+        ["Data needed", "works with little data", "needs much more data"],
+        ["Outside the training range", "extrapolates (3000 sq.ft -> 135.0 lakh)", "cannot: stays near the largest price seen (3000 sq.ft -> 103.7 lakh)"],
+        ["Non-linear effects, interactions", "not captured", "captured"],
+        ["Leave-one-out result here", "MAE 0.00, RMSE 0.00, R-squared 1.000", "MAE 9.95, RMSE 13.95, R-squared 0.643"]], [0.24, 0.38, 0.38]),
+    WARN("Do not read too much into the numbers. This table is exactly linear (Price = 0.05 x HouseSize - 15), so linear regression is perfect and Pearson r is 1.000. Real data never behaves like that, and five rows prove very little. The baseline that always predicts the mean price scores R-squared -0.562, which is the bar any model must clear."),
+    P("Conclusion: start with linear regression as the interpretable baseline; move to a forest or gradient boosting when more data shows curved relationships, and keep whichever has the lower cross-validated error."),
+    H4("4. How can SciPy and NumPy assist in feature analysis?"),
+    B(["<b>NumPy</b>: `np.corrcoef`, `np.polyfit(size, price, 1)` (slope 0.05 lakh per sq.ft, intercept -15), `np.linalg.inv` of the correlation matrix to obtain the variance inflation factors.",
+       "<b>SciPy</b>: `stats.pearsonr` (correlation and p-value), `stats.zscore` for outliers, `stats.linregress`, `stats.spearmanr` for monotonic but non-linear relations, hypothesis tests such as `ttest_ind` when groups are compared.",
+       "Result here: size~price r = 1.000, age~price r = -0.985, bedrooms~price r = 0.949; the features carry almost the same information."]),
+    H4("5. How should model performance be evaluated?"),
+    B(["<b>Regression metrics</b>: MAE (average error in lakhs), RMSE (penalises big errors), R-squared (share of variance explained). Compute them on data the model has not seen.",
+       "<b>Cross-validation</b> (k-fold; leave-one-out for tiny data) instead of one lucky split; compare against a <b>baseline</b> (the mean price).",
+       "Plot <b>residuals</b> against predictions: a pattern means the model is missing structure.",
+       "Compare training error with validation error to spot over-fitting, and judge the error against the business tolerance (a 10-lakh error on a 45-lakh house is large)."]),
+    H3("Code, run on the dataset of the question"),
+    CODE("sa_m2_q4.py", "Code: code/sa_m2_q4.py"),
+    OUT("sa_m2_q4.out.txt", "Real output", maxlines=60),
+])
+
+# ------------------------------------------------------------------------------------------------ Q5
+question("M2-Q5", "Smart City Analytics Dashboard", "6267292660481594247.jpg", [
+    H3("Answer, point by point"),
+    H4("1. Which environmental factors require immediate attention?"),
+    P("Convert AQI to the official categories of the CPCB National Air Quality Index (0-50 good, 51-100 satisfactory, 101-200 moderate, 201-300 poor, 301-400 very poor, 401+ severe) and rank the zones on all four factors together."),
+    T(["Zone", "AQI", "AQI category", "Temp", "Rain", "Green", "Priority score"], [
+        ["Central", "220", "<b>Poor</b>", "37", "15", "12", "5.63"], ["North", "180", "Moderate", "35", "20", "18", "2.75"],
+        ["East", "150", "Moderate", "33", "25", "22", "0.36"], ["South", "120", "Moderate", "30", "35", "30", "-3.40"],
+        ["West", "100", "Satisfactory", "29", "40", "35", "-5.34"]], [0.16, 0.09, 0.2, 0.09, 0.09, 0.09, 0.28]),
+    B(["<b>Central</b> needs attention first: the only zone in the \"poor\" band, the hottest (37 C), the driest (15 mm) and with the least green cover (12%). <b>North</b> is next.",
+       "The priority score adds the z-scores of AQI and temperature and subtracts those of green cover and rainfall.",
+       "AQI correlates +0.99 with temperature and -0.99 with green cover, -0.98 with rainfall. With five zones this shows a pattern worth investigating, not a cause."]),
+    H4("2. Recommend suitable visualizations using Matplotlib, Seaborn, Plotly, Bokeh and Folium"),
+    T(["Library", "Chart for this data", "Why"], [
+        ["Matplotlib", "bar chart of AQI by zone with a line at 200 (the \"poor\" limit)", "full control, publication quality, static"],
+        ["Seaborn", "correlation heat map of the four factors; pair plot when there are more zones", "statistical plots in one line on top of Matplotlib"],
+        ["Plotly", "scatter of AQI against green cover, bubble size = temperature, hover shows rainfall", "interactive (hover, zoom) with almost no code, exports HTML"],
+        ["Bokeh", "linked scatter plots with hover tools, widgets, or a live dashboard served by Bokeh server", "fine-grained interactivity and streaming"],
+        ["Folium", "map with one circle per zone, colour = AQI category, size = AQI", "geographic view on Leaflet; needs zone coordinates or boundaries (not in the table, the code uses made-up coordinates)"]], [0.14, 0.50, 0.36]),
+    H4("3. How can interactive dashboards support government decision-making?"),
+    B(["<b>One live view</b> of all zones: officials filter by zone or time, hover for exact values, drill from city to zone.",
+       "<b>Alerts</b>: a zone turns red when AQI passes 200, so action does not wait for a monthly report.",
+       "<b>Prioritising money and work</b>: tree planting where green cover and rainfall are low, traffic control where AQI is high, compared across zones on the same screen.",
+       "<b>Scenario thinking and transparency</b>: what happens to AQI if green cover rises; the same dashboard can be shown to the public.",
+       "Limits: needs a reliable data feed, access control, and a clear owner; a dashboard supports a decision, it does not make it."]),
+    H4("4. Which machine learning applications could be developed from this dataset?"),
+    B(["<b>Forecasting</b> AQI from temperature, rainfall and green cover (regression), or AQI over time (time series).",
+       "<b>Classification</b> of a zone into the AQI category (decision tree) so that the cause of \"poor\" can be read from the rules.",
+       "<b>Clustering</b> (k-means) of zones into risk groups with a common remedy; <b>anomaly detection</b> for sensor faults and sudden spikes.",
+       "<b>What-if modelling</b>: the effect of extra green cover on AQI. All of these need far more than five rows (months of readings per zone)."]),
+    H4("5. Justify which library is most appropriate for static reports, interactive analytics and geographic mapping"),
+    T(["Purpose", "Library", "Justification"], [
+        ["Static reports", "<b>Matplotlib</b> (with Seaborn)", "fixed images for PDFs and papers, exact control of every element, Seaborn adds statistical plots"],
+        ["Interactive analytics", "<b>Plotly</b> (Bokeh when you need custom linked views or a server)", "hover, zoom, filtering and sharing as one HTML file with little code"],
+        ["Geographic mapping", "<b>Folium</b>", "builds Leaflet maps: markers, circles, choropleths and heat maps over real map tiles"]], [0.2, 0.3, 0.5]),
+    H3("Code, run on the dataset of the question"),
+    CODE("sa_m2_q5.py", "Code: code/sa_m2_q5.py"),
+    OUT("sa_m2_q5.out.txt", "Real output", maxlines=60),
+    IMG("sa_m2_q5.png", 16, "Figure produced by the code: AQI by zone with the \"poor\" limit (left), correlation of the four factors (right)."),
+    NOTE("The code also writes a Plotly page, a Bokeh page and a Folium map as HTML files (listed in the output). Their zone coordinates are invented for the demonstration."),
+])

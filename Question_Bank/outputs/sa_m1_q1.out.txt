@@ -1,0 +1,31 @@
+--- 1. the Books dataset in a dictionary keyed by BookID ---
+5 books | title of B103: Machine Learning Basics | copies of B105: 3
+categories (a set removes repeats): ['AI', 'Computer Science', 'Database', 'Programming']
+
+--- 2. the waiting list is a FIFO queue (collections.deque) ---
+front to back: [('M001', 'B102'), ('M003', 'B104'), ('M001', 'B104')]
+a copy of B102 comes back -> serve: ('M001', 'B102') | still waiting: [('M003', 'B104'), ('M001', 'B104'), ('M002', 'B102')]
+one queue per book: {'B102': ['M001'], 'B104': ['M003', 'M001']}
+a copy of B104 comes back -> serve: M003 (the front of the global queue waits for B102, not B104)
+
+--- 3. books that are currently unavailable ---
+['B102', 'B104'] ['Data Structures', 'Database Systems']
+
+--- 4. requests made by Premium members ---
+R001 Ravi Kumar asked for Data Structures on 10-10-2026
+R003 Arjun Das asked for Database Systems on 11-10-2026
+R005 Ravi Kumar asked for Database Systems on 12-10-2026
+
+--- 5. exception for a non-existing book ---
+B101 -> Python Programming
+error: book B110 does not exist in the catalogue
+
+--- 6. successful borrow transactions are written to a text file ---
+skipped R006 -> book B110 does not exist in the catalogue
+R002,M002,B103,11-10-2026,BORROWED
+R004,M004,B101,12-10-2026,BORROWED
+stock afterwards: {'B101': 1, 'B102': 0, 'B103': 0, 'B104': 0, 'B105': 3}
+requests that had to wait equal the waiting-list dataset: True
+
+--- 7. a priority queue: Premium members are served before Standard members ---
+served in this order: ['Arjun Das', 'Ravi Kumar', 'Priya Singh']

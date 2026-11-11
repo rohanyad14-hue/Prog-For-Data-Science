@@ -1,0 +1,14 @@
+--- functional version: no variable is ever changed ---
+discounted : Headphone -> 2700.0, Laptop -> 58500.0, Mobile -> 22500.0, Tablet -> 16200.0
+expensive  : List(Laptop, Mobile)
+total      : 111000 (after discount 99900.0)
+--- imperative version of the same three tasks ---
+discounted : Headphone -> 2700.0, Laptop -> 58500.0, Mobile -> 22500.0, Tablet -> 16200.0
+expensive  : List(Laptop, Mobile)
+total      : 111000
+same answers: true
+--- a chained pipeline reads like the requirement ---
+discounted value of the expensive products: 81000.0
+--- reduce fails on an empty collection, foldLeft does not ---
+reduce: empty.reduceLeft
+foldLeft: 0

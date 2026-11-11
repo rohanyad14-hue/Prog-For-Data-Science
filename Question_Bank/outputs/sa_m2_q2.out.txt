@@ -1,0 +1,37 @@
+--- 1. the premium-product segment ---
+threshold: 65000.0
+  CustomerID  Age     City Product  Amount
+0       C101   22  Chennai  Laptop   65000
+2       C103   28  Chennai  Laptop   70000
+same result with query(): ['C101', 'C103']
+segment profile: mean age 25.0 | cities ['Chennai'] | products ['Laptop']
+laptop buyers by extraction: [['C101', 'Chennai'], ['C103', 'Chennai']]
+
+--- 2. text operations ---
+['Chennai', 'Chennai', 'Bangalore', 'Bangalore', 'Hyderabad']
+starts with Chen: [True, False, True, False, True]
+mentions laptop: [True, False, False]
+city found in text: ['Chennai', 'Bangalore', nan]
+Product    Laptop  Mobile  Tablet
+City                             
+Bangalore       0       1       0
+Chennai         2       1       0
+Hyderabad       0       0       1
+most bought product per city:
+City
+Bangalore    Mobile
+Chennai      Laptop
+Hyderabad    Tablet
+Name: Product, dtype: object
+
+--- 3. business insights ---
+           orders  revenue       average
+City                                    
+Bangalore       1    25000  25000.000000
+Chennai         3   157000  52333.333333
+Hyderabad       1    18000  18000.000000
+{'Laptop': 67.5, 'Mobile': 23.5, 'Tablet': 9.0} (% of revenue)
+average order value: 40000.0 | Chennai share of customers: 60 %
+correlation age vs amount: -0.79 (only 5 rows, treat as a hint)
+
+saved sa_m2_q2.png

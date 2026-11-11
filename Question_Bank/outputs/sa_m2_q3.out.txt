@@ -1,0 +1,35 @@
+--- scraped (raw) ---
+  BookID            Title    Price
+0   B101    Python Basics  Rs. 450
+1   B102     Data Science  Rs. 700
+2   B103  AI Fundamentals  Rs. 850
+   BookID Rating
+0   b101     4.5
+1    B102    4.8
+2    B103    4.2
+keys equal before cleaning: False
+
+--- cleaned and merged ---
+  BookID            Title  Price  Rating _merge
+0   B101    Python Basics    450     4.5   both
+1   B102     Data Science    700     4.8   both
+2   B103  AI Fundamentals    850     4.2   both
+{'both': 3, 'left_only': 0, 'right_only': 0}
+
+--- when the data is messy (missing price, duplicate, missing rating, unmatched id) ---
+  BookID  Price  Rating      _merge
+0   B101  450.0     4.5        both
+1   B102  700.0     NaN        both
+2   B104    NaN     NaN   left_only
+3   B105    NaN     3.9  right_only
+rows with a missing value: 3 | only in one source: 2
+usable rows: ['B101']
+
+--- which books are the most valuable? it depends on the definition ---
+  BookID            Title  Price  Rating  rating_per_100_rs  weighted_score
+0   B101    Python Basics    450     4.5              1.000            0.70
+1   B102     Data Science    700     4.8              0.686            0.75
+2   B103  AI Fundamentals    850     4.2              0.494            0.00
+best value for money : Python Basics
+best weighted score  : Data Science
+highest rated        : Data Science

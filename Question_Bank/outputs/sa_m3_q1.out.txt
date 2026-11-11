@@ -1,0 +1,17 @@
+--- registered students ---
+101 Arun (CSE, UG, max 6): [Scala, DBMS]
+102 Priya (ECE, PG, max 4): [Python, ML]
+103 Rahul (CSE, UG, max 6): [Scala, AI]
+--- searching (two overloaded find methods) ---
+Some(Arun)
+Some(102)
+None
+List(Arun, Rahul)
+--- adding and removing courses ---
+add Statistics     : true
+add Scala again    : false
+add four more      : 3 added (UG limit is 6)
+remove DBMS        : true, remove Chemistry: false
+Arun now           : List(Scala, Statistics, OS, CN, Maths)
+Priya adds three   : 2 added (PG limit is 4)
+Priya now          : List(Python, ML, Stats, NLP)

@@ -1,0 +1,29 @@
+--- the DataFrame is split into partitions; each executor processes its partitions in parallel ---
++---------+---+-------------+--------+---------+
+|PatientID|Age|BloodPressure|Diabetes|partition|
++---------+---+-------------+--------+---------+
+|     P101| 45|          130|     Yes|        1|
+|     P102| 32|          120|      No|        0|
+|     P103| 58|          145|     Yes|        1|
+|     P104| 29|          118|      No|        0|
++---------+---+-------------+--------+---------+
+
+--- abnormal records: rules and a statistical check ---
++---------+---+-------------+--------+--------+---------+
+|PatientID|Age|BloodPressure|Diabetes|bp_stage|high_risk|
++---------+---+-------------+--------+--------+---------+
+|     P101| 45|          130|     Yes| stage 1|     true|
+|     P102| 32|          120|      No|elevated|    false|
+|     P103| 58|          145|     Yes| stage 2|     true|
+|     P104| 29|          118|      No|  normal|    false|
++---------+---+-------------+--------+--------+---------+
+
+z-score of each BP (mean 128.3, sd 10.7): 0.16, -0.77, 1.57, -0.96
+--- the SQL view of the same question ---
++--------+--------+------+
+|Diabetes|patients|avg_bp|
++--------+--------+------+
+|      No|       2| 119.0|
+|     Yes|       2| 137.5|
++--------+--------+------+
+

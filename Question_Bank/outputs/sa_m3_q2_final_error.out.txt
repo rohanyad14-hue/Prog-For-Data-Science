@@ -1,0 +1,4 @@
+compilation FAILED (as intended)
+sa_m3_q2_final_error.scala:7:16
+  cannot override final member:
+  final def issue(): String (defined in class Resource)

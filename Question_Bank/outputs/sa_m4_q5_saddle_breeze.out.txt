@@ -1,0 +1,25 @@
+--- Saddle: labelled, typed structures and preprocessing ---
+[4 x 2]
+             Income        Loan 
+        ----------- ----------- 
+L101 -> 650000.0000 300000.0000 
+L102 -> 350000.0000 400000.0000 
+L103 -> 800000.0000 500000.0000 
+L104 -> 250000.0000 350000.0000 
+
+missing income filled with the mean: ArraySeq(650000.0, 566666.6666666666, 800000.0, 250000.0)
+[4 x 1]
+L101 -> 0.462
+L102 -> 1.143
+L103 -> 0.625
+L104 -> 1.400
+
+mean loan-to-income: approved 0.543, rejected 1.271
+riskiest first: ArraySeq(L104, L102, L103, L101)
+--- Breeze: statistics and risk indicators (numerical work on dense vectors) ---
+income: mean 512500, std dev 256174, variance 6.563e+10
+loan-to-income : 0.462, 1.143, 0.625, 1.400
+income - loan  : 350000, -50000, 300000, -100000
+correlation income~loan 0.429, covariance 9.375e+09
+z-scores of income: 0.54, -0.63, 1.12, -1.02
+high-risk flag (loan above income): false, true, false, true

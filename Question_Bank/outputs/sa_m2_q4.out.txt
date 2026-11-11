@@ -1,0 +1,23 @@
+--- preprocessing checks ---
+missing values: 0 | duplicate rows: 0 | types: ['int64']
+values with |z| > 2: 0
+X: (5, 3) y: (5,)
+
+--- feature analysis with NumPy and SciPy ---
+           HouseSize  Bedrooms    Age  Price
+HouseSize      1.000     0.949 -0.985  1.000
+Bedrooms       0.949     1.000 -0.942  0.949
+Age           -0.985    -0.942  1.000 -0.985
+Price          1.000     0.949 -0.985  1.000
+Pearson r (size, price) = 1.0 | p-value = 0.0
+price ~ size: slope 0.05 lakh per sq.ft, intercept -15.0
+variance inflation factors (above 10 means strong collinearity): {'HouseSize': 38.8, 'Bedrooms': 10.3, 'Age': 34.1}
+
+--- two algorithms and a baseline, leave-one-out cross-validation (5 rows only) ---
+baseline (mean price)  MAE  25.50  RMSE  29.21  R2  -0.562
+linear regression      MAE   0.00  RMSE   0.00  R2   1.000
+random forest          MAE   9.95  RMSE  13.95  R2   0.643
+
+--- predictions after fitting on all five rows ---
+linear regression  2000 sq.ft ->   85.0 lakh | 3000 sq.ft (outside the training range) ->  135.0 lakh
+random forest      2000 sq.ft ->   74.2 lakh | 3000 sq.ft (outside the training range) ->  103.7 lakh

@@ -1,0 +1,24 @@
+--- 1. which factors need immediate attention? ---
+      Zone  AQI  AQI_category
+0    North  180      Moderate
+1    South  120      Moderate
+2     East  150      Moderate
+3     West  100  Satisfactory
+4  Central  220          Poor
+             Temperature   AQI  Rainfall  GreenCover
+Temperature         1.00  0.99     -0.99       -0.99
+AQI                 0.99  1.00     -0.98       -0.99
+Rainfall           -0.99 -0.98      1.00        1.00
+GreenCover         -0.99 -0.99      1.00        1.00
+   Zone  priority_score
+Central            5.63
+  North            2.75
+   East            0.36
+  South           -3.40
+   West           -5.34
+
+--- 2. static charts (Matplotlib + Seaborn) ---
+saved sa_m2_q5.png
+
+--- 3. interactive pieces (Plotly, Bokeh) and a map (Folium) ---
+written: ['dashboard_bokeh.html', 'dashboard_map.html', 'dashboard_plotly.html']

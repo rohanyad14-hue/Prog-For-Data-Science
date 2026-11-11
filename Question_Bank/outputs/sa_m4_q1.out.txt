@@ -1,0 +1,36 @@
+--- 1. architecture: the same code scales from 4 rows to 5 million rows ---
+driver master: local[4] (a cluster manager URL such as yarn or k8s in production)
+5,000,000 synthetic students split into 4 partitions, one task per partition
+count, mean attendance, mean CGPA, correlation (independent random columns, so about 0): 5000000, 80.0, 7.5, 0.0
+physical plan of the aggregation (note the partial and final aggregate around one shuffle):
+  AdaptiveSparkPlan isFinalPlan=false
+  +- HashAggregate(keys=[], functions=[avg(CGPA#4)], output=[avg(CGPA)#120])
+     +- Exchange SinglePartition, ENSURE_REQUIREMENTS, [plan_id=61]
+        +- HashAggregate(keys=[], functions=[partial_avg(CGPA#4)], output=[sum#124, count#125L])
+           +- Project [((rand(2) * 5.0) + 5.0) AS CGPA#4]
+              +- Range (0, 5000000, step=1, splits=4)
+
+--- 2. the four rows of the question ---
++------+--------+--------------+--------+
+|Placed|students|avg_attendance|avg_cgpa|
++------+--------+--------------+--------+
+|    No|       2|          70.0|    6.35|
+|   Yes|       2|          90.0|     8.8|
++------+--------+--------------+--------+
+
+--- 3. Breeze on the small aggregated result (single JVM, no cluster) ---
+CGPA: mean 7.57, std dev 1.48
+correlation attendance~CGPA 0.952, CGPA~placed 0.955, attendance~placed 0.935
+z-scores of CGPA: 0.62, -0.52, 1.03, -1.13
+
+--- 4. which factors influence placement? a model on the Spark side ---
+coefficients (Attendance, CGPA): 0.087, 0.764 | both positive, so both push towards 'placed'
++---------+-----+----------+
+|StudentID|label|prediction|
++---------+-----+----------+
+|     S101|  1.0|       1.0|
+|     S102|  0.0|       0.0|
+|     S103|  1.0|       1.0|
+|     S104|  0.0|       0.0|
++---------+-----+----------+
+

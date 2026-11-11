@@ -1,0 +1,5 @@
+items collected: 3 prices and 3 ratings
+  BookID            Title  Price  Rating
+0   B101    Python Basics  450.0     4.5
+1   B102     Data Science  700.0     4.8
+2   B103  AI Fundamentals  850.0     4.2

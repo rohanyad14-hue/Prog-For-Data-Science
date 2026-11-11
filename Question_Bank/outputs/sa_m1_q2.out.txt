@@ -1,0 +1,24 @@
+Chennai      ok after 1 attempt(s): 33.5 C, humidity 70%
+Mumbai       ok after 1 attempt(s): 31.0 C, humidity 78%
+Delhi        ok after 1 attempt(s): 24.5 C, humidity 40%
+Bengaluru    ok after 2 attempt(s): 26.0 C, humidity 60%
+Atlantis     FAILED, request rejected: HTTP 404
+Brokenville  FAILED, invalid response: the answer is not JSON
+Nulltown     FAILED, invalid response: missing field 'temp_c'
+Hotville     FAILED, invalid response: temperature 999 C is impossible
+Slowtown     FAILED, network problem: ReadTimeout
+
+--- summary.txt, read back from the file ---
+Cities requested : 9
+Successful       : 4
+Failed           : 5
+Average temp     : 28.8 C
+Hottest / coldest: Chennai 33.5 C / Delhi 24.5 C
+Average humidity : 62.0 %
+Problems:
+  Atlantis: request rejected: HTTP 404
+  Brokenville: invalid response: the answer is not JSON
+  Nulltown: invalid response: missing field 'temp_c'
+  Hotville: invalid response: temperature 999 C is impossible
+  Slowtown: network problem: ReadTimeout
+files written: ['readings.json', 'summary.txt']

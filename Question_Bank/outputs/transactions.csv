@@ -1,0 +1,8 @@
+CustomerID,Product,Amount
+C101,Laptop,65000
+C102,Mobile,25000
+C103,Laptop,70000
+C104,Tablet,18000
+C105,Phone,abc
+,Tablet,100
+C106,Laptop

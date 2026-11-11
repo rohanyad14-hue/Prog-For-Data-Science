@@ -1,0 +1,3 @@
+compilation FAILED (as intended)
+oops_err_abstract_new.scala:9:17
+  class Vehicle is abstract; cannot be instantiated

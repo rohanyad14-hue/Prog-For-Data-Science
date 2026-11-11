@@ -1,0 +1,45 @@
+--- 1. inspect the missing values first ---
+{'StudentID': 0, 'Name': 0, 'Department': 0, 'Attendance': 1, 'InternalMarks': 1, 'FinalMarks': 0} | share of rows with a gap: 0.4
+  StudentID Department  Attendance  InternalMarks
+0      S101        CSE        92.0           45.0
+1      S102        ECE        85.0           38.0
+2      S103        CSE        93.5           42.0
+3      S104         IT        78.0           43.5
+4      S105        CSE        95.0           48.0
+
+--- the same idea inside a modelling pipeline (fit on training rows only) ---
+[[92. 45.]
+ [85. 38.]
+ [85. 42.]
+ [78. 42.]
+ [95. 48.]]
+
+--- 2. built-in functions for statistical analysis ---
+       Attendance  InternalMarks  FinalMarks
+count         5.0            5.0        5.00
+mean         88.7           43.3       77.20
+std           7.1            3.7        7.69
+min          78.0           38.0       68.00
+25%          85.0           42.0       72.00
+50%          92.0           43.5       78.00
+75%          93.5           45.0       80.00
+max          95.0           48.0       88.00
+               Attendance  InternalMarks  FinalMarks
+Attendance           1.00           0.44        0.92
+InternalMarks        0.44           1.00        0.65
+FinalMarks           0.92           0.65        1.00
+            count  mean  max
+Department                  
+CSE             3  82.0   88
+ECE             1  72.0   72
+IT              1  68.0   68
+
+--- 3. who is at academic risk? (example thresholds, set them with the faculty) ---
+    Name  Attendance  InternalMarks  FinalMarks  risk_points   status
+0   Arun        92.0           45.0          78            0       ok
+1  Priya        85.0           38.0          72            1    watch
+2  Kiran        93.5           42.0          80            0       ok
+3  Meena        78.0           43.5          68            2  at risk
+4   Ravi        95.0           48.0          88            0       ok
+
+saved sa_m2_q1.png

@@ -1,0 +1,35 @@
+--- 1. loading: a missing input is an exception at once ---
+AnalysisException, error class PATH_NOT_FOUND
+
+--- 2. corrupted records: three parse modes ---
+count() only needs the row count, so Spark prunes the columns and never parses the bad values: 7 rows
+collect() parses everything: DROPMALFORMED keeps 5 rows, PERMISSIVE keeps 7 rows
+FAILFAST stops the job: SparkException
+dead-letter lines (unparsable): List(C105,Phone,abc, C106,Laptop)
+rows failing a business rule (no customer id): 1
+clean rows used for the model: 4
+
+--- 3. the same cleaning at RDD level with Try and an accumulator ---
+good records: 4, bad records skipped: 3
+
+--- 4. fault tolerance: one task fails on its first attempt, Spark re-runs it ---
+result 360.0 (expected 360.0) after 1 failed task attempt, re-run automatically from the lineage
+
+--- 5. business insight and a first recommender ---
++-------+------+--------+
+|Product|buyers| revenue|
++-------+------+--------+
+| Laptop|     2|135000.0|
+| Mobile|     1| 25000.0|
+| Tablet|     1| 18000.0|
++-------+------+--------+
+
++----------+-----------+
+|CustomerID|recommended|
++----------+-----------+
+|      C101|     Mobile|
+|      C102|     Laptop|
+|      C103|     Mobile|
+|      C104|     Laptop|
++----------+-----------+
+

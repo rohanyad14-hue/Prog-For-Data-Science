@@ -1,0 +1,3 @@
+compilation FAILED (as intended)
+sa_m3_q2_final_class_error.scala:6:31
+  illegal inheritance from final class Magazine

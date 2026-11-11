@@ -1,0 +1,15 @@
+--- what a case class gives for free ---
+Employee(101,Ravi,Developer,75000.0)
+true
+Employee(101,Ravi,Developer,80000.0)
+Kiran is a senior manager
+--- companion object utilities ---
+Some(Employee(104,Meena,Analyst,62000.0))
+None (below the minimum of 30000.0)
+None and None (malformed lines are rejected)
+Employee(102,Anu,Tester,60500.0)
+--- singleton report ---
+101 Ravi  Developer gross   75000.0 net   67500.0
+102 Anu   Tester    gross   55000.0 net   49500.0
+103 Kiran Manager   gross   95000.0 net   85500.0
+payroll 225000.0, average 75000.0, highest paid Kiran

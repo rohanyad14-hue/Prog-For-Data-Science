@@ -1,0 +1,4 @@
+compilation FAILED (as intended)
+oops_err_final_method.scala:8:16
+  cannot override final member:
+  final def pay: String (defined in class Base)

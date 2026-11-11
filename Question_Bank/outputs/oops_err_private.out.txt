@@ -1,0 +1,8 @@
+compilation FAILED (as intended)
+oops_err_private.scala:10:13
+  variable balance in class Account cannot be accessed as a member of Account from object Wrong
+oops_err_private.scala:11:13
+  value bank in class Account cannot be accessed as a member of Account from object Wrong
+  Access to protected value bank not permitted because
+  enclosing object Wrong is not a subclass of
+  class Account where target is defined

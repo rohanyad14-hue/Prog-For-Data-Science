@@ -1,0 +1,5 @@
+compilation FAILED (as intended)
+oops_err_abstract_missing.scala:7:7
+  class Incomplete needs to be abstract.
+  Missing implementation for member of class Vehicle:
+  def wheels: Int = ???

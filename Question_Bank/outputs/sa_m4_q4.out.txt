@@ -1,0 +1,45 @@
+--- 1. the driver plans, the executors run the tasks ---
+the scheduler split that job into 2 stages, tasks per stage: 2 tasks, 4 tasks (map side, then reduce side)
++----------+-----+-----------+---------+--------+
+|  PostType|posts|total_likes|avg_likes|top_post|
++----------+-----+-----------+---------+--------+
+|Technology|    2|       1160|    580.0|     640|
+| Education|    1|        750|    750.0|     750|
+|    Sports|    1|        310|    310.0|     310|
++----------+-----+-----------+---------+--------+
+
+the same aggregation as an RDD: the ShuffledRDD marks the stage boundary
+  (2) ShuffledRDD[24] at reduceByKey at sa_m4_q4.scala:38 []
+   +-(2) MapPartitionsRDD[23] at map at sa_m4_q4.scala:38 []
+      |  MapPartitionsRDD[22] at rdd at sa_m4_q4.scala:38 []
+      |  SQLExecutionRDD[21] at rdd at sa_m4_q4.scala:38 []
+      |  MapPartitionsRDD[20] at rdd at sa_m4_q4.scala:38 []
+      |  MapPartitionsRDD[19] at rdd at sa_m4_q4.scala:38 []
+      |  ParallelCollectionRDD[18] at rdd at sa_m4_q4.scala:38 []
+
+--- 2. growth in volume: more partitions, more parallel tasks, no code change ---
+1 partition(s): 4 groups from 2000000 rows
+4 partition(s): 4 groups from 2000000 rows
+
+--- 3. failures and exception handling ---
+input posts_day1.csv missing (PATH_NOT_FOUND): skip this source, keep the job alive
+load result: None
+valid like counts: List(520, 310, 750), skipped: 2
+
+--- 4. trending topics from (invented) timestamped posts ---
++-------------------+--------+-----+
+|hour               |tag     |count|
++-------------------+--------+-----+
+|2026-11-10 09:00:00|#cricket|1    |
+|2026-11-10 09:00:00|#spark  |1    |
+|2026-11-10 10:00:00|#scala  |2    |
+|2026-11-10 10:00:00|#spark  |2    |
++-------------------+--------+-----+
+
++--------+-----+
+|   label|count|
++--------+-----+
+|negative|    2|
+|positive|    3|
++--------+-----+
+

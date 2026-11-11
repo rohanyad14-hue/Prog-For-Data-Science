@@ -1,0 +1,10 @@
+trait EmergencyService { def siren: String = "siren ON" }
+class Car(val speed: Int) { override def toString = "Car(" + speed + ")" }
+val police = new Car(80) with EmergencyService
+police.siren
+police.isInstanceOf[EmergencyService]
+val fleet = Array(("Bus", 45), ("Car", 70), ("Ambulance", 90))
+fleet.map(_._2).max
+fleet.filter(_._2 > 50).toList
+fleet(0) = ("Bus", 55)
+fleet.map(_._2).sum

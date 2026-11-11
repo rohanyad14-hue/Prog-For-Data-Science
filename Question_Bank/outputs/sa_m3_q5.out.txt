@@ -1,0 +1,18 @@
+--- real-time check of the whole fleet ---
+Bus         45 km/h  limit  60  ok
+Car         70 km/h  limit  60  OVERSPEED
+Ambulance   90 km/h  limit 100  ok
+FireEngine  85 km/h  limit 100  ok
+Bike        60 km/h  limit  60  ok
+overspeeding: List(Car)
+fastest     : Ambulance
+average     : 70.0
+--- what each mixin adds ---
+Bus: 50 seats
+Car: 4 seats
+Ambulance: siren ON, right of way
+FireEngine: siren ON, right of way
+Bike: no special trait
+emergency vehicles: List(Ambulance, FireEngine)
+--- mixing a trait into one object at creation time ---
+Car: siren ON, right of way | limit 100 | ok | 4 seats

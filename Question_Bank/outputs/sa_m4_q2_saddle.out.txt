@@ -1,0 +1,23 @@
+--- a Series is one labelled column, a Frame is a table of them ---
+[4 x 1]
+P101 -> 130.0000
+P102 -> 120.0000
+P103 -> 145.0000
+P104 -> 118.0000
+
+[4 x 3]
+            Age       BP Diabetes 
+        ------- -------- -------- 
+P101 -> 45.0000 130.0000   1.0000 
+P102 -> 32.0000 120.0000   0.0000 
+P103 -> 58.0000 145.0000   1.0000 
+P104 -> 29.0000 118.0000   0.0000 
+
+4 rows x 3 columns, columns: ArraySeq(Age, BP, Diabetes)
+--- summary statistics (a Series has no mean, so go through .values) ---
+mean BP 128.3, max BP 145, mean age 41.0
+--- abnormal records ---
+BP >= 140 (stage 2 hypertension range): ArraySeq(P103)
+diabetes and BP >= 130: ArraySeq(P101, P103)
+mean BP with diabetes 137.5, without 119.0
+sorted by BP: ArraySeq(P104, P102, P101, P103)
